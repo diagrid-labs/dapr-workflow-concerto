@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.2.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SseWorkflow", "SseWorkflow.csproj", "{AA87AA3B-53A3-B8A6-9D58-F5A79260FC67}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcertoWorkflow", "ConcertoWorkflow.csproj", "{AA87AA3B-53A3-B8A6-9D58-F5A79260FC67}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
