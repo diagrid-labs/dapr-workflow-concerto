@@ -120,4 +120,4 @@ app.MapGet("/sse", async (HttpContext context, EventBroadcaster broadcaster) =>
 app.Run();
 
 public record MusicScore(string Title, Note[] Notes);
-public record Note(string Name, int DurationMs, int WaitMs);
+public record Note(string Id, string NoteName, string Type, int DurationMs, int WaitMs);

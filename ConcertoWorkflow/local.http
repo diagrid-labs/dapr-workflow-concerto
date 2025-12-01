@@ -9,7 +9,7 @@ Content-Type: application/json
 
 {
   "id": "001",
-  "note": "2025-11-28T10:30:00Z",
+  "note": "C4",
   "type": "info",
   "durationMs" : 100,
   "waitMs": 1000, 
