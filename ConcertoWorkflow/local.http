@@ -1,17 +1,18 @@
-### SSE Workflow - Test Endpoints
+### Music Workflow - Test Endpoints
 
 ### Variables
 @baseUrl = http://localhost:5000
 
-### POST /start - Send an info event
+### POST /startmusic - Send a music score
 POST {{baseUrl}}/start
 Content-Type: application/json
 
 {
-  "id": "evt-001",
-  "timestamp": "2025-11-28T10:30:00Z",
+  "id": "001",
+  "note": "C4",
   "type": "info",
-  "message": "This is an informational message"
+  "durationMs" : 100,
+  "waitMs": 1000, 
 }
 
 ### POST /start - Send a success event

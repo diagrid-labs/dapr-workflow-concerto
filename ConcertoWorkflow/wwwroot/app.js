@@ -101,12 +101,14 @@
         const eventType = data.type || 'info';
         const timestamp = data.timestamp ? formatTimestamp(data.timestamp) : new Date().toLocaleString();
         const id = data.id || 'N/A';
-        const message = data.message || 'No message';
+        const noteName = data.noteName ? ` (Note: ${data.noteName})` : '';
+        const durationMs = data.durationMs ? ` (Duration: ${data.durationMs} ms)` : '';
+        const waitMs = data.waitMs ? ` (Wait: ${data.waitMs} ms)` : '';
+        const message = `Playing note ${noteName}`;
 
         eventDiv.innerHTML = `
             <div class="event-header">
                 <span class="event-type ${eventType.toLowerCase()}">${escapeHtml(eventType)}</span>
-                <span class="event-timestamp">${escapeHtml(timestamp)}</span>
             </div>
             <div class="event-id">ID: ${escapeHtml(id)}</div>
             <div class="event-message">${escapeHtml(message)}</div>

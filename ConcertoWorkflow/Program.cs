@@ -1,6 +1,8 @@
 using SseWorkflow.Models;
 using SseWorkflow.Services;
 using System.Text.Json;
+using Dapr.Workflow;
+using ConcertoWorkflow;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +23,11 @@ builder.Services.AddCors(options =>
               .AllowAnyHeader();
     });
 });
+builder.Services.AddDaprWorkflow(options =>
+{
+    options.RegisterWorkflow<ConcertoWorkflow.MusicWorkflow>();
+    options.RegisterActivity<ConcertoWorkflow.PlayNoteActivity>();
+});
 
 // Configure Kestrel to listen on port 5000 and 5500
 builder.WebHost.ConfigureKestrel(options =>
@@ -35,6 +42,30 @@ var app = builder.Build();
 app.UseCors();
 app.UseDefaultFiles();
 app.UseStaticFiles();
+
+app.MapPost("startmusic", async (
+    MusicScore musicScore,
+    DaprWorkflowClient workflowClient) =>
+{
+    var instanceId = await workflowClient.ScheduleNewWorkflowAsync(
+        name: nameof(MusicWorkflow),
+        input: musicScore
+    );
+
+    return Results.Ok(new { instanceId });
+});
+
+app.MapGet("musicstatus/{instanceId}", async (
+    string instanceId,
+    DaprWorkflowClient workflowClient) =>
+{
+    var status = await workflowClient.GetWorkflowStateAsync(instanceId);
+    if (status == null)
+    {
+        return Results.NotFound();
+    }
+    return Results.Ok(status);
+});
 
 // POST /start endpoint - receives events and broadcasts them
 app.MapPost("/start", async (EventInput eventInput, EventBroadcaster broadcaster) =>
@@ -87,3 +118,6 @@ app.MapGet("/sse", async (HttpContext context, EventBroadcaster broadcaster) =>
 });
 
 app.Run();
+
+public record MusicScore(string Title, Note[] Notes);
+public record Note(string Id, string NoteName, string Type, int DurationMs, int WaitMs);
