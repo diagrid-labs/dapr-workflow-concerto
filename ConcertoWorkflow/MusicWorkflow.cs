@@ -1,21 +1,28 @@
 using System;
 using Dapr.Workflow;
 
-namespace ConcertoWorkflow;
-
 public class MusicWorkflow : Workflow<MusicScore, string>
 {
-    public override async Task<string> RunAsync(WorkflowContext context, MusicScore input)
+    public override async Task<string> RunAsync(WorkflowContext context, MusicScore musicScore)
     {
-        Console.WriteLine($"Starting music workflow for score: {input.Title}");
+        Console.WriteLine($"Starting music workflow for score: {musicScore.Title}");
 
-        foreach (var note in input.Notes)
+        try
         {
-            await context.CreateTimer(TimeSpan.FromMilliseconds(note.WaitMs));
-            await context.CallActivityAsync("PlayNoteActivity", note);
+
+            foreach (var note in musicScore.Notes)
+            {
+                await context.CreateTimer(TimeSpan.FromMilliseconds(note.WaitMs));
+                await context.CallActivityAsync<SendNoteResult>(nameof(SendNoteActivity), note);
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error in MusicWorkflow: {ex.Message}");
+            throw;
         }
 
-        var completionText = $"Completed playing score: {input.Title}";
+        var completionText = $"Completed playing score: {musicScore.Title}";
         Console.WriteLine(completionText);
         return completionText;
     }

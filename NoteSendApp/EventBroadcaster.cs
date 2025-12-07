@@ -1,8 +1,6 @@
 using System.Collections.Concurrent;
 using System.Text.Json;
 
-namespace SseWorkflow.Services;
-
 public class EventBroadcaster
 {
     private readonly ConcurrentBag<StreamWriter> _clients = new();

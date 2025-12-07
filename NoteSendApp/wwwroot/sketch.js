@@ -263,7 +263,7 @@ function createInstructions() {
 // Server-Sent Events (SSE)
 // ============================================
 function initSSE() {
-  const sseUrl = 'http://localhost:5500/sse';
+  const sseUrl = 'http://localhost:5051/sse';
   console.log('Connecting to SSE:', sseUrl);
   
   eventSource = new EventSource(sseUrl);

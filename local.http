@@ -1,0 +1,40 @@
+### Music Workflow - Test Endpoints
+
+### Variables
+@baseUrl = http://localhost:5000
+
+### POST /startmusic - Send a music score
+# @name request
+POST {{baseUrl}}/startmusic
+Content-Type: application/json
+
+{
+  "Title": "ST",
+  "Notes": [
+    {
+      "Id": "1",
+      "Note": "C3",
+      "Type": "midi",
+      "DurationMs" : 100,
+      "WaitMs": 500
+    },
+    {
+      "Id": "2",
+      "Note": "E3",
+      "Type": "midi",
+      "DurationMs" : 100,
+      "WaitMs": 500
+    },
+    {
+      "Id": "3",
+      "Note": "G3",
+      "Type": "midi",
+      "DurationMs" : 100,
+      "WaitMs": 500
+    }
+  ]
+}
+
+### GET
+@instanceId = {{request.response.body.$.instanceId}}
+GET {{baseUrl}}/musicstatus/{{instanceId}}
