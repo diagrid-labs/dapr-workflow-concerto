@@ -9,7 +9,6 @@ public class MusicWorkflow : Workflow<MusicScore, string>
 
         try
         {
-
             foreach (var note in musicScore.Notes)
             {
                 await context.CreateTimer(TimeSpan.FromMilliseconds(note.WaitMs));

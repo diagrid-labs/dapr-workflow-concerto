@@ -13,21 +13,21 @@ Content-Type: application/json
   "Notes": [
     {
       "Id": "1",
-      "Note": "C3",
+      "NoteName": "C3",
       "Type": "midi",
       "DurationMs" : 100,
       "WaitMs": 500
     },
     {
       "Id": "2",
-      "Note": "E3",
+      "NoteName": "E3",
       "Type": "midi",
       "DurationMs" : 100,
       "WaitMs": 500
     },
     {
       "Id": "3",
-      "Note": "G3",
+      "NoteName": "G3",
       "Type": "midi",
       "DurationMs" : 100,
       "WaitMs": 500
