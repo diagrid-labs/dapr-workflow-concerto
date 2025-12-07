@@ -2,7 +2,7 @@
 
 ## Overview
 
-Build a minimal .NET web API that accepts Note records via POST, queues them in memory, and streams them to a single client via Server-Sent Events (SSE).
+Build a minimal .NET web API in named NoteStreamApp that accepts Note records via POST, queues them in memory, and streams them to a single client via Server-Sent Events (SSE).
 
 ## Architecture
 
@@ -41,12 +41,15 @@ public record Note(string Id, string NoteName, string Type, int DurationMs);
 - Handles client disconnection gracefully
 - Supports cancellation via request abort
 
+### 4 Application Port
+The http port the application listens on is 5051.
+
 ## Implementation Steps
 
 ### Step 1: Create Project Structure
 ```bash
-dotnet new web -n NoteStreamApi
-cd NoteStreamApi
+dotnet new web -n NoteStreamApp
+cd NoteStreamApp
 ```
 
 ### Step 2: Define the Note Record

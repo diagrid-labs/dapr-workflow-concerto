@@ -297,17 +297,17 @@ function initSSE() {
 }
 
 function handleSSENote(data) {
-  if (!data.note || !data.duration) {
+  if (!data.NoteName || !data.DurationMs) {
     console.error('Invalid SSE data, missing note or duration:', data);
     return;
   }
   
-  const midiNumber = noteNameToMidiNumber(data.note);
+  const midiNumber = noteNameToMidiNumber(data.NoteName);
   if (midiNumber === null) {
     return;
   }
   
-  console.log(`Playing SSE note: ${data.note} (MIDI ${midiNumber}) for ${data.duration}ms`);
+  console.log(`Playing SSE note: ${data.NoteName} (MIDI ${midiNumber}) for ${data.DurationMs}ms`);
   
   // Send Note On
   sendNoteOn(midiNumber);
@@ -326,16 +326,11 @@ function handleSSENote(data) {
   }, data.duration);
 }
 
-// ============================================
-// Audio Analysis
-// ============================================
 function initAudio() {
-  // Create microphone input
   mic = new p5.AudioIn();
   mic.start();
   
-  // Create FFT analyzer with 256 bins
-  fft = new p5.FFT(0, 128);
+  fft = new p5.FFT(0, 256);
   fft.setInput(mic);
   
   console.log('Microphone and FFT analyzer initialized');
@@ -344,23 +339,17 @@ function initAudio() {
 function drawWaveform() {
   if (!fft) return;
   
-  // Get waveform data
-  let waveform = fft.waveform();
+    let waveform = fft.waveform();
   
-  // Draw waveform across full screen width
   push();
   noFill();
-  stroke(255); // White stroke
+  stroke(255);
   strokeWeight(2);
   
   beginShape();
   for (let i = 0; i < waveform.length; i++) {
-    // Map i to x position across full width
     let x = map(i, 0, waveform.length - 1, 0, windowWidth);
-    
-    // Map waveform value to y position in middle of screen
     let y = map(waveform[i], -1, 1, windowHeight, 0);
-    
     vertex(x, y);
   }
   endShape();
@@ -423,7 +412,6 @@ function enumerateVideoDevices() {
       
       if (videoDevices.length > 0) {
         populateWebcamSelector();
-        // Create capture with first device
         createWebcamCapture(videoDevices[0].deviceId);
       } else {
         console.warn('No video devices found');
@@ -436,36 +424,27 @@ function enumerateVideoDevices() {
 
 function populateWebcamSelector() {
   if (!webcamSelector) return;
-  
-  // Clear existing options
   webcamSelector.html('');
-  
-  // Add all video devices to the selector
   videoDevices.forEach((device, index) => {
     const label = device.label || `Camera ${index + 1}`;
     webcamSelector.option(label, index);
   });
   
-  // Enable the selector
   webcamSelector.enable();
-  
-  // Set the first device as selected
   webcamSelector.selected(0);
 }
 
 function onWebcamDeviceChange() {
   const selectedIndex = parseInt(webcamSelector.value());
-  
+
   if (selectedIndex >= 0 && selectedIndex < videoDevices.length) {
     const deviceId = videoDevices[selectedIndex].deviceId;
     console.log('Switching to camera:', videoDevices[selectedIndex].label || deviceId);
-    
-    // Remove old capture
+
     if (capture) {
       capture.remove();
     }
-    
-    // Create new capture with selected device
+
     createWebcamCapture(deviceId);
   }
 }
@@ -481,9 +460,6 @@ function createWebcamCapture(deviceId) {
   capture.hide();
 }
 
-// ============================================
-// Note Animation System
-// ============================================
 class NoteAnimation {
   constructor(noteName, x, y, midiNumber) {
     this.note = noteName;
@@ -501,10 +477,7 @@ class NoteAnimation {
   }
   
   update() {
-    // Move upward
     this.y -= this.speed;
-    
-    // Update age
     this.age++;
     
     // Only start fading after note is released
@@ -524,17 +497,13 @@ class NoteAnimation {
   display() {
     push();
     
-    // Set transparency
     fill(ANIMATION_CONFIG.circleColor, this.alpha);
     stroke(ANIMATION_CONFIG.circleColor, this.alpha);
     strokeWeight(2);
-    
-    // Draw circle
     circle(this.x, this.y, this.circleSize);
-    
-    // Draw note text
+
     noStroke();
-    fill(0, this.alpha); // Black text
+    fill(0, this.alpha);
     textAlign(CENTER, CENTER);
     textSize(ANIMATION_CONFIG.textSize);
     text(this.note, this.x, this.y);
@@ -555,7 +524,6 @@ class NoteAnimation {
 
 function createNoteAnimation(noteName, midiNumber) {
   // Calculate X position based on MIDI note number within video area
-  // Map C3 (48) to left edge of video, C4 (60) to right edge of video
   const padding = ANIMATION_CONFIG.circleSize / 2;
   let x = map(midiNumber, MIDI_NOTE_MIN, MIDI_NOTE_MAX, 
               videoOffsetX + padding, 

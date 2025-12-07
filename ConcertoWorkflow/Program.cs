@@ -2,7 +2,7 @@ using Dapr.Workflow;
 using Dapr.Client;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddSingleton<HttpClient>(DaprClient.CreateInvokeHttpClient(appId: "note-send-app"));
+builder.Services.AddSingleton<HttpClient>(DaprClient.CreateInvokeHttpClient(appId: "note-stream-app"));
 builder.Services.AddDaprWorkflow(options =>
 {
     options.RegisterWorkflow<MusicWorkflow>();

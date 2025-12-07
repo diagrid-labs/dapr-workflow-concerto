@@ -38,3 +38,15 @@ Content-Type: application/json
 ### GET
 @instanceId = {{request.response.body.$.instanceId}}
 GET {{baseUrl}}/musicstatus/{{instanceId}}
+
+### Post NoteStreamApp notes to test SSE
+@noteStreamBaseUrl = http://localhost:5051
+POST {{noteStreamBaseUrl}}/sendnote
+Content-Type: application/json
+
+{
+  "Id": "1",
+  "NoteName": "C3",
+  "Type": "midi",
+  "DurationMs": 500
+}

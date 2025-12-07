@@ -1,0 +1,14 @@
+### Connect to SSE stream
+GET http://localhost:5051/sse
+
+### Send a note - C3 quarter note
+POST http://localhost:5051/sendnote
+Content-Type: application/json
+
+{
+  "Id": "1",
+  "NoteName": "C3",
+  "Type": "quarter",
+  "DurationMs": 2000
+}
+

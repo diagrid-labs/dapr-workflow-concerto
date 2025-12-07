@@ -9,8 +9,8 @@ apps:
     appPort: 5500
     daprHTTPPort: 3550
     command: ["dotnet", "run"]
-  - appID: note-send-app
-    appDirPath: NoteSendApp
+  - appID: note-stream-app
+    appDirPath: NoteStreamApp
     appPort: 5051
     daprHTTPPort: 3551
     command: ["dotnet", "run"]
