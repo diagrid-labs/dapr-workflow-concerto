@@ -1,5 +1,5 @@
-using System.Threading.Channels;
 using System.Text.Json;
+using System.Threading.Channels;
 using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -28,7 +28,8 @@ app.UseStaticFiles();
 var noteQueue = new Queue<Note>();
 
 app.MapPost("/sendnote", async (
-    [FromBody]Note note) => {
+    [FromBody] Note note) =>
+{
     Console.WriteLine($"{note.NoteName}: received by NoteSendApp.");
 
     noteQueue.Enqueue(note);
@@ -38,26 +39,29 @@ app.MapPost("/sendnote", async (
 
 app.MapGet("/sse", async (
     HttpContext context,
-    [FromServices]EventBroadcaster broadcaster) =>
+    [FromServices] EventBroadcaster broadcaster) =>
 {
-    while (true)
-    {
-        if (!noteQueue.TryDequeue(out var dequeuedNote)) continue;
+    //while (true)
+    //{
+    noteQueue.TryDequeue(out var dequeuedNote);
+    
+    context.Response.Headers.Append("Content-Type", "text/event-stream");
+    context.Response.Headers.Append("Cache-Control", "no-cache");
+    context.Response.Headers.Append("Connection", "keep-alive");
 
-        context.Response.Headers.Append("Content-Type", "text/event-stream");
-        context.Response.Headers.Append("Cache-Control", "no-cache");
-        context.Response.Headers.Append("Connection", "keep-alive");
-
-        var writer = new StreamWriter(context.Response.Body);
-        broadcaster.AddClient(writer);
+    var writer = new StreamWriter(context.Response.Body);
+    broadcaster.AddClient(writer);
 
         try
         {
+            if (dequeuedNote != null)
+            {
             // Send initial connection message
             var noteJson = JsonSerializer.Serialize(dequeuedNote);
             await writer.WriteAsync(noteJson);
-            await writer.FlushAsync();
+            }
 
+            await writer.FlushAsync();
             // Keep the connection alive
             while (!context.RequestAborted.IsCancellationRequested)
             {
@@ -73,7 +77,7 @@ app.MapGet("/sse", async (
             broadcaster.RemoveClient(writer);
             writer.Dispose();
         }
-    }
+
 });
 
 app.Run();
