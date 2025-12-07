@@ -16,21 +16,56 @@ Content-Type: application/json
       "NoteName": "C3",
       "Type": "midi",
       "DurationMs" : 100,
-      "WaitMs": 500
+      "WaitMs": 200
     },
     {
       "Id": "2",
       "NoteName": "E3",
       "Type": "midi",
       "DurationMs" : 100,
-      "WaitMs": 500
+      "WaitMs": 200
     },
     {
       "Id": "3",
       "NoteName": "G3",
       "Type": "midi",
       "DurationMs" : 100,
-      "WaitMs": 500
+      "WaitMs": 200
+    },
+    {
+      "Id": "4",
+      "NoteName": "B3",
+      "Type": "midi",
+      "DurationMs" : 100,
+      "WaitMs": 200
+    },
+    {
+      "Id": "5",
+      "NoteName": "C4",
+      "Type": "midi",
+      "DurationMs" : 100,
+      "WaitMs": 200
+    },
+    {
+      "Id": "6",
+      "NoteName": "B3",
+      "Type": "midi",
+      "DurationMs" : 100,
+      "WaitMs": 200
+    },
+    {
+      "Id": "7",
+      "NoteName": "G3",
+      "Type": "midi",
+      "DurationMs" : 100,
+      "WaitMs": 200
+    },
+    {
+      "Id": "8",
+      "NoteName": "E3",
+      "Type": "midi",
+      "DurationMs" : 100,
+      "WaitMs": 200
     }
   ]
 }

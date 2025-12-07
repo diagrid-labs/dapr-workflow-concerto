@@ -1,18 +1,18 @@
 using System;
 using Dapr.Workflow;
 
-public class MusicWorkflow : Workflow<MusicScore, string>
+public class MusicWorkflow : Workflow<MusicScore, object>
 {
-    public override async Task<string> RunAsync(WorkflowContext context, MusicScore musicScore)
+    public override async Task<object> RunAsync(WorkflowContext context, MusicScore musicScore)
     {
         Console.WriteLine($"Starting music workflow for score: {musicScore.Title}");
+        Console.WriteLine($"Note count: {musicScore.Notes.Length}");
 
         try
         {
             foreach (var note in musicScore.Notes)
             {
-                await context.CreateTimer(TimeSpan.FromMilliseconds(note.WaitMs));
-                await context.CallActivityAsync<SendNoteResult>(nameof(SendNoteActivity), note);
+                await context.CallActivityAsync<bool>(nameof(SendNoteActivity), note);
             }
         }
         catch (Exception ex)
@@ -21,8 +21,8 @@ public class MusicWorkflow : Workflow<MusicScore, string>
             throw;
         }
 
-        var completionText = $"Completed playing score: {musicScore.Title}";
-        Console.WriteLine(completionText);
-        return completionText;
+        context.ContinueAsNew(musicScore);
+        
+        return null;
     }
 }
