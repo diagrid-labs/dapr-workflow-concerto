@@ -3,40 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SSE Event Monitor</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>P5js MIDI Web Application - Mouse Control</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- P5js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
+    <!-- P5js Sound Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/addons/p5.sound.min.js"></script>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>📡 Server-Sent Events Monitor</h1>
-            <div class="status-bar">
-                <span class="status-label">Connection Status:</span>
-                <span id="connection-status" class="status disconnected">Disconnected</span>
-            </div>
-        </header>
-
-        <main>
-            <div id="error-message" class="error-message hidden"></div>
-            
-            <div class="events-header">
-                <h2>Event Stream</h2>
-                <button id="clear-events" class="btn-clear">Clear Events</button>
-            </div>
-
-            <div id="events-container" class="events-container">
-                <div class="no-events">
-                    <p>Waiting for events...</p>
-                    <p class="hint">Send a POST request to <code>http://localhost:5000/start</code> to generate events</p>
-                </div>
-            </div>
-        </main>
-
-        <footer>
-            <p>Listening to SSE stream at <code>http://localhost:5500/sse</code></p>
-        </footer>
-    </div>
-
-    <script src="app.js"></script>
+    <div id="canvas-container"></div>
+    <script src="sketch.js"></script>
 </body>
 </html>
