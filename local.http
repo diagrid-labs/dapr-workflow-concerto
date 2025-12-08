@@ -2,6 +2,8 @@
 
 ### Variables
 @baseUrl = http://localhost:5000
+@notelength = 100
+@waittime = 150
 
 ### POST /startmusic - Send a music score
 # @name request
@@ -15,57 +17,57 @@ Content-Type: application/json
       "Id": "1",
       "NoteName": "C3",
       "Type": "midi",
-      "DurationMs" : 100,
-      "WaitMs": 200
+      "DurationMs" : {{notelength}},
+      "WaitMs": {{waittime}}
     },
     {
       "Id": "2",
       "NoteName": "E3",
       "Type": "midi",
-      "DurationMs" : 100,
-      "WaitMs": 200
+      "DurationMs" : {{notelength}},
+      "WaitMs": {{waittime}}
     },
     {
       "Id": "3",
       "NoteName": "G3",
       "Type": "midi",
-      "DurationMs" : 100,
-      "WaitMs": 200
+      "DurationMs" : {{notelength}},
+      "WaitMs": {{waittime}}
     },
     {
       "Id": "4",
       "NoteName": "B3",
       "Type": "midi",
-      "DurationMs" : 100,
-      "WaitMs": 200
+      "DurationMs" : {{notelength}},
+      "WaitMs": {{waittime}}
     },
     {
       "Id": "5",
       "NoteName": "C4",
       "Type": "midi",
-      "DurationMs" : 100,
-      "WaitMs": 200
+      "DurationMs" : {{notelength}},
+      "WaitMs": {{waittime}}
     },
     {
       "Id": "6",
       "NoteName": "B3",
       "Type": "midi",
-      "DurationMs" : 100,
-      "WaitMs": 200
+      "DurationMs" : {{notelength}},
+      "WaitMs": {{waittime}}
     },
     {
       "Id": "7",
       "NoteName": "G3",
       "Type": "midi",
-      "DurationMs" : 100,
-      "WaitMs": 200
+      "DurationMs" : {{notelength}},
+      "WaitMs": {{waittime}}
     },
     {
       "Id": "8",
       "NoteName": "E3",
       "Type": "midi",
-      "DurationMs" : 100,
-      "WaitMs": 200
+      "DurationMs" : {{notelength}},
+      "WaitMs": {{waittime}}
     }
   ]
 }
