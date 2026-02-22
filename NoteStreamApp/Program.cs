@@ -31,7 +31,8 @@ app.MapGet("/sse", async (HttpContext context, NoteQueueService queue) =>
     context.Response.Headers.Append("Content-Type", "text/event-stream");
     context.Response.Headers.Append("Cache-Control", "no-cache");
     context.Response.Headers.Append("Connection", "keep-alive");
-    
+    await context.Response.Body.FlushAsync(context.RequestAborted);
+
     await foreach (var note in queue.DequeueAllAsync(context.RequestAborted))
     {
         var json = JsonSerializer.Serialize(note);

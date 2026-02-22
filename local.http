@@ -2,75 +2,67 @@
 
 ### Variables
 @baseUrl = http://localhost:5000
-@notelength = 100
-@waittime = 150
+@notelength = 200
+@waittime = 250
 
-### POST /startmusic - Send a music score
+### POST /startmusic - HBD
 # @name request
 POST {{baseUrl}}/startmusic
 Content-Type: application/json
 
 {
-  "Title": "ST",
+  "Title": "Happy",
   "Notes": [
-    {
-      "Id": "1",
-      "NoteName": "C3",
-      "Type": "midi",
-      "DurationMs" : {{notelength}},
-      "WaitMs": {{waittime}}
-    },
-    {
-      "Id": "2",
-      "NoteName": "E3",
-      "Type": "midi",
-      "DurationMs" : {{notelength}},
-      "WaitMs": {{waittime}}
-    },
-    {
-      "Id": "3",
-      "NoteName": "G3",
-      "Type": "midi",
-      "DurationMs" : {{notelength}},
-      "WaitMs": {{waittime}}
-    },
-    {
-      "Id": "4",
-      "NoteName": "B3",
-      "Type": "midi",
-      "DurationMs" : {{notelength}},
-      "WaitMs": {{waittime}}
-    },
-    {
-      "Id": "5",
-      "NoteName": "C4",
-      "Type": "midi",
-      "DurationMs" : {{notelength}},
-      "WaitMs": {{waittime}}
-    },
-    {
-      "Id": "6",
-      "NoteName": "B3",
-      "Type": "midi",
-      "DurationMs" : {{notelength}},
-      "WaitMs": {{waittime}}
-    },
-    {
-      "Id": "7",
-      "NoteName": "G3",
-      "Type": "midi",
-      "DurationMs" : {{notelength}},
-      "WaitMs": {{waittime}}
-    },
-    {
-      "Id": "8",
-      "NoteName": "E3",
-      "Type": "midi",
-      "DurationMs" : {{notelength}},
-      "WaitMs": {{waittime}}
-    }
+    { "Id": "1",  "NoteName": "G3", "Type": "audio", "DurationMs": {{notelength}}, "WaitMs": {{waittime}} },
+    { "Id": "2",  "NoteName": "G3", "Type": "audio", "DurationMs": {{notelength}}, "WaitMs": {{waittime}} },
+    { "Id": "3",  "NoteName": "A3", "Type": "audio", "DurationMs": {{notelength}}, "WaitMs": {{waittime}} },
+    { "Id": "4",  "NoteName": "G3", "Type": "audio", "DurationMs": {{notelength}}, "WaitMs": {{waittime}} },
+    { "Id": "5",  "NoteName": "C4", "Type": "audio", "DurationMs": {{notelength}}, "WaitMs": {{waittime}} },
+    { "Id": "6",  "NoteName": "B3", "Type": "audio", "DurationMs": {{notelength}}, "WaitMs": {{waittime}} },
+    { "Id": "7",  "NoteName": "G3", "Type": "audio", "DurationMs": {{notelength}}, "WaitMs": {{waittime}} },
+    { "Id": "8",  "NoteName": "G3", "Type": "audio", "DurationMs": {{notelength}}, "WaitMs": {{waittime}} },
+    { "Id": "9",  "NoteName": "A3", "Type": "audio", "DurationMs": {{notelength}}, "WaitMs": {{waittime}} },
+    { "Id": "10", "NoteName": "G3", "Type": "audio", "DurationMs": {{notelength}}, "WaitMs": {{waittime}} },
+    { "Id": "11", "NoteName": "D4", "Type": "audio", "DurationMs": {{notelength}}, "WaitMs": {{waittime}} },
+    { "Id": "12", "NoteName": "C4", "Type": "audio", "DurationMs": {{notelength}}, "WaitMs": {{waittime}} },
+    { "Id": "13", "NoteName": "G3", "Type": "audio", "DurationMs": {{notelength}}, "WaitMs": {{waittime}} },
+    { "Id": "14", "NoteName": "G3", "Type": "audio", "DurationMs": {{notelength}}, "WaitMs": {{waittime}} },
+    { "Id": "15", "NoteName": "G4", "Type": "audio", "DurationMs": {{notelength}}, "WaitMs": {{waittime}} },
+    { "Id": "16", "NoteName": "E4", "Type": "audio", "DurationMs": {{notelength}}, "WaitMs": {{waittime}} },
+    { "Id": "17", "NoteName": "C4", "Type": "audio", "DurationMs": {{notelength}}, "WaitMs": {{waittime}} },
+    { "Id": "18", "NoteName": "B3", "Type": "audio", "DurationMs": {{notelength}}, "WaitMs": {{waittime}} },
+    { "Id": "19", "NoteName": "A3", "Type": "audio", "DurationMs": {{notelength}}, "WaitMs": {{waittime}} },
+    { "Id": "20", "NoteName": "F4", "Type": "audio", "DurationMs": {{notelength}}, "WaitMs": {{waittime}} },
+    { "Id": "21", "NoteName": "F4", "Type": "audio", "DurationMs": {{notelength}}, "WaitMs": {{waittime}} },
+    { "Id": "22", "NoteName": "E4", "Type": "audio", "DurationMs": {{notelength}}, "WaitMs": {{waittime}} },
+    { "Id": "23", "NoteName": "C4", "Type": "audio", "DurationMs": {{notelength}}, "WaitMs": {{waittime}} },
+    { "Id": "24", "NoteName": "D4", "Type": "audio", "DurationMs": {{notelength}}, "WaitMs": {{waittime}} },
+    { "Id": "25", "NoteName": "C4", "Type": "audio", "DurationMs": {{notelength}}, "WaitMs": {{waittime}} }
   ]
 }
+
+### POST /startmusic - ST
+@notelength = 100
+@waittime = 150
+# @name request
+POST {{baseUrl}}/startmusic
+Content-Type: application/json
+
+{
+  "Title": "Stanger",
+  "Notes": [
+    { "Id": "1", "NoteName": "C3", "Type": "midi", "DurationMs": {{notelength}}, "WaitMs": {{waittime}} },
+    { "Id": "2", "NoteName": "E3", "Type": "midi", "DurationMs": {{notelength}}, "WaitMs": {{waittime}} },
+    { "Id": "3", "NoteName": "G3", "Type": "midi", "DurationMs": {{notelength}}, "WaitMs": {{waittime}} },
+    { "Id": "4", "NoteName": "B3", "Type": "midi", "DurationMs": {{notelength}}, "WaitMs": {{waittime}} },
+    { "Id": "5", "NoteName": "C4", "Type": "midi", "DurationMs": {{notelength}}, "WaitMs": {{waittime}} },
+    { "Id": "6", "NoteName": "B3", "Type": "midi", "DurationMs": {{notelength}}, "WaitMs": {{waittime}} },
+    { "Id": "7", "NoteName": "G3", "Type": "midi", "DurationMs": {{notelength}}, "WaitMs": {{waittime}} },
+    { "Id": "8", "NoteName": "E3", "Type": "midi", "DurationMs": {{notelength}}, "WaitMs": {{waittime}} }
+  ]
+}
+
+
 
 ### GET
 @instanceId = {{request.response.body.$.instanceId}}

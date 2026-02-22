@@ -11,6 +11,10 @@ let sseStatusDiv;
 let instructionsDiv;
 let eventSource; // SSE connection
 
+// Web Audio
+let audioCtx = null;
+let activeOscillators = {}; // keyed by midiNumber
+
 // Audio analysis
 let mic;
 let fft;
@@ -98,6 +102,7 @@ function mousePressed() {
   // Check if mouse is within canvas bounds but outside UI element areas
   // Exclude top 100px where UI elements are located
   if (mouseX >= 0 && mouseX <= width && mouseY >= 100 && mouseY <= height) {
+    initAudioContext();
     // Generate random MIDI note between C3 and C4
     const note = floor(random(MIDI_NOTE_MIN, MIDI_NOTE_MAX + 1));
     sendNoteOn(note);
@@ -161,6 +166,51 @@ function onMIDISuccess(midi) {
 function onMIDIFailure(error) {
   console.error('Failed to get MIDI access:', error);
   updateStatus('MIDI access denied', false);
+}
+
+// ============================================
+// Web Audio API
+// ============================================
+function initAudioContext() {
+  if (!audioCtx) {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  }
+  if (audioCtx.state === 'suspended') {
+    audioCtx.resume();
+  }
+}
+
+function midiToFrequency(midiNumber) {
+  return 440 * Math.pow(2, (midiNumber - 69) / 12);
+}
+
+function playNoteWebAudio(midiNumber) {
+  initAudioContext();
+  if (activeOscillators[midiNumber]) return; // already playing
+
+  const osc = audioCtx.createOscillator();
+  const gainNode = audioCtx.createGain();
+
+  osc.type = 'sine';
+  osc.frequency.setValueAtTime(midiToFrequency(midiNumber), audioCtx.currentTime);
+  gainNode.gain.setValueAtTime(0.5, audioCtx.currentTime);
+
+  osc.connect(gainNode);
+  gainNode.connect(audioCtx.destination);
+  osc.start();
+
+  activeOscillators[midiNumber] = { osc, gainNode };
+}
+
+function stopNoteWebAudio(midiNumber) {
+  const entry = activeOscillators[midiNumber];
+  if (!entry) return;
+
+  const { osc, gainNode } = entry;
+  // Short fade-out to avoid clicks
+  gainNode.gain.setTargetAtTime(0, audioCtx.currentTime, 0.02);
+  osc.stop(audioCtx.currentTime + 0.1);
+  delete activeOscillators[midiNumber];
 }
 
 function sendNoteOn(midiNumber) {
@@ -297,33 +347,45 @@ function initSSE() {
 }
 
 function handleSSENote(data) {
-  if (!data.NoteName || !data.DurationMs) {
-    console.error('Invalid SSE data, missing note or duration:', data);
+  if (!data.NoteName || !data.DurationMs || !data.Type) {
+    console.error('Invalid SSE data, missing NoteName, DurationMs, or Type:', data);
     return;
   }
 
   const midiNumber = noteNameToMidiNumber(data.NoteName);
-  if (midiNumber === null) {
-    return;
-  }
+  if (midiNumber === null) return;
 
-  console.log(`Playing SSE note: ${data.NoteName} (MIDI ${midiNumber}) for ${data.DurationMs}ms`);
+  console.log(`Playing SSE note: ${data.NoteName} (MIDI ${midiNumber}) for ${data.DurationMs}ms via ${data.Type}`);
 
-  // Send Note On
-  sendNoteOn(midiNumber);
+  if (data.Type === 'audio') {
+    playNoteWebAudio(midiNumber);
+    createNoteAnimation(data.NoteName, midiNumber);
 
-  // Schedule Note Off after duration
-  setTimeout(() => {
-    sendNoteOff(midiNumber);
+    setTimeout(() => {
+      stopNoteWebAudio(midiNumber);
 
-    // Find and release the animation for this note
-    for (let anim of noteAnimations) {
-      if (anim.midiNumber === midiNumber && anim.isActive) {
-        anim.release();
-        break;
+      for (let anim of noteAnimations) {
+        if (anim.midiNumber === midiNumber && anim.isActive) {
+          anim.release();
+          break;
+        }
       }
-    }
-  }, data.duration);
+    }, data.DurationMs);
+
+  } else if (data.Type === 'midi') {
+    sendNoteOn(midiNumber);
+
+    setTimeout(() => {
+      sendNoteOff(midiNumber);
+
+      for (let anim of noteAnimations) {
+        if (anim.midiNumber === midiNumber && anim.isActive) {
+          anim.release();
+          break;
+        }
+      }
+    }, data.DurationMs);
+  }
 }
 
 function initAudio() {
