@@ -15,6 +15,8 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 app.UseCors();
+app.UseDefaultFiles();
+app.UseStaticFiles();
 
 // POST endpoint to enqueue notes
 app.MapPost("/sendnote", async (Note note, NoteQueueService queue) =>

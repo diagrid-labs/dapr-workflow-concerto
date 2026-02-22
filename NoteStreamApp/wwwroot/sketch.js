@@ -41,10 +41,10 @@ const NOTE_NAMES = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 
 function setup() {
   createCanvas(windowWidth, windowHeight);
   calculateVideoDimensions();
-  
+
   // Enumerate video devices first, then create capture
   enumerateVideoDevices();
-  
+
   initMIDI();
   createMIDISelector();
   createWebcamSelector();
@@ -57,14 +57,14 @@ function setup() {
 
 function draw() {
   background(0);
-  
+
   if (capture) {
     image(capture, videoOffsetX, videoOffsetY, videoWidth, videoHeight);
   }
-  
+
   // Draw waveform overlay
   drawWaveform();
-  
+
   updateNoteAnimations();
 }
 
@@ -78,7 +78,7 @@ function windowResized() {
 
 function calculateVideoDimensions() {
   const aspectRatio = 16 / 9;
-  
+
   // Calculate dimensions to fit 16:9 within window
   if (windowWidth / windowHeight > aspectRatio) {
     // Window is wider than 16:9, fit to height
@@ -101,11 +101,11 @@ function mousePressed() {
     // Generate random MIDI note between C3 and C4
     const note = floor(random(MIDI_NOTE_MIN, MIDI_NOTE_MAX + 1));
     sendNoteOn(note);
-    
+
     if (instructionsDiv) {
       instructionsDiv.addClass('hidden');
     }
-    
+
     return false;
   }
 }
@@ -114,7 +114,7 @@ function mouseReleased() {
   // Send note off for currently playing note
   if (currentNote !== null) {
     sendNoteOff(currentNote);
-    
+
     // Find and release the active animation for this note
     for (let anim of noteAnimations) {
       if (anim.midiNumber === currentNote && anim.isActive) {
@@ -122,7 +122,7 @@ function mouseReleased() {
         break;
       }
     }
-    
+
     currentNote = null;
     return false;
   }
@@ -142,7 +142,7 @@ function onMIDISuccess(midi) {
   midiAccess = midi;
   console.log('MIDI Access obtained');
   const outputs = Array.from(midiAccess.outputs.values());
-  
+
   if (outputs.length > 0) {
     midiOutput = outputs[0];
     console.log('MIDI Output:', midiOutput.name);
@@ -168,15 +168,15 @@ function sendNoteOn(midiNumber) {
     console.error('No MIDI output available');
     return;
   }
-  
+
   // Calculate MIDI status byte for Note On
   const noteOnStatus = 0x90 | (MIDI_CHANNEL - 1);
-  
+
   midiOutput.send([noteOnStatus, midiNumber, MIDI_VELOCITY]);
   console.log(`Note On: Channel ${MIDI_CHANNEL}, Note ${midiNumber} (${midiNumberToNoteName(midiNumber)}), Velocity ${MIDI_VELOCITY}`);
 
   currentNote = midiNumber;
-  
+
   createNoteAnimation(midiNumberToNoteName(midiNumber), midiNumber);
 }
 
@@ -185,10 +185,10 @@ function sendNoteOff(midiNumber) {
     console.error('No MIDI output available');
     return;
   }
-  
+
   // Calculate MIDI status byte for Note Off
   const noteOffStatus = 0x80 | (MIDI_CHANNEL - 1);
-  
+
   midiOutput.send([noteOffStatus, midiNumber, 0]);
   console.log(`Note Off: Channel ${MIDI_CHANNEL}, Note ${midiNumber} (${midiNumberToNoteName(midiNumber)})`);
 }
@@ -206,16 +206,16 @@ function noteNameToMidiNumber(noteName) {
     console.error('Invalid note name:', noteName);
     return null;
   }
-  
+
   const note = match[1];
   const octave = parseInt(match[2]);
-  
+
   const noteIndex = NOTE_NAMES.indexOf(note);
   if (noteIndex === -1) {
     console.error('Invalid note:', note);
     return null;
   }
-  
+
   return (octave + 1) * 12 + noteIndex;
 }
 
@@ -265,14 +265,14 @@ function createInstructions() {
 function initSSE() {
   const sseUrl = 'http://localhost:5051/sse';
   console.log('Connecting to SSE:', sseUrl);
-  
+
   eventSource = new EventSource(sseUrl);
-  
+
   eventSource.onopen = function() {
     console.log('SSE connection opened');
     updateSSEStatus('SSE Connected', true);
   };
-  
+
   eventSource.onmessage = function(event) {
     try {
       const data = JSON.parse(event.data);
@@ -282,7 +282,7 @@ function initSSE() {
       console.error('Error parsing SSE data:', error);
     }
   };
-  
+
   eventSource.onerror = function(error) {
     console.error('SSE connection error:', error);
     if (eventSource.readyState === EventSource.CLOSED) {
@@ -301,21 +301,21 @@ function handleSSENote(data) {
     console.error('Invalid SSE data, missing note or duration:', data);
     return;
   }
-  
+
   const midiNumber = noteNameToMidiNumber(data.NoteName);
   if (midiNumber === null) {
     return;
   }
-  
+
   console.log(`Playing SSE note: ${data.NoteName} (MIDI ${midiNumber}) for ${data.DurationMs}ms`);
-  
+
   // Send Note On
   sendNoteOn(midiNumber);
-  
+
   // Schedule Note Off after duration
   setTimeout(() => {
     sendNoteOff(midiNumber);
-    
+
     // Find and release the animation for this note
     for (let anim of noteAnimations) {
       if (anim.midiNumber === midiNumber && anim.isActive) {
@@ -329,23 +329,23 @@ function handleSSENote(data) {
 function initAudio() {
   mic = new p5.AudioIn();
   mic.start();
-  
+
   fft = new p5.FFT(0, 256);
   fft.setInput(mic);
-  
+
   console.log('Microphone and FFT analyzer initialized');
 }
 
 function drawWaveform() {
   if (!fft) return;
-  
+
     let waveform = fft.waveform();
-  
+
   push();
   noFill();
   stroke(255);
   strokeWeight(2);
-  
+
   beginShape();
   for (let i = 0; i < waveform.length; i++) {
     let x = map(i, 0, waveform.length - 1, 0, windowWidth);
@@ -353,7 +353,7 @@ function drawWaveform() {
     vertex(x, y);
   }
   endShape();
-  
+
   pop();
 }
 
@@ -368,18 +368,18 @@ function createMIDISelector() {
 
 function populateMIDISelector(outputs) {
   if (!midiSelector) return;
-  
+
   // Clear existing options
   midiSelector.html('');
-  
+
   // Add all MIDI outputs to the selector
   outputs.forEach((output, index) => {
     midiSelector.option(output.name, index);
   });
-  
+
   // Enable the selector
   midiSelector.enable();
-  
+
   // Set the first device as selected
   midiSelector.selected(0);
 }
@@ -387,7 +387,7 @@ function populateMIDISelector(outputs) {
 function onMIDIDeviceChange() {
   const selectedIndex = parseInt(midiSelector.value());
   const outputs = Array.from(midiAccess.outputs.values());
-  
+
   if (selectedIndex >= 0 && selectedIndex < outputs.length) {
     midiOutput = outputs[selectedIndex];
     console.log('Switched to MIDI Output:', midiOutput.name);
@@ -409,7 +409,7 @@ function enumerateVideoDevices() {
     .then(devices => {
       videoDevices = devices.filter(device => device.kind === 'videoinput');
       console.log('Video devices found:', videoDevices.length);
-      
+
       if (videoDevices.length > 0) {
         populateWebcamSelector();
         createWebcamCapture(videoDevices[0].deviceId);
@@ -429,7 +429,7 @@ function populateWebcamSelector() {
     const label = device.label || `Camera ${index + 1}`;
     webcamSelector.option(label, index);
   });
-  
+
   webcamSelector.enable();
   webcamSelector.selected(0);
 }
@@ -475,11 +475,11 @@ class NoteAnimation {
     this.isActive = true; // Note is being held
     this.releaseAge = null; // Age when note was released
   }
-  
+
   update() {
     this.y -= this.speed;
     this.age++;
-    
+
     // Only start fading after note is released
     if (!this.isActive) {
       if (this.releaseAge === null) {
@@ -489,14 +489,14 @@ class NoteAnimation {
       this.alpha = map(fadeAge, 0, this.maxAge, ANIMATION_CONFIG.startAlpha, ANIMATION_CONFIG.endAlpha);
     }
   }
-  
+
   release() {
     this.isActive = false;
   }
-  
+
   display() {
     push();
-    
+
     fill(ANIMATION_CONFIG.circleColor, this.alpha);
     stroke(ANIMATION_CONFIG.circleColor, this.alpha);
     strokeWeight(2);
@@ -507,10 +507,10 @@ class NoteAnimation {
     textAlign(CENTER, CENTER);
     textSize(ANIMATION_CONFIG.textSize);
     text(this.note, this.x, this.y);
-    
+
     pop();
   }
-  
+
   isDead() {
     // Only die if released and faded out, or if off screen
     if (this.y < -this.circleSize) return true;
@@ -525,12 +525,12 @@ class NoteAnimation {
 function createNoteAnimation(noteName, midiNumber) {
   // Calculate X position based on MIDI note number within video area
   const padding = ANIMATION_CONFIG.circleSize / 2;
-  let x = map(midiNumber, MIDI_NOTE_MIN, MIDI_NOTE_MAX, 
-              videoOffsetX + padding, 
+  let x = map(midiNumber, MIDI_NOTE_MIN, MIDI_NOTE_MAX,
+              videoOffsetX + padding,
               videoOffsetX + videoWidth - padding);
-  
+
   let y = videoOffsetY + videoHeight - ANIMATION_CONFIG.circleSize;
-  
+
   noteAnimations.push(new NoteAnimation(noteName, x, y, midiNumber));
 }
 
@@ -539,7 +539,7 @@ function updateNoteAnimations() {
   for (let i = noteAnimations.length - 1; i >= 0; i--) {
     noteAnimations[i].update();
     noteAnimations[i].display();
-    
+
     // Remove dead animations
     if (noteAnimations[i].isDead()) {
       noteAnimations.splice(i, 1);
