@@ -31,12 +31,11 @@ const ANIMATION_CONFIG = {
   speed: 2,
   maxAge: 180,
   startAlpha: 255,
-  endAlpha: 0,
-  randomXRange: true
+  endAlpha: 0
 };
 
 const MIDI_NOTE_MIN = 48;  // C3
-const MIDI_NOTE_MAX = 60;  // C4
+const MIDI_NOTE_MAX = 72;  // C5
 const MIDI_CHANNEL = 1;
 const MIDI_VELOCITY = 100;
 
@@ -103,7 +102,6 @@ function mousePressed() {
   // Exclude top 100px where UI elements are located
   if (mouseX >= 0 && mouseX <= width && mouseY >= 100 && mouseY <= height) {
     initAudioContext();
-    // Generate random MIDI note between C3 and C4
     const note = floor(random(MIDI_NOTE_MIN, MIDI_NOTE_MAX + 1));
     sendNoteOn(note);
 
