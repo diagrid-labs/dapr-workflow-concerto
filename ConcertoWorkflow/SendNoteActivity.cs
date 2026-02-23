@@ -12,8 +12,9 @@ public class SendNoteActivity : WorkflowActivity<Note, bool>
     }
     public override async Task<bool> RunAsync(WorkflowActivityContext context, Note note)
     {
-        Console.WriteLine($"SendNoteActivity: {note.NoteName}");
-        Thread.Sleep(note.WaitMs);
+        Console.WriteLine($"SendNoteActivity: {note.NoteName}-{note.WaitMs}");
+        //Thread.Sleep(note.WaitMs);
+        await Task.Delay(note.WaitMs);
         var response = await _httpClient.PostAsJsonAsync("/sendnote", note);
         var result = response.IsSuccessStatusCode;
 

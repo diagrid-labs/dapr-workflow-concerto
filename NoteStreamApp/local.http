@@ -5,10 +5,5 @@ GET http://localhost:5051/sse
 POST http://localhost:5051/sendnote
 Content-Type: application/json
 
-{
-  "Id": "1",
-  "NoteName": "C3",
-  "Type": "quarter",
-  "DurationMs": 2000
-}
+{ "Id": "1",  "NoteName": "C3", "Type": "audio", "DurationMs": 250, "WaitMs": 200 }
 

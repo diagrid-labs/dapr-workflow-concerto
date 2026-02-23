@@ -21,8 +21,8 @@ public class MusicWorkflow : Workflow<MusicScore, object>
             throw;
         }
 
-        context.ContinueAsNew(musicScore);
+        //context.ContinueAsNew(musicScore);
         
-        return null;
+        return $"{musicScore.Title} Completed!";
     }
 }

@@ -1,5 +1,6 @@
 using System.Text.Json;
 using System.Threading.Channels;
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddSingleton<NoteQueueService>();
@@ -19,14 +20,19 @@ app.UseDefaultFiles();
 app.UseStaticFiles();
 
 // POST endpoint to enqueue notes
-app.MapPost("/sendnote", async (Note note, NoteQueueService queue) =>
+app.MapPost("/sendnote", async (
+    [FromBody] Note note,
+    [FromServices] NoteQueueService queue) =>
 {
+    Console.WriteLine(note);
     await queue.EnqueueAsync(note);
     return Results.Accepted();
 });
 
 // GET endpoint for SSE stream
-app.MapGet("/sse", async (HttpContext context, NoteQueueService queue) =>
+app.MapGet("/sse", async (
+    HttpContext context, 
+    [FromServices] NoteQueueService queue) =>
 {
     context.Response.Headers.Append("Content-Type", "text/event-stream");
     context.Response.Headers.Append("Cache-Control", "no-cache");
@@ -37,7 +43,7 @@ app.MapGet("/sse", async (HttpContext context, NoteQueueService queue) =>
     {
         var json = JsonSerializer.Serialize(note);
         await context.Response.WriteAsync($"data: {json}\n\n");
-        await context.Response.Body.FlushAsync();
+        await context.Response.Body.FlushAsync(context.RequestAborted);
     }
 });
 

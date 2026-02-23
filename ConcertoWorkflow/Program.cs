@@ -1,5 +1,6 @@
 using Dapr.Workflow;
 using Dapr.Client;
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddSingleton<HttpClient>(DaprClient.CreateInvokeHttpClient(appId: "note-stream-app"));
@@ -12,8 +13,8 @@ builder.Services.AddDaprWorkflow(options =>
 var app = builder.Build();
 
 app.MapPost("startmusic", async (
-    MusicScore musicScore,
-    DaprWorkflowClient workflowClient) =>
+    [FromBody] MusicScore musicScore,
+    [FromServices] DaprWorkflowClient workflowClient) =>
 {
     var instanceId = await workflowClient.ScheduleNewWorkflowAsync(
         name: nameof(MusicWorkflow),
@@ -25,7 +26,7 @@ app.MapPost("startmusic", async (
 
 app.MapGet("musicstatus/{instanceId}", async (
     string instanceId,
-    DaprWorkflowClient workflowClient) =>
+    [FromServices] DaprWorkflowClient workflowClient) =>
 {
     var status = await workflowClient.GetWorkflowStateAsync(instanceId);
     Console.WriteLine($"Workflow status for {instanceId}: {status?.RuntimeStatus}");
