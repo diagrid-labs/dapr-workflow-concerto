@@ -21,7 +21,10 @@ public class MusicWorkflow : Workflow<MusicScore, object>
             throw;
         }
 
-        //context.ContinueAsNew(musicScore);
+        if (musicScore.Looping)
+        {
+            context.ContinueAsNew(musicScore);
+        }
         
         return $"{musicScore.Title} Completed!";
     }

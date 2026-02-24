@@ -39,5 +39,5 @@ app.MapGet("musicstatus/{instanceId}", async (
 
 app.Run();
 
-public record MusicScore(string Title, Note[] Notes);
+public record MusicScore(string Title, bool Looping, Note[] Notes);
 public record Note(string Id, string NoteName, string Type, int DurationMs, int WaitMs);
