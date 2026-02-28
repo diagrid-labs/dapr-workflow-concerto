@@ -109,6 +109,46 @@ canvas {
     color: white;
 }
 
+/* Play button */
+.play-button {
+    position: absolute;
+    padding: 10px 24px;
+    background-color: rgba(0, 150, 0, 0.8);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    font-size: 16px;
+    z-index: 1000;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+.play-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Pause/Resume button */
+.pause-resume-button {
+    position: absolute;
+    padding: 10px 24px;
+    background-color: rgba(200, 150, 0, 0.8);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    font-size: 16px;
+    z-index: 1000;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+.pause-resume-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
 /* Instructions overlay */
 .instructions {
     position: absolute;

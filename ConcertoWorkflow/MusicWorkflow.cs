@@ -8,24 +8,34 @@ public class MusicWorkflow : Workflow<MusicScore, object>
         Console.WriteLine($"Starting music workflow for score: {musicScore.Title}");
         Console.WriteLine($"Note count: {musicScore.Notes.Length}");
 
+        await context.CallActivityAsync<bool>(nameof(SendInstanceIdActivity), context.InstanceId);
+
+        bool start = false;
         try
+        {
+            start = await context.WaitForExternalEventAsync<bool>(
+                eventName: "play",
+                timeout: TimeSpan.FromSeconds(30));
+        }
+        catch (TaskCanceledException)
+        {
+            Console.WriteLine("Timeout");
+            start = true;
+        }
+
+        if (start)
         {
             foreach (var note in musicScore.Notes)
             {
                 await context.CallActivityAsync<bool>(nameof(SendNoteActivity), note);
             }
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Error in MusicWorkflow: {ex.Message}");
-            throw;
+
+            if (musicScore.Looping)
+            {
+                context.ContinueAsNew(musicScore);
+            }
         }
 
-        if (musicScore.Looping)
-        {
-            context.ContinueAsNew(musicScore);
-        }
-        
         return $"{musicScore.Title} Completed!";
     }
 }

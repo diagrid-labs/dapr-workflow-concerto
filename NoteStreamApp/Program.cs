@@ -25,7 +25,17 @@ app.MapPost("/sendnote", async (
     [FromServices] NoteQueueService queue) =>
 {
     Console.WriteLine(note);
-    await queue.EnqueueAsync(note);
+    await queue.EnqueueAsync(new SseEvent("note", note));
+    return Results.Accepted();
+});
+
+// POST endpoint to enqueue instanceId
+app.MapPost("/sendinstanceid", async (
+    [FromBody] string instanceId,
+    [FromServices] NoteQueueService queue) =>
+{
+    Console.WriteLine($"Received instanceId: {instanceId}");
+    await queue.EnqueueAsync(new SseEvent("instanceId", instanceId));
     return Results.Accepted();
 });
 
@@ -39,10 +49,10 @@ app.MapGet("/sse", async (
     context.Response.Headers.Append("Connection", "keep-alive");
     await context.Response.Body.FlushAsync(context.RequestAborted);
 
-    await foreach (var note in queue.DequeueAllAsync(context.RequestAborted))
+    await foreach (var sseEvent in queue.DequeueAllAsync(context.RequestAborted))
     {
-        var json = JsonSerializer.Serialize(note);
-        await context.Response.WriteAsync($"data: {json}\n\n");
+        var json = JsonSerializer.Serialize(sseEvent.Data);
+        await context.Response.WriteAsync($"event: {sseEvent.EventType}\ndata: {json}\n\n");
         await context.Response.Body.FlushAsync(context.RequestAborted);
     }
 });
@@ -51,23 +61,24 @@ app.Run();
 
 // Data model
 public record Note(string Id, string NoteName, string Type, int DurationMs, int WaitMs);
+public record SseEvent(string EventType, object Data);
 
 // Queue service
 public class NoteQueueService
 {
-    private readonly Channel<Note> _channel;
-    
+    private readonly Channel<SseEvent> _channel;
+
     public NoteQueueService()
     {
-        _channel = Channel.CreateUnbounded<Note>();
+        _channel = Channel.CreateUnbounded<SseEvent>();
     }
-    
-    public async Task EnqueueAsync(Note note)
+
+    public async Task EnqueueAsync(SseEvent sseEvent)
     {
-        await _channel.Writer.WriteAsync(note);
+        await _channel.Writer.WriteAsync(sseEvent);
     }
-    
-    public IAsyncEnumerable<Note> DequeueAllAsync(CancellationToken cancellationToken)
+
+    public IAsyncEnumerable<SseEvent> DequeueAllAsync(CancellationToken cancellationToken)
     {
         return _channel.Reader.ReadAllAsync(cancellationToken);
     }

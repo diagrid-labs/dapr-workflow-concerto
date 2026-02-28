@@ -1,6 +1,12 @@
 ### Connect to SSE stream
 GET http://localhost:5051/sse
 
+### Send instanceId
+POST http://localhost:5051/sendinstanceid
+Content-Type: application/json
+
+"test-instance-id-123"
+
 ### Send a note - C3 quarter note
 POST http://localhost:5051/sendnote
 Content-Type: application/json

@@ -8,9 +8,20 @@ builder.Services.AddDaprWorkflow(options =>
 {
     options.RegisterWorkflow<MusicWorkflow>();
     options.RegisterActivity<SendNoteActivity>();
+    options.RegisterActivity<SendInstanceIdActivity>();
+});
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+    });
 });
 
 var app = builder.Build();
+app.UseCors();
 
 app.MapPost("startmusic", async (
     [FromBody] MusicScore musicScore,
@@ -22,6 +33,35 @@ app.MapPost("startmusic", async (
     );
 
     return Results.Ok(new { instanceId });
+});
+
+app.MapPost("play", async (
+    string instanceId,
+    [FromServices] DaprWorkflowClient workflowClient) =>
+{
+    await workflowClient.RaiseEventAsync(
+        instanceId: instanceId,
+        eventName: "play",
+        eventPayload: true 
+    );
+
+    return Results.Accepted();
+});
+
+app.MapPost("pause", async (
+    string instanceId,
+    [FromServices] DaprWorkflowClient workflowClient) =>
+{
+    await workflowClient.SuspendWorkflowAsync(instanceId);
+    return Results.Accepted();
+});
+
+app.MapPost("resume", async (
+    string instanceId,
+    [FromServices] DaprWorkflowClient workflowClient) =>
+{
+    await workflowClient.ResumeWorkflowAsync(instanceId);
+    return Results.Accepted();
 });
 
 app.MapGet("musicstatus/{instanceId}", async (

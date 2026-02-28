@@ -10,6 +10,10 @@ let statusDiv;
 let sseStatusDiv;
 let instructionsDiv;
 let eventSource; // SSE connection
+let workflowInstanceId = null;
+let playButton;
+let pauseResumeButton;
+let isPaused = false;
 
 // Web Audio
 let audioCtx = null;
@@ -53,6 +57,8 @@ function setup() {
   createWebcamSelector();
   createStatusIndicator();
   createSSEStatusIndicator();
+  createPlayButton();
+  createPauseResumeButton();
   createInstructions();
   initSSE();
   initAudio();
@@ -307,6 +313,72 @@ function createInstructions() {
   instructionsDiv.position(windowWidth / 2, windowHeight - 70);
 }
 
+function createPlayButton() {
+  playButton = createButton('Play');
+  playButton.position(20, 100);
+  playButton.class('play-button');
+  playButton.attribute('disabled', '');
+  playButton.mousePressed(onPlayButtonPressed);
+}
+
+function createPauseResumeButton() {
+  pauseResumeButton = createButton('Pause');
+  pauseResumeButton.position(100, 100);
+  pauseResumeButton.class('pause-resume-button');
+  pauseResumeButton.attribute('disabled', '');
+  pauseResumeButton.mousePressed(onPauseResumePressed);
+}
+
+function onPauseResumePressed() {
+  if (!workflowInstanceId) {
+    console.error('No workflow instanceId available');
+    return;
+  }
+
+  const action = isPaused ? 'resume' : 'pause';
+  const url = `http://localhost:5500/${action}?instanceId=${encodeURIComponent(workflowInstanceId)}`;
+
+  fetch(url, { method: 'POST' })
+    .then(response => {
+      if (response.ok) {
+        isPaused = !isPaused;
+        pauseResumeButton.html(isPaused ? 'Resume' : 'Pause');
+        console.log(`Workflow ${action}d for instanceId:`, workflowInstanceId);
+      } else {
+        console.error(`Failed to ${action} workflow:`, response.status);
+      }
+    })
+    .catch(error => {
+      console.error(`Error ${action}ing workflow:`, error);
+    });
+}
+
+function onPlayButtonPressed() {
+  if (!workflowInstanceId) {
+    console.error('No workflow instanceId available');
+    return;
+  }
+
+  initAudioContext();
+
+  const playUrl = `http://localhost:5500/play?instanceId=${encodeURIComponent(workflowInstanceId)}`;
+  fetch(playUrl, { method: 'POST' })
+    .then(response => {
+      if (response.ok) {
+        console.log('Play event sent for instanceId:', workflowInstanceId);
+        playButton.attribute('disabled', '');
+        if (pauseResumeButton) {
+          pauseResumeButton.removeAttribute('disabled');
+        }
+      } else {
+        console.error('Failed to send play event:', response.status);
+      }
+    })
+    .catch(error => {
+      console.error('Error sending play event:', error);
+    });
+}
+
 // ============================================
 // Server-Sent Events (SSE)
 // ============================================
@@ -321,15 +393,27 @@ function initSSE() {
     updateSSEStatus('SSE Connected', true);
   };
 
-  eventSource.onmessage = function(event) {
+  eventSource.addEventListener('note', function(event) {
     try {
       const data = JSON.parse(event.data);
-      console.log('SSE event received:', data);
+      console.log('SSE note received:', data);
       handleSSENote(data);
     } catch (error) {
-      console.error('Error parsing SSE data:', error);
+      console.error('Error parsing SSE note data:', error);
     }
-  };
+  });
+
+  eventSource.addEventListener('instanceId', function(event) {
+    try {
+      workflowInstanceId = JSON.parse(event.data);
+      console.log('Received workflow instanceId:', workflowInstanceId);
+      if (playButton) {
+        playButton.removeAttribute('disabled');
+      }
+    } catch (error) {
+      console.error('Error parsing SSE instanceId data:', error);
+    }
+  });
 
   eventSource.onerror = function(error) {
     console.error('SSE connection error:', error);
