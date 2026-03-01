@@ -36,7 +36,7 @@ app.MapPost("startmusic", async (
 });
 
 app.MapPost("play", async (
-    string instanceId,
+    [FromQuery] string instanceId,
     [FromServices] DaprWorkflowClient workflowClient) =>
 {
     await workflowClient.RaiseEventAsync(
@@ -48,24 +48,27 @@ app.MapPost("play", async (
     return Results.Accepted();
 });
 
-app.MapPost("pause", async (
-    string instanceId,
+app.MapPost("pause/{instanceId}", async (
+    [FromRoute] string instanceId,
     [FromServices] DaprWorkflowClient workflowClient) =>
 {
+    Console.WriteLine($"PAUSE {instanceId}");
     await workflowClient.SuspendWorkflowAsync(instanceId);
     return Results.Accepted();
 });
 
-app.MapPost("resume", async (
-    string instanceId,
+app.MapPost("resume/{instanceId}", async (
+    [FromRoute] string instanceId,
     [FromServices] DaprWorkflowClient workflowClient) =>
 {
+    Console.WriteLine($"RESUME {instanceId}");
+
     await workflowClient.ResumeWorkflowAsync(instanceId);
     return Results.Accepted();
 });
 
 app.MapGet("musicstatus/{instanceId}", async (
-    string instanceId,
+    [FromRoute] string instanceId,
     [FromServices] DaprWorkflowClient workflowClient) =>
 {
     var status = await workflowClient.GetWorkflowStateAsync(instanceId);

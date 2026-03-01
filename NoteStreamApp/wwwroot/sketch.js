@@ -41,7 +41,7 @@ const ANIMATION_CONFIG = {
 const MIDI_NOTE_MIN = 48;  // C3
 const MIDI_NOTE_MAX = 72;  // C5
 const MIDI_CHANNEL = 1;
-const MIDI_VELOCITY = 100;
+const MIDI_VELOCITY = 90;
 
 const NOTE_NAMES = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
 
@@ -50,31 +50,31 @@ function getHappyMusicScore() {
     Title: "Happy",
     Looping: false,
     Notes: [
-      { Id: "1",  NoteName: "G3", Type: "midi", DurationMs: 150, WaitMs: 0 },
-      { Id: "2",  NoteName: "G3", Type: "midi", DurationMs: 250, WaitMs: 250 },
-      { Id: "3",  NoteName: "A3", Type: "midi", DurationMs: 250, WaitMs: 200 },
-      { Id: "4",  NoteName: "G3", Type: "midi", DurationMs: 350, WaitMs: 500 },
-      { Id: "5",  NoteName: "C4", Type: "midi", DurationMs: 350, WaitMs: 500 },
-      { Id: "6",  NoteName: "B3", Type: "midi", DurationMs: 500, WaitMs: 500 },
-      { Id: "7",  NoteName: "G3", Type: "midi", DurationMs: 150, WaitMs: 1000 },
-      { Id: "8",  NoteName: "G3", Type: "midi", DurationMs: 250, WaitMs: 250 },
-      { Id: "9",  NoteName: "A3", Type: "midi", DurationMs: 250, WaitMs: 200 },
-      { Id: "10", NoteName: "G3", Type: "midi", DurationMs: 350, WaitMs: 500 },
-      { Id: "11", NoteName: "D4", Type: "midi", DurationMs: 350, WaitMs: 500 },
-      { Id: "12", NoteName: "C4", Type: "midi", DurationMs: 500, WaitMs: 500 },
-      { Id: "13", NoteName: "G3", Type: "midi", DurationMs: 150, WaitMs: 1000 },
-      { Id: "14", NoteName: "G3", Type: "midi", DurationMs: 250, WaitMs: 250 },
-      { Id: "15", NoteName: "G4", Type: "midi", DurationMs: 250, WaitMs: 200 },
-      { Id: "16", NoteName: "E4", Type: "midi", DurationMs: 350, WaitMs: 500 },
-      { Id: "17", NoteName: "C4", Type: "midi", DurationMs: 350, WaitMs: 500 },
-      { Id: "18", NoteName: "B3", Type: "midi", DurationMs: 350, WaitMs: 500 },
-      { Id: "19", NoteName: "A3", Type: "midi", DurationMs: 500, WaitMs: 500 },
-      { Id: "20", NoteName: "F4", Type: "midi", DurationMs: 150, WaitMs: 1000 },
-      { Id: "21", NoteName: "F4", Type: "midi", DurationMs: 250, WaitMs: 250 },
-      { Id: "22", NoteName: "E4", Type: "midi", DurationMs: 250, WaitMs: 200 },
-      { Id: "23", NoteName: "C4", Type: "midi", DurationMs: 350, WaitMs: 500 },
-      { Id: "24", NoteName: "D4", Type: "midi", DurationMs: 350, WaitMs: 500 },
-      { Id: "25", NoteName: "C4", Type: "midi", DurationMs: 500, WaitMs: 500 }
+      { Id: "1",  NoteName: "G3", Type: "audio", DurationMs: 150, WaitMs: 0 },
+      { Id: "2",  NoteName: "G3", Type: "audio", DurationMs: 250, WaitMs: 250 },
+      { Id: "3",  NoteName: "A3", Type: "audio", DurationMs: 250, WaitMs: 200 },
+      { Id: "4",  NoteName: "G3", Type: "audio", DurationMs: 350, WaitMs: 500 },
+      { Id: "5",  NoteName: "C4", Type: "audio", DurationMs: 350, WaitMs: 500 },
+      { Id: "6",  NoteName: "B3", Type: "audio", DurationMs: 500, WaitMs: 500 },
+      { Id: "7",  NoteName: "G3", Type: "audio", DurationMs: 150, WaitMs: 1000 },
+      { Id: "8",  NoteName: "G3", Type: "audio", DurationMs: 250, WaitMs: 250 },
+      { Id: "9",  NoteName: "A3", Type: "audio", DurationMs: 250, WaitMs: 200 },
+      { Id: "10", NoteName: "G3", Type: "audio", DurationMs: 350, WaitMs: 500 },
+      { Id: "11", NoteName: "D4", Type: "audio", DurationMs: 350, WaitMs: 500 },
+      { Id: "12", NoteName: "C4", Type: "audio", DurationMs: 500, WaitMs: 500 },
+      { Id: "13", NoteName: "G3", Type: "audio", DurationMs: 150, WaitMs: 1000 },
+      { Id: "14", NoteName: "G3", Type: "audio", DurationMs: 250, WaitMs: 250 },
+      { Id: "15", NoteName: "G4", Type: "audio", DurationMs: 250, WaitMs: 200 },
+      { Id: "16", NoteName: "E4", Type: "audio", DurationMs: 350, WaitMs: 500 },
+      { Id: "17", NoteName: "C4", Type: "audio", DurationMs: 350, WaitMs: 500 },
+      { Id: "18", NoteName: "B3", Type: "audio", DurationMs: 350, WaitMs: 500 },
+      { Id: "19", NoteName: "A3", Type: "audio", DurationMs: 500, WaitMs: 500 },
+      { Id: "20", NoteName: "F4", Type: "audio", DurationMs: 150, WaitMs: 1000 },
+      { Id: "21", NoteName: "F4", Type: "audio", DurationMs: 250, WaitMs: 250 },
+      { Id: "22", NoteName: "E4", Type: "audio", DurationMs: 250, WaitMs: 200 },
+      { Id: "23", NoteName: "C4", Type: "audio", DurationMs: 350, WaitMs: 500 },
+      { Id: "24", NoteName: "D4", Type: "audio", DurationMs: 350, WaitMs: 500 },
+      { Id: "25", NoteName: "C4", Type: "audio", DurationMs: 500, WaitMs: 500 }
     ]
   };
 }
@@ -100,13 +100,14 @@ function setup() {
 
 function draw() {
   background(0);
+  frameRate(30);
 
   if (capture) {
     image(capture, videoOffsetX, videoOffsetY, videoWidth, videoHeight);
   }
 
   // Draw waveform overlay
-  drawWaveform();
+  //drawWaveform();
 
   updateNoteAnimations();
 }
@@ -335,7 +336,7 @@ function onPauseResumePressed() {
   }
 
   const action = isPaused ? 'resume' : 'pause';
-  const url = `http://localhost:5500/${action}?instanceId=${encodeURIComponent(workflowInstanceId)}`;
+  const url = `http://localhost:5500/${action}/${workflowInstanceId}`;
 
   fetch(url, { method: 'POST' })
     .then(response => {
@@ -353,6 +354,7 @@ function onPauseResumePressed() {
 }
 
 function onStartButtonPressed() {
+  noteAnimations = [];
   initAudioContext();
 
   const startUrl = 'http://localhost:5500/startmusic';
@@ -400,7 +402,7 @@ function initSSE() {
   eventSource.addEventListener('note', function(event) {
     try {
       const data = JSON.parse(event.data);
-      console.log('SSE note received:', data);
+      //console.log('SSE note received:', data);
       handleSSENote(data);
     } catch (error) {
       console.error('Error parsing SSE note data:', error);
@@ -410,7 +412,7 @@ function initSSE() {
   eventSource.addEventListener('instanceId', function(event) {
     try {
       workflowInstanceId = JSON.parse(event.data);
-      console.log('Received workflow instanceId:', workflowInstanceId);
+      //console.log('Received workflow instanceId:', workflowInstanceId);
     } catch (error) {
       console.error('Error parsing SSE instanceId data:', error);
     }
