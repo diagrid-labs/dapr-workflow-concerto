@@ -2,7 +2,7 @@
 
 ### Variables
 @baseUrl = http://localhost:5500
-@type=audio
+@type=midi
 #@type=midi
 
 ### POST /startmusic - HBD

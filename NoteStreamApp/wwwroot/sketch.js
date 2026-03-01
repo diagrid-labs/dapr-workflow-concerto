@@ -11,7 +11,7 @@ let sseStatusDiv;
 let instructionsDiv;
 let eventSource; // SSE connection
 let workflowInstanceId = null;
-let playButton;
+let startButton;
 let pauseResumeButton;
 let isPaused = false;
 
@@ -45,6 +45,40 @@ const MIDI_VELOCITY = 100;
 
 const NOTE_NAMES = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
 
+function getHappyMusicScore() {
+  return {
+    Title: "Happy",
+    Looping: false,
+    Notes: [
+      { Id: "1",  NoteName: "G3", Type: "midi", DurationMs: 150, WaitMs: 0 },
+      { Id: "2",  NoteName: "G3", Type: "midi", DurationMs: 250, WaitMs: 250 },
+      { Id: "3",  NoteName: "A3", Type: "midi", DurationMs: 250, WaitMs: 200 },
+      { Id: "4",  NoteName: "G3", Type: "midi", DurationMs: 350, WaitMs: 500 },
+      { Id: "5",  NoteName: "C4", Type: "midi", DurationMs: 350, WaitMs: 500 },
+      { Id: "6",  NoteName: "B3", Type: "midi", DurationMs: 500, WaitMs: 500 },
+      { Id: "7",  NoteName: "G3", Type: "midi", DurationMs: 150, WaitMs: 1000 },
+      { Id: "8",  NoteName: "G3", Type: "midi", DurationMs: 250, WaitMs: 250 },
+      { Id: "9",  NoteName: "A3", Type: "midi", DurationMs: 250, WaitMs: 200 },
+      { Id: "10", NoteName: "G3", Type: "midi", DurationMs: 350, WaitMs: 500 },
+      { Id: "11", NoteName: "D4", Type: "midi", DurationMs: 350, WaitMs: 500 },
+      { Id: "12", NoteName: "C4", Type: "midi", DurationMs: 500, WaitMs: 500 },
+      { Id: "13", NoteName: "G3", Type: "midi", DurationMs: 150, WaitMs: 1000 },
+      { Id: "14", NoteName: "G3", Type: "midi", DurationMs: 250, WaitMs: 250 },
+      { Id: "15", NoteName: "G4", Type: "midi", DurationMs: 250, WaitMs: 200 },
+      { Id: "16", NoteName: "E4", Type: "midi", DurationMs: 350, WaitMs: 500 },
+      { Id: "17", NoteName: "C4", Type: "midi", DurationMs: 350, WaitMs: 500 },
+      { Id: "18", NoteName: "B3", Type: "midi", DurationMs: 350, WaitMs: 500 },
+      { Id: "19", NoteName: "A3", Type: "midi", DurationMs: 500, WaitMs: 500 },
+      { Id: "20", NoteName: "F4", Type: "midi", DurationMs: 150, WaitMs: 1000 },
+      { Id: "21", NoteName: "F4", Type: "midi", DurationMs: 250, WaitMs: 250 },
+      { Id: "22", NoteName: "E4", Type: "midi", DurationMs: 250, WaitMs: 200 },
+      { Id: "23", NoteName: "C4", Type: "midi", DurationMs: 350, WaitMs: 500 },
+      { Id: "24", NoteName: "D4", Type: "midi", DurationMs: 350, WaitMs: 500 },
+      { Id: "25", NoteName: "C4", Type: "midi", DurationMs: 500, WaitMs: 500 }
+    ]
+  };
+}
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
   calculateVideoDimensions();
@@ -57,7 +91,7 @@ function setup() {
   createWebcamSelector();
   createStatusIndicator();
   createSSEStatusIndicator();
-  createPlayButton();
+  createStartButton();
   createPauseResumeButton();
   createInstructions();
   initSSE();
@@ -101,40 +135,6 @@ function calculateVideoDimensions() {
 
   videoOffsetX = (windowWidth - videoWidth) / 2;
   videoOffsetY = (windowHeight - videoHeight) / 2;
-}
-
-function mousePressed() {
-  // Check if mouse is within canvas bounds but outside UI element areas
-  // Exclude top 100px where UI elements are located
-  if (mouseX >= 0 && mouseX <= width && mouseY >= 100 && mouseY <= height) {
-    initAudioContext();
-    const note = floor(random(MIDI_NOTE_MIN, MIDI_NOTE_MAX + 1));
-    sendNoteOn(note);
-
-    if (instructionsDiv) {
-      instructionsDiv.addClass('hidden');
-    }
-
-    return false;
-  }
-}
-
-function mouseReleased() {
-  // Send note off for currently playing note
-  if (currentNote !== null) {
-    sendNoteOff(currentNote);
-
-    // Find and release the active animation for this note
-    for (let anim of noteAnimations) {
-      if (anim.midiNumber === currentNote && anim.isActive) {
-        anim.release();
-        break;
-      }
-    }
-
-    currentNote = null;
-    return false;
-  }
 }
 
 function initMIDI() {
@@ -231,7 +231,7 @@ function sendNoteOn(midiNumber) {
 
   currentNote = midiNumber;
 
-  createNoteAnimation(midiNumberToNoteName(midiNumber), midiNumber);
+  createNoteAnimation(String(midiNumber) + '_' + Date.now(), midiNumberToNoteName(midiNumber), midiNumber);
 }
 
 function sendNoteOff(midiNumber) {
@@ -313,12 +313,11 @@ function createInstructions() {
   instructionsDiv.position(windowWidth / 2, windowHeight - 70);
 }
 
-function createPlayButton() {
-  playButton = createButton('Play');
-  playButton.position(20, 100);
-  playButton.class('play-button');
-  playButton.attribute('disabled', '');
-  playButton.mousePressed(onPlayButtonPressed);
+function createStartButton() {
+  startButton = createButton('Start');
+  startButton.position(20, 100);
+  startButton.class('play-button');
+  startButton.mousePressed(onStartButtonPressed);
 }
 
 function createPauseResumeButton() {
@@ -353,29 +352,34 @@ function onPauseResumePressed() {
     });
 }
 
-function onPlayButtonPressed() {
-  if (!workflowInstanceId) {
-    console.error('No workflow instanceId available');
-    return;
-  }
-
+function onStartButtonPressed() {
   initAudioContext();
 
-  const playUrl = `http://localhost:5500/play?instanceId=${encodeURIComponent(workflowInstanceId)}`;
-  fetch(playUrl, { method: 'POST' })
+  const startUrl = 'http://localhost:5500/startmusic';
+  fetch(startUrl, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(getHappyMusicScore())
+  })
     .then(response => {
       if (response.ok) {
-        console.log('Play event sent for instanceId:', workflowInstanceId);
-        playButton.attribute('disabled', '');
+        return response.json();
+      } else {
+        console.error('Failed to start music workflow:', response.status);
+      }
+    })
+    .then(data => {
+      if (data && data.instanceId) {
+        workflowInstanceId = data.instanceId;
+        console.log('Music workflow started with instanceId:', workflowInstanceId);
+        startButton.attribute('disabled', '');
         if (pauseResumeButton) {
           pauseResumeButton.removeAttribute('disabled');
         }
-      } else {
-        console.error('Failed to send play event:', response.status);
       }
     })
     .catch(error => {
-      console.error('Error sending play event:', error);
+      console.error('Error starting music workflow:', error);
     });
 }
 
@@ -407,9 +411,6 @@ function initSSE() {
     try {
       workflowInstanceId = JSON.parse(event.data);
       console.log('Received workflow instanceId:', workflowInstanceId);
-      if (playButton) {
-        playButton.removeAttribute('disabled');
-      }
     } catch (error) {
       console.error('Error parsing SSE instanceId data:', error);
     }
@@ -441,31 +442,20 @@ function handleSSENote(data) {
 
   if (data.Type === 'audio') {
     playNoteWebAudio(midiNumber);
-    createNoteAnimation(data.NoteName, midiNumber);
+    const anim = createNoteAnimation(data.Id, data.NoteName, midiNumber);
 
     setTimeout(() => {
       stopNoteWebAudio(midiNumber);
-
-      for (let anim of noteAnimations) {
-        if (anim.midiNumber === midiNumber && anim.isActive) {
-          anim.release();
-          break;
-        }
-      }
+      anim.release();
     }, data.DurationMs);
 
   } else if (data.Type === 'midi') {
     sendNoteOn(midiNumber);
+    const anim = createNoteAnimation(data.Id, data.NoteName, midiNumber);
 
     setTimeout(() => {
       sendNoteOff(midiNumber);
-
-      for (let anim of noteAnimations) {
-        if (anim.midiNumber === midiNumber && anim.isActive) {
-          anim.release();
-          break;
-        }
-      }
+      anim.release();
     }, data.DurationMs);
   }
 }
@@ -524,8 +514,12 @@ function populateMIDISelector(outputs) {
   // Enable the selector
   midiSelector.enable();
 
-  // Set the first device as selected
-  midiSelector.selected(0);
+  // Prefer GRIND if available, otherwise select the first device
+  const grindIndex = outputs.findIndex(output => output.name === 'GRIND');
+  const selectedIndex = grindIndex !== -1 ? grindIndex : 0;
+  midiSelector.selected(selectedIndex);
+  midiOutput = outputs[selectedIndex];
+  updateStatus(`Connected: ${midiOutput.name}`, true);
 }
 
 function onMIDIDeviceChange() {
@@ -594,18 +588,21 @@ function onWebcamDeviceChange() {
 }
 
 function createWebcamCapture(deviceId) {
-  capture = createCapture({
-    video: {
-      deviceId: { exact: deviceId },
-      aspectRatio: 16/9
-    }
-  });
-  capture.size(videoWidth, videoHeight);
+  capture = createCapture(
+  //   {
+  //   video: {
+  //     deviceId: { exact: deviceId },
+  //     aspectRatio: 16/9
+  //   }
+  // }
+);
+  //capture.size(videoWidth, videoHeight);
   capture.hide();
 }
 
 class NoteAnimation {
-  constructor(noteName, x, y, midiNumber) {
+  constructor(id, noteName, x, y, midiNumber) {
+    this.id = id;
     this.note = noteName;
     this.midiNumber = midiNumber;
     this.x = x;
@@ -666,16 +663,18 @@ class NoteAnimation {
   }
 }
 
-function createNoteAnimation(noteName, midiNumber) {
+function createNoteAnimation(id, noteName, midiNumber) {
   // Calculate X position based on MIDI note number within video area
   const padding = ANIMATION_CONFIG.circleSize / 2;
   let x = map(midiNumber, MIDI_NOTE_MIN, MIDI_NOTE_MAX,
-              videoOffsetX + padding,
-              videoOffsetX + videoWidth - padding);
+              0 + padding,
+              windowWidth - padding);
 
   let y = videoOffsetY + videoHeight - ANIMATION_CONFIG.circleSize;
 
-  noteAnimations.push(new NoteAnimation(noteName, x, y, midiNumber));
+  const anim = new NoteAnimation(id, noteName, x, y, midiNumber);
+  noteAnimations.push(anim);
+  return anim;
 }
 
 function updateNoteAnimations() {
