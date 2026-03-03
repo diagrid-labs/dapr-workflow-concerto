@@ -1,15 +1,17 @@
-using Dapr.Workflow;
-using Dapr.Client;
 using Microsoft.AspNetCore.Mvc;
+using Dapr.Client;
+using Dapr.Workflow;
+using Dapr.Workflow.Versioning;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddSingleton<HttpClient>(DaprClient.CreateInvokeHttpClient(appId: "note-stream-app"));
 builder.Services.AddDaprWorkflow(options =>
 {
-    options.RegisterWorkflow<MusicWorkflow>();
     options.RegisterActivity<SendNoteActivity>();
     options.RegisterActivity<SendInstanceIdActivity>();
 });
+builder.Services.AddDaprWorkflowVersioning();
+
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>
@@ -35,14 +37,15 @@ app.MapPost("startmusic", async (
     return Results.Ok(new { instanceId });
 });
 
-app.MapPost("play", async (
-    [FromQuery] string instanceId,
+app.MapPost("approve/{instanceId}/{approve}", async (
+    [FromRoute] string instanceId,
+    [FromRoute] bool approve,
     [FromServices] DaprWorkflowClient workflowClient) =>
 {
     await workflowClient.RaiseEventAsync(
         instanceId: instanceId,
-        eventName: "play",
-        eventPayload: true 
+        eventName: "approve",
+        eventPayload: approve 
     );
 
     return Results.Accepted();

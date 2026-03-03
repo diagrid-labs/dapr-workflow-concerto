@@ -123,6 +123,12 @@ canvas {
     pointer-events: auto;
 }
 
+.play-button:active:not(:disabled) {
+    transform: translateY(2px);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 120, 0, 0.9);
+}
+
 .play-button:disabled {
     opacity: 0.5;
     cursor: not-allowed;
@@ -143,7 +149,65 @@ canvas {
     pointer-events: auto;
 }
 
+.pause-resume-button:active:not(:disabled) {
+    transform: translateY(2px);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
+    background-color: rgba(170, 120, 0, 0.9);
+}
+
 .pause-resume-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Allow button */
+.allow-button {
+    position: absolute;
+    padding: 10px 24px;
+    background-color: rgba(0, 150, 0, 0.8);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    font-size: 16px;
+    z-index: 1000;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+.allow-button:active:not(:disabled) {
+    transform: translateY(2px);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 120, 0, 0.9);
+}
+
+.allow-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Skip button */
+.skip-button {
+    position: absolute;
+    padding: 10px 24px;
+    background-color: rgba(200, 0, 0, 0.8);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    font-size: 16px;
+    z-index: 1000;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+.skip-button:active:not(:disabled) {
+    transform: translateY(2px);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
+    background-color: rgba(170, 0, 0, 0.9);
+}
+
+.skip-button:disabled {
     opacity: 0.5;
     cursor: not-allowed;
     background-color: rgba(0, 0, 0, 0.8);

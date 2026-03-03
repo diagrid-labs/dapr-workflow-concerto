@@ -13,6 +13,8 @@ let eventSource; // SSE connection
 let workflowInstanceId = null;
 let startButton;
 let pauseResumeButton;
+let allowButton;
+let skipButton;
 let isPaused = false;
 
 // Web Audio
@@ -93,6 +95,8 @@ function setup() {
   createSSEStatusIndicator();
   createStartButton();
   createPauseResumeButton();
+  createAllowButton();
+  createSkipButton();
   createInstructions();
   initSSE();
   initAudio();
@@ -323,10 +327,46 @@ function createStartButton() {
 
 function createPauseResumeButton() {
   pauseResumeButton = createButton('Pause');
-  pauseResumeButton.position(100, 100);
+  pauseResumeButton.position(130, 100);
   pauseResumeButton.class('pause-resume-button');
   pauseResumeButton.attribute('disabled', '');
   pauseResumeButton.mousePressed(onPauseResumePressed);
+}
+
+function createAllowButton() {
+  allowButton = createButton('Allow');
+  allowButton.position(240, 100);
+  allowButton.class('allow-button');
+  allowButton.attribute('disabled', '');
+  allowButton.mousePressed(() => onApprovePressed(true));
+}
+
+function createSkipButton() {
+  skipButton = createButton('Skip');
+  skipButton.position(350, 100);
+  skipButton.class('skip-button');
+  skipButton.attribute('disabled', '');
+  skipButton.mousePressed(() => onApprovePressed(false));
+}
+
+function onApprovePressed(approve) {
+  if (!workflowInstanceId) {
+    console.error('No workflow instanceId available');
+    return;
+  }
+
+  const url = `http://localhost:5500/approve/${workflowInstanceId}/${approve}`;
+  fetch(url, { method: 'POST' })
+    .then(response => {
+      if (response.ok) {
+        console.log(`Workflow approve (${approve}) sent for instanceId:`, workflowInstanceId);
+      } else {
+        console.error('Failed to send approve:', response.status);
+      }
+    })
+    .catch(error => {
+      console.error('Error sending approve:', error);
+    });
 }
 
 function onPauseResumePressed() {
@@ -377,6 +417,12 @@ function onStartButtonPressed() {
         startButton.attribute('disabled', '');
         if (pauseResumeButton) {
           pauseResumeButton.removeAttribute('disabled');
+        }
+        if (allowButton) {
+          allowButton.removeAttribute('disabled');
+        }
+        if (skipButton) {
+          skipButton.removeAttribute('disabled');
         }
       }
     })

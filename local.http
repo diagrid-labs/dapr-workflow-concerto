@@ -126,6 +126,15 @@ Content-Type: application/json
 @instanceId = {{request.response.body.$.instanceId}}
 GET {{baseUrl}}/musicstatus/{{instanceId}}
 
+### PAUSE
+POST {{baseUrl}}/pause/{{instanceId}}
+
+### APPROVE
+POST {{baseUrl}}/approve/{{instanceId}}/true
+
+### SKIP
+POST {{baseUrl}}/approve/{{instanceId}}/false
+
 ### Post NoteStreamApp notes to test SSE
 @noteStreamBaseUrl = http://localhost:5051
 POST {{noteStreamBaseUrl}}/sendnote

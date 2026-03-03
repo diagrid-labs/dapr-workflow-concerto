@@ -9,6 +9,7 @@
   <ItemGroup>
     <PackageReference Include="Dapr.Client" Version="1.17.0" />
     <PackageReference Include="Dapr.Workflow" Version="1.17.0" />
+    <PackageReference Include="Dapr.Workflow.Versioning" Version="1.17.0" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.3" />
   </ItemGroup>
 

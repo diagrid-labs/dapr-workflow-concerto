@@ -1,0 +1,8 @@
+title: 01 - Start
+version: 3
+scenes:
+  - title: Introduction Slide
+    description: Display the opening slide to introduce the advanced demo and set the initial theme.
+    moves:
+      - action: openSlide
+        path: .demo/slides/01-start/title.md
