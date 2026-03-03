@@ -82,6 +82,78 @@ function getHappyMusicScore() {
   };
 }
 
+function getRickMusicScore() {
+  return {
+    Title: "Rick",
+    Looping: false,
+    Notes: [
+      { Id: "1",  NoteName: "G3", Type: playbackType, DurationMs: 200, WaitMs: 0 },
+      { Id: "2",  NoteName: "A3", Type: playbackType, DurationMs: 200, WaitMs: 250 },
+      { Id: "3",  NoteName: "C4", Type: playbackType, DurationMs: 200, WaitMs: 250 },
+      { Id: "4",  NoteName: "C4", Type: playbackType, DurationMs: 200, WaitMs: 250 },
+      { Id: "5",  NoteName: "E4", Type: playbackType, DurationMs: 500, WaitMs: 250 },
+      { Id: "6",  NoteName: "E4", Type: playbackType, DurationMs: 500, WaitMs: 500 },
+      { Id: "7",  NoteName: "D4", Type: playbackType, DurationMs: 500, WaitMs: 500 },
+      { Id: "8",  NoteName: "G3", Type: playbackType, DurationMs: 200, WaitMs: 250 },
+      { Id: "9",  NoteName: "A3", Type: playbackType, DurationMs: 200, WaitMs: 250 },
+      { Id: "10", NoteName: "C4", Type: playbackType, DurationMs: 200, WaitMs: 250 },
+      { Id: "11", NoteName: "C4", Type: playbackType, DurationMs: 200, WaitMs: 250 },
+      { Id: "12", NoteName: "D4", Type: playbackType, DurationMs: 350, WaitMs: 200 },
+      { Id: "13", NoteName: "C4", Type: playbackType, DurationMs: 200, WaitMs: 200 },
+      { Id: "14", NoteName: "B3", Type: playbackType, DurationMs: 500, WaitMs: 500 },
+      { Id: "15", NoteName: "G3", Type: playbackType, DurationMs: 200, WaitMs: 200 },
+      { Id: "16", NoteName: "A3", Type: playbackType, DurationMs: 200, WaitMs: 200 },
+      { Id: "17", NoteName: "C4", Type: playbackType, DurationMs: 200, WaitMs: 200 },
+      { Id: "18", NoteName: "C4", Type: playbackType, DurationMs: 200, WaitMs: 200 },
+      { Id: "19", NoteName: "C4", Type: playbackType, DurationMs: 200, WaitMs: 200 },
+      { Id: "20", NoteName: "D4", Type: playbackType, DurationMs: 200, WaitMs: 200 },
+      { Id: "21", NoteName: "B3", Type: playbackType, DurationMs: 200, WaitMs: 200 },
+      { Id: "22", NoteName: "A3", Type: playbackType, DurationMs: 200, WaitMs: 200 },
+      { Id: "23", NoteName: "G3", Type: playbackType, DurationMs: 500, WaitMs: 1000 },
+      { Id: "24", NoteName: "G3", Type: playbackType, DurationMs: 200, WaitMs: 200 },
+      { Id: "25", NoteName: "A3", Type: playbackType, DurationMs: 200, WaitMs: 200 },
+      { Id: "26", NoteName: "C4", Type: playbackType, DurationMs: 350, WaitMs: 200 },
+      { Id: "27", NoteName: "C4", Type: playbackType, DurationMs: 200, WaitMs: 200 },
+      { Id: "28", NoteName: "E4", Type: playbackType, DurationMs: 200, WaitMs: 200 },
+      { Id: "29", NoteName: "E4", Type: playbackType, DurationMs: 200, WaitMs: 200 },
+      { Id: "30", NoteName: "D4", Type: playbackType, DurationMs: 500, WaitMs: 500 },
+      { Id: "31", NoteName: "G3", Type: playbackType, DurationMs: 200, WaitMs: 200 },
+      { Id: "32", NoteName: "A3", Type: playbackType, DurationMs: 200, WaitMs: 200 },
+      { Id: "33", NoteName: "C4", Type: playbackType, DurationMs: 350, WaitMs: 200 },
+      { Id: "34", NoteName: "C4", Type: playbackType, DurationMs: 200, WaitMs: 200 },
+      { Id: "35", NoteName: "D4", Type: playbackType, DurationMs: 350, WaitMs: 200 },
+      { Id: "36", NoteName: "C4", Type: playbackType, DurationMs: 200, WaitMs: 200 },
+      { Id: "37", NoteName: "B3", Type: playbackType, DurationMs: 500, WaitMs: 500 },
+      { Id: "38", NoteName: "G3", Type: playbackType, DurationMs: 200, WaitMs: 200 },
+      { Id: "39", NoteName: "A3", Type: playbackType, DurationMs: 200, WaitMs: 200 },
+      { Id: "40", NoteName: "C4", Type: playbackType, DurationMs: 200, WaitMs: 200 },
+      { Id: "41", NoteName: "C4", Type: playbackType, DurationMs: 200, WaitMs: 200 },
+      { Id: "42", NoteName: "C4", Type: playbackType, DurationMs: 200, WaitMs: 200 },
+      { Id: "43", NoteName: "D4", Type: playbackType, DurationMs: 200, WaitMs: 200 },
+      { Id: "44", NoteName: "B3", Type: playbackType, DurationMs: 200, WaitMs: 200 },
+      { Id: "45", NoteName: "A3", Type: playbackType, DurationMs: 200, WaitMs: 200 },
+      { Id: "46", NoteName: "G3", Type: playbackType, DurationMs: 500, WaitMs: 500 }
+    ]
+  };
+}
+
+function getStrangerMusicScore() {
+  return {
+    Title: "Stranger",
+    Looping: true,
+    Notes: [
+      { Id: "1", NoteName: "C3", Type: playbackType, DurationMs: 200, WaitMs: 200 },
+      { Id: "2", NoteName: "E3", Type: playbackType, DurationMs: 200, WaitMs: 200 },
+      { Id: "3", NoteName: "G3", Type: playbackType, DurationMs: 200, WaitMs: 200 },
+      { Id: "4", NoteName: "B3", Type: playbackType, DurationMs: 200, WaitMs: 200 },
+      { Id: "5", NoteName: "C4", Type: playbackType, DurationMs: 200, WaitMs: 200 },
+      { Id: "6", NoteName: "B3", Type: playbackType, DurationMs: 200, WaitMs: 200 },
+      { Id: "7", NoteName: "G3", Type: playbackType, DurationMs: 200, WaitMs: 200 },
+      { Id: "8", NoteName: "E3", Type: playbackType, DurationMs: 200, WaitMs: 200 }
+    ]
+  };
+}
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
   calculateVideoDimensions();
