@@ -663,11 +663,14 @@ class NoteAnimation {
     this.maxAge = ANIMATION_CONFIG.maxAge;
     this.isActive = true; // Note is being held
     this.releaseAge = null; // Age when note was released
+    this.growingSize = this.circleSize; // Growing ring starts at circle size
   }
 
   update() {
     this.y -= this.speed;
     this.age++;
+
+    this.growingSize += 1;
 
     // Only start fading after note is released
     if (!this.isActive) {
@@ -690,6 +693,12 @@ class NoteAnimation {
     stroke(ANIMATION_CONFIG.circleColor, this.alpha);
     strokeWeight(2);
     circle(this.x, this.y, this.circleSize);
+
+    // Growing ring
+    noFill();
+    stroke(ANIMATION_CONFIG.circleColor, this.alpha);
+    strokeWeight(2);
+    circle(this.x, this.y, this.growingSize);
 
     noStroke();
     fill(0, this.alpha);
