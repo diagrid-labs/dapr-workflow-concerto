@@ -16,6 +16,7 @@ let pauseResumeButton;
 let allowButton;
 let skipButton;
 let isPaused = false;
+let playbackType = 'midi';
 
 // Web Audio
 let audioCtx = null;
@@ -52,31 +53,31 @@ function getHappyMusicScore() {
     Title: "Happy",
     Looping: false,
     Notes: [
-      { Id: "1",  NoteName: "G3", Type: "audio", DurationMs: 150, WaitMs: 0 },
-      { Id: "2",  NoteName: "G3", Type: "audio", DurationMs: 250, WaitMs: 250 },
-      { Id: "3",  NoteName: "A3", Type: "audio", DurationMs: 250, WaitMs: 200 },
-      { Id: "4",  NoteName: "G3", Type: "audio", DurationMs: 350, WaitMs: 500 },
-      { Id: "5",  NoteName: "C4", Type: "audio", DurationMs: 350, WaitMs: 500 },
-      { Id: "6",  NoteName: "B3", Type: "audio", DurationMs: 500, WaitMs: 500 },
-      { Id: "7",  NoteName: "G3", Type: "audio", DurationMs: 150, WaitMs: 1000 },
-      { Id: "8",  NoteName: "G3", Type: "audio", DurationMs: 250, WaitMs: 250 },
-      { Id: "9",  NoteName: "A3", Type: "audio", DurationMs: 250, WaitMs: 200 },
-      { Id: "10", NoteName: "G3", Type: "audio", DurationMs: 350, WaitMs: 500 },
-      { Id: "11", NoteName: "D4", Type: "audio", DurationMs: 350, WaitMs: 500 },
-      { Id: "12", NoteName: "C4", Type: "audio", DurationMs: 500, WaitMs: 500 },
-      { Id: "13", NoteName: "G3", Type: "audio", DurationMs: 150, WaitMs: 1000 },
-      { Id: "14", NoteName: "G3", Type: "audio", DurationMs: 250, WaitMs: 250 },
-      { Id: "15", NoteName: "G4", Type: "audio", DurationMs: 250, WaitMs: 200 },
-      { Id: "16", NoteName: "E4", Type: "audio", DurationMs: 350, WaitMs: 500 },
-      { Id: "17", NoteName: "C4", Type: "audio", DurationMs: 350, WaitMs: 500 },
-      { Id: "18", NoteName: "B3", Type: "audio", DurationMs: 350, WaitMs: 500 },
-      { Id: "19", NoteName: "A3", Type: "audio", DurationMs: 500, WaitMs: 500 },
-      { Id: "20", NoteName: "F4", Type: "audio", DurationMs: 150, WaitMs: 1000 },
-      { Id: "21", NoteName: "F4", Type: "audio", DurationMs: 250, WaitMs: 250 },
-      { Id: "22", NoteName: "E4", Type: "audio", DurationMs: 250, WaitMs: 200 },
-      { Id: "23", NoteName: "C4", Type: "audio", DurationMs: 350, WaitMs: 500 },
-      { Id: "24", NoteName: "D4", Type: "audio", DurationMs: 350, WaitMs: 500 },
-      { Id: "25", NoteName: "C4", Type: "audio", DurationMs: 500, WaitMs: 500 }
+      { Id: "1",  NoteName: "G3", Type: playbackType, DurationMs: 150, WaitMs: 0 },
+      { Id: "2",  NoteName: "G3", Type: playbackType, DurationMs: 250, WaitMs: 250 },
+      { Id: "3",  NoteName: "A3", Type: playbackType, DurationMs: 250, WaitMs: 200 },
+      { Id: "4",  NoteName: "G3", Type: playbackType, DurationMs: 350, WaitMs: 500 },
+      { Id: "5",  NoteName: "C4", Type: playbackType, DurationMs: 350, WaitMs: 500 },
+      { Id: "6",  NoteName: "B3", Type: playbackType, DurationMs: 500, WaitMs: 500 },
+      { Id: "7",  NoteName: "G3", Type: playbackType, DurationMs: 150, WaitMs: 1000 },
+      { Id: "8",  NoteName: "G3", Type: playbackType, DurationMs: 250, WaitMs: 250 },
+      { Id: "9",  NoteName: "A3", Type: playbackType, DurationMs: 250, WaitMs: 200 },
+      { Id: "10", NoteName: "G3", Type: playbackType, DurationMs: 350, WaitMs: 500 },
+      { Id: "11", NoteName: "D4", Type: playbackType, DurationMs: 350, WaitMs: 500 },
+      { Id: "12", NoteName: "C4", Type: playbackType, DurationMs: 500, WaitMs: 500 },
+      { Id: "13", NoteName: "G3", Type: playbackType, DurationMs: 150, WaitMs: 1000 },
+      { Id: "14", NoteName: "G3", Type: playbackType, DurationMs: 250, WaitMs: 250 },
+      { Id: "15", NoteName: "G4", Type: playbackType, DurationMs: 250, WaitMs: 200 },
+      { Id: "16", NoteName: "E4", Type: playbackType, DurationMs: 350, WaitMs: 500 },
+      { Id: "17", NoteName: "C4", Type: playbackType, DurationMs: 350, WaitMs: 500 },
+      { Id: "18", NoteName: "B3", Type: playbackType, DurationMs: 350, WaitMs: 500 },
+      { Id: "19", NoteName: "A3", Type: playbackType, DurationMs: 500, WaitMs: 500 },
+      { Id: "20", NoteName: "F4", Type: playbackType, DurationMs: 150, WaitMs: 1000 },
+      { Id: "21", NoteName: "F4", Type: playbackType, DurationMs: 250, WaitMs: 250 },
+      { Id: "22", NoteName: "E4", Type: playbackType, DurationMs: 250, WaitMs: 200 },
+      { Id: "23", NoteName: "C4", Type: playbackType, DurationMs: 350, WaitMs: 500 },
+      { Id: "24", NoteName: "D4", Type: playbackType, DurationMs: 350, WaitMs: 500 },
+      { Id: "25", NoteName: "C4", Type: playbackType, DurationMs: 500, WaitMs: 500 }
     ]
   };
 }
@@ -91,6 +92,7 @@ function setup() {
   initMIDI();
   createMIDISelector();
   createWebcamSelector();
+  createPlaybackTypeSelector();
   createStatusIndicator();
   createSSEStatusIndicator();
   createStartButton();
@@ -588,6 +590,18 @@ function createWebcamSelector() {
   webcamSelector.option('Loading cameras...');
   webcamSelector.disable();
   webcamSelector.changed(onWebcamDeviceChange);
+}
+
+function createPlaybackTypeSelector() {
+  let selector = createSelect();
+  selector.position(500, 60);
+  selector.class('playback-type-selector');
+  selector.option('midi');
+  selector.option('audio');
+  selector.selected('midi');
+  selector.changed(() => {
+    playbackType = selector.value();
+  });
 }
 
 function enumerateVideoDevices() {
