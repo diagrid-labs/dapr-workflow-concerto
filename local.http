@@ -12,7 +12,7 @@ Content-Type: application/json
 
 {
   "Title": "Happy",
-  "Looping" : false,
+  "Repeats" : 1,
   "Notes": [
     { "Id": "1",  "NoteName": "G3", "Type": "{{type}}", "DurationMs": 150, "WaitMs": 0 },
     { "Id": "2",  "NoteName": "G3", "Type": "{{type}}", "DurationMs": 250, "WaitMs": 250 },
@@ -49,7 +49,7 @@ Content-Type: application/json
 
 {
   "Title": "Rick",
-  "Looping" : false,
+  "Repeats" : 1,
   "Notes": [
     { "Id": "1",  "NoteName": "G3", "Type": "{{type}}", "DurationMs": 200, "WaitMs": 0 },
     { "Id": "2",  "NoteName": "A3", "Type": "{{type}}", "DurationMs": 200, "WaitMs": 250 },
@@ -107,7 +107,7 @@ Content-Type: application/json
 
 {
   "Title": "Stranger",
-  "Looping" : true,
+  "Repeats" : 3,
   "Notes": [
     { "Id": "1", "NoteName": "C3", "Type": "{{type}}", "DurationMs": 200, "WaitMs": 200 },
     { "Id": "2", "NoteName": "E3", "Type": "{{type}}", "DurationMs": 200, "WaitMs": 200 },

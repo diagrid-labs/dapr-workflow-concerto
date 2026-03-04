@@ -14,9 +14,10 @@ public class MusicWorkflow : Workflow<MusicScore, object>
             await context.CallActivityAsync<bool>(nameof(SendNoteActivity), note);
         }
 
-        if (musicScore.Looping)
+        if (musicScore.Repeats > 1)
         {
-            context.ContinueAsNew(musicScore);
+            var remaining = musicScore with { Repeats = musicScore.Repeats - 1 };
+            context.ContinueAsNew(remaining);
         }
 
         return $"{musicScore.Title} Completed!";

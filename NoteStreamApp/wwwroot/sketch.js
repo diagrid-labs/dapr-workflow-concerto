@@ -8,7 +8,6 @@ let noteAnimations = [];
 let currentNote = null;
 let statusDiv;
 let sseStatusDiv;
-let instructionsDiv;
 let eventSource; // SSE connection
 let workflowInstanceId = null;
 let startButton;
@@ -52,7 +51,7 @@ const NOTE_NAMES = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 
 function getHappyMusicScore() {
   return {
     Title: "Happy",
-    Looping: false,
+    Repeats: 1,
     Notes: [
       { Id: "1",  NoteName: "G3", Type: playbackType, DurationMs: 150, WaitMs: 0 },
       { Id: "2",  NoteName: "G3", Type: playbackType, DurationMs: 250, WaitMs: 250 },
@@ -86,7 +85,7 @@ function getHappyMusicScore() {
 function getRickMusicScore() {
   return {
     Title: "Rick",
-    Looping: false,
+    Repeats: 1,
     Notes: [
       { Id: "1",  NoteName: "G3", Type: playbackType, DurationMs: 200, WaitMs: 0 },
       { Id: "2",  NoteName: "A3", Type: playbackType, DurationMs: 200, WaitMs: 250 },
@@ -141,7 +140,7 @@ function getRickMusicScore() {
 function getStrangerMusicScore() {
   return {
     Title: "Stranger",
-    Looping: true,
+    Repeats: 8,
     Notes: [
       { Id: "1", NoteName: "C3", Type: playbackType, DurationMs: 200, WaitMs: 200 },
       { Id: "2", NoteName: "E3", Type: playbackType, DurationMs: 200, WaitMs: 200 },
@@ -182,7 +181,6 @@ function setup() {
   createPauseResumeButton();
   createAllowButton();
   createSkipButton();
-  createInstructions();
   initSSE();
   initAudio();
 }
@@ -393,12 +391,6 @@ function updateSSEStatus(message, isConnected) {
       sseStatusDiv.class('sse-status-indicator status-disconnected');
     }
   }
-}
-
-function createInstructions() {
-  instructionsDiv = createDiv('Click and hold anywhere to play random MIDI notes');
-  instructionsDiv.class('instructions');
-  instructionsDiv.position(windowWidth / 2, windowHeight - 70);
 }
 
 function createStartButton() {
