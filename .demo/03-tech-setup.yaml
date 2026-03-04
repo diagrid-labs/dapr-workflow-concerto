@@ -1,0 +1,22 @@
+title: 03 - Tech Setup
+version: 3
+scenes:
+  - title: Tech Setup
+    moves:
+      - action: openSlide
+        path: .demo/slides/03-tech-setup/01-tech-setup.md
+  - title: Technologies
+    moves:
+      - action: openSlide
+        path: .demo/slides/03-tech-setup/02-technologies.md
+  - title: Application Flow
+    moves:
+      - action: openSlide
+        path: .demo/slides/03-tech-setup/03-flow-diagram.md
+  - title: Run Diagrid Dev Dashboard
+    moves:
+      - action: executeTerminalCommand
+        command: docker run -p 8080:8080 ghcr.io/diagridio/diagrid-dashboard:latest
+        terminalId: dev-dashboard
+        insertTypingMode: character-by-character
+        insertTypingSpeed: 50

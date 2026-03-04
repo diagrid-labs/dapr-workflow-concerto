@@ -1,0 +1,32 @@
+title: 02 - Workflow
+version: 3
+scenes:
+  - title: Dapr Intro
+    moves:
+      - action: openSlide
+        path: .demo/slides/02-dapr-workflow/01-dapr-intro.md
+  - title: Dapr Website
+    moves:
+      - action: openSlide
+        path: .demo/slides/02-dapr-workflow/02-dapr-website.md
+  - title: Dapr Diagram
+    moves:
+      - action: openSlide
+        path: .demo/slides/02-dapr-workflow/03-dapr-diagram.md
+  - title: Workflow Engines
+    moves:
+      - action: openSlide
+        path: .demo/slides/02-dapr-workflow/03-dapr-workflow-intro.md
+  - title: Dapr Workflow Explanation
+    moves:
+      - action: openSlide
+        path: .demo/slides/02-dapr-workflow/04-dapr-workflow-explanation.md
+        slide: 1
+  - title: Workflow Sequence Diagram
+    moves:
+      - action: openSlide
+        path: .demo/slides/02-dapr-workflow/05-workflow-sequence-diagram.md
+  - title: Workflow Final
+    moves:
+      - action: openSlide
+        path: .demo/slides/02-dapr-workflow/06-workflows-final.md

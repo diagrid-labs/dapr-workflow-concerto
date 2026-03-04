@@ -1,0 +1,32 @@
+title: 04 - Demo 1
+version: 3
+scenes:
+  - title: Program.cs
+    moves:
+      - action: open
+        path: ConcertoWorkflow/Program.cs
+  - title: MusicWorkflow
+    moves:
+      - action: open
+        path: ConcertoWorkflow/MusicWorkflow.cs
+  - title: SendInstanceIdActivity
+    moves:
+      - action: open
+        path: ConcertoWorkflow/SendInstanceIdActivity.cs
+  - title: SendNoteActivity
+    moves:
+      - action: open
+        path: ConcertoWorkflow/SendNoteActivity.cs
+  - title: Run Dapr Application
+    moves:
+      - action: executeTerminalCommand
+        command: dapr run -f .
+        terminalId: dapr-run
+        insertTypingMode: character-by-character
+        insertTypingSpeed: 75
+  - title: Stop Dapr Application
+    moves:
+      - action: focusTerminal
+        terminalId: dapr-run
+      - action: sendKeybinding
+        keybinding: ctrl+c

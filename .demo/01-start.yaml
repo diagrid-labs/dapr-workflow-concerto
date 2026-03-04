@@ -1,8 +1,22 @@
 title: 01 - Start
 version: 3
 scenes:
-  - title: Introduction Slide
-    description: Display the opening slide to introduce the advanced demo and set the initial theme.
+  - title: Intro
     moves:
       - action: openSlide
-        path: .demo/slides/01-start/title.md
+        path: .demo/slides/01-intro/01-intro.md
+  - id: demo-mmcgboeq-yvo8
+    title: Bio
+    moves:
+      - action: openSlide
+        path: .demo/slides/01-intro/02-bio.md
+  - id: demo-mmcgdyir-ug1w
+    title: EngageTime
+    moves:
+      - action: openSlide
+        path: .demo/slides/01-intro/03-engagetime.md
+  - id: demo-mmciuv6y-hhdl
+    title: What this session is about
+    moves:
+      - action: openSlide
+        path: .demo/slides/01-intro/04-story.md
