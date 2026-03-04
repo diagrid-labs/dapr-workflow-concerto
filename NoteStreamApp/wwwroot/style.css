@@ -120,11 +120,31 @@ canvas {
     font-size: 14px;
     z-index: 1000;
     cursor: pointer;
-    min-width: 200px;
+    min-width: 100px;
     pointer-events: auto;
 }
 
 .playback-type-selector option {
+    background-color: rgba(0, 0, 0, 0.95);
+    color: white;
+}
+
+/* Score selector */
+.score-selector {
+    position: absolute;
+    padding: 8px 12px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    font-size: 14px;
+    z-index: 1000;
+    cursor: pointer;
+    min-width: 200px;
+    pointer-events: auto;
+}
+
+.score-selector option {
     background-color: rgba(0, 0, 0, 0.95);
     color: white;
 }

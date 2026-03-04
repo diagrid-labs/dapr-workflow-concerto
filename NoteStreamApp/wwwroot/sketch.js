@@ -17,6 +17,7 @@ let allowButton;
 let skipButton;
 let isPaused = false;
 let playbackType = 'midi';
+let selectedScore = 'Happy';
 
 // Web Audio
 let audioCtx = null;
@@ -154,6 +155,15 @@ function getStrangerMusicScore() {
   };
 }
 
+function getMusicScoreByTitle(title) {
+  const scores = {
+    "Happy": getHappyMusicScore,
+    "Rick": getRickMusicScore,
+    "Stranger": getStrangerMusicScore
+  };
+  return scores[title]();
+}
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
   calculateVideoDimensions();
@@ -165,6 +175,7 @@ function setup() {
   createMIDISelector();
   createWebcamSelector();
   createPlaybackTypeSelector();
+  createScoreSelector();
   createStatusIndicator();
   createSSEStatusIndicator();
   createStartButton();
@@ -309,8 +320,6 @@ function sendNoteOn(midiNumber) {
   console.log(`Note On: Channel ${MIDI_CHANNEL}, Note ${midiNumber} (${midiNumberToNoteName(midiNumber)}), Velocity ${MIDI_VELOCITY}`);
 
   currentNote = midiNumber;
-
-  createNoteAnimation(String(midiNumber) + '_' + Date.now(), midiNumberToNoteName(midiNumber), midiNumber);
 }
 
 function sendNoteOff(midiNumber) {
@@ -475,7 +484,7 @@ function onStartButtonPressed() {
   fetch(startUrl, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(getHappyMusicScore())
+    body: JSON.stringify(getMusicScoreByTitle(selectedScore))
   })
     .then(response => {
       if (response.ok) {
@@ -657,7 +666,7 @@ function onMIDIDeviceChange() {
 
 function createWebcamSelector() {
   webcamSelector = createSelect();
-  webcamSelector.position(240, 60);
+  webcamSelector.position(320, 60);
   webcamSelector.class('webcam-selector');
   webcamSelector.option('Loading cameras...');
   webcamSelector.disable();
@@ -666,13 +675,26 @@ function createWebcamSelector() {
 
 function createPlaybackTypeSelector() {
   let selector = createSelect();
-  selector.position(500, 60);
+  selector.position(600, 60);
   selector.class('playback-type-selector');
   selector.option('midi');
   selector.option('audio');
   selector.selected('midi');
   selector.changed(() => {
     playbackType = selector.value();
+  });
+}
+
+function createScoreSelector() {
+  let selector = createSelect();
+  selector.position(710, 60);
+  selector.class('score-selector');
+  selector.option('Happy');
+  selector.option('Rick');
+  selector.option('Stranger');
+  selector.selected('Happy');
+  selector.changed(() => {
+    selectedScore = selector.value();
   });
 }
 
