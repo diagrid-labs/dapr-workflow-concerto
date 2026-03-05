@@ -5,6 +5,18 @@ scenes:
     moves:
       - action: open
         path: ConcertoWorkflow/Program.cs
+  - title: Workflow Registration
+    moves:
+      - action: highlight
+        path: ConcertoWorkflow/Program.cs
+        position: '8:13'
+        highlightBlur: 2
+  - title: Start endpoint
+    moves:
+      - action: highlight
+        path: ConcertoWorkflow/Program.cs
+        position: '28:38'
+        highlightBlur: 2
   - title: MusicWorkflow
     moves:
       - action: open

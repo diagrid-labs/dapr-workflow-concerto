@@ -39,3 +39,4 @@ Prerequisites: Dapr CLI, Docker, .NET 10 SDK. Start with `dapr run -f dapr.yaml`
 ## Skills
 
 - **create-slide** — Creates DemoTime markdown slides
+- **create-demotime-scene** - Creates DemoTime scene and moves

@@ -1,6 +1,9 @@
 using System;
 using Dapr.Workflow;
 
+/// <summary>
+/// Send Instance ID to front-end. ✅
+/// </summary>
 public class MusicWorkflowV3 : Workflow<MusicScore, object>
 {
     public override async Task<object> RunAsync(WorkflowContext context, MusicScore musicScore)
@@ -9,13 +12,16 @@ public class MusicWorkflowV3 : Workflow<MusicScore, object>
 
         await context.CallActivityAsync<bool>(nameof(SendInstanceIdActivity), context.InstanceId);
 
-        var tasks = new List<Task<bool>>();
         foreach (var note in musicScore.Notes)
         {
-            tasks.Add(context.CallActivityAsync<bool>(nameof(SendNoteActivity), note));
+            await context.CallActivityAsync<bool>(nameof(SendNoteActivity), note);
         }
 
-        await Task.WhenAll(tasks);
+        if (musicScore.Repeats > 1)
+        {
+            var remaining = musicScore with { Repeats = musicScore.Repeats - 1 };
+            context.ContinueAsNew(remaining);
+        }
 
         return $"{musicScore.Title} Completed!";
     }

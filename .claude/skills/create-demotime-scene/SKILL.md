@@ -1,6 +1,6 @@
 ---
-name: Create DemoTime move
-description: Adds a DemoTime move definition to a DemoTime yaml file that defines an action and related configuration. Use this skill when the user or another skill mentions: create a DemoTime move, create an DemoTime act with moves.
+name: Create DemoTime scene
+description: Adds a DemoTime scene definition with moves to a DemoTime yaml file that defines moves, actions and related configuration. Use this skill when the user or another skill mentions: create a scene, add a scene, add a move to a scene.
 ---
 
 ## Overview
@@ -9,7 +9,14 @@ This skill creates a DemoTime move that will instruct DemoTime to perform an act
 
 ## Structure
 
-Actions are child items of moves in a DemoTime yaml.
+Actions are child items of moves in a DemoTime yaml. Typically the moves array contains only one action unless multiple actions has to be executed at the same time.
+
+A new move is defined un the scenes array as:
+
+- title: <title>
+  moves:
+      - action: <action_type>
+        <specific_configuration_for_the_actiontype>
 
 Example:
 ```yaml
@@ -157,6 +164,15 @@ zoom: <zoom level> # Optional
 highlightBlur: <blur effect for non-highlighted text> # Optional
 highlightOpacity: <opacity for non-highlighted text> # Optional
 ```
+
+Example that highlights lines 8 to 13 and uses a soft blur:
+
+  - title: Workflow Registration
+    moves:
+      - action: highlight
+        path: ConcertoWorkflow/Program.cs
+        position: '8:13'
+        highlightBlur: 2
 
 For more text actions see: https://demotime.show/actions/text/
 
