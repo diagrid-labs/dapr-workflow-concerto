@@ -70,6 +70,14 @@ app.MapPost("resume/{instanceId}", async (
     return Results.Accepted();
 });
 
+app.MapPost("terminate/{instanceId}", async (
+    [FromRoute] string instanceId,
+    [FromServices] DaprWorkflowClient workflowClient) =>
+{
+    await workflowClient.TerminateWorkflowAsync(instanceId);
+    return Results.Accepted();
+});
+
 app.MapGet("musicstatus/{instanceId}", async (
     [FromRoute] string instanceId,
     [FromServices] DaprWorkflowClient workflowClient) =>

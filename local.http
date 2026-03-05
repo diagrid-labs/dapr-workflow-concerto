@@ -135,6 +135,9 @@ POST {{baseUrl}}/approve/{{instanceId}}/true
 ### SKIP
 POST {{baseUrl}}/approve/{{instanceId}}/false
 
+### TERMINATE
+POST {{baseUrl}}/terminate/{{instanceId}}
+
 ### Post NoteStreamApp notes to test SSE
 @noteStreamBaseUrl = http://localhost:5051
 POST {{noteStreamBaseUrl}}/sendnote

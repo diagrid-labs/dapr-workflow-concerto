@@ -11,10 +11,11 @@ let sseStatusDiv;
 let eventSource; // SSE connection
 let workflowInstanceId = null;
 let startButton;
-let pauseResumeButton;
+let terminateButton;
+let pauseButton;
+let resumeButton;
 let allowButton;
 let skipButton;
-let isPaused = false;
 let playbackType = 'midi';
 let selectedScore = 'Happy';
 
@@ -178,7 +179,9 @@ function setup() {
   createStatusIndicator();
   createSSEStatusIndicator();
   createStartButton();
-  createPauseResumeButton();
+  createTerminateButton();
+  createPauseButton();
+  createResumeButton();
   createAllowButton();
   createSkipButton();
   initSSE();
@@ -400,17 +403,33 @@ function createStartButton() {
   startButton.mousePressed(onStartButtonPressed);
 }
 
-function createPauseResumeButton() {
-  pauseResumeButton = createButton('Pause');
-  pauseResumeButton.position(130, 100);
-  pauseResumeButton.class('pause-resume-button');
-  pauseResumeButton.attribute('disabled', '');
-  pauseResumeButton.mousePressed(onPauseResumePressed);
+function createTerminateButton() {
+  terminateButton = createButton('Stop');
+  terminateButton.position(120, 100);
+  terminateButton.class('terminate-button');
+  terminateButton.attribute('disabled', '');
+  terminateButton.mousePressed(onTerminatePressed);
+}
+
+function createPauseButton() {
+  pauseButton = createButton('Pause');
+  pauseButton.position(250, 100);
+  pauseButton.class('pause-button');
+  pauseButton.attribute('disabled', '');
+  pauseButton.mousePressed(onPausePressed);
+}
+
+function createResumeButton() {
+  resumeButton = createButton('Resume');
+  resumeButton.position(360, 100);
+  resumeButton.class('resume-button');
+  resumeButton.attribute('disabled', '');
+  resumeButton.mousePressed(onResumePressed);
 }
 
 function createAllowButton() {
   allowButton = createButton('Allow');
-  allowButton.position(240, 100);
+  allowButton.position(480, 100);
   allowButton.class('allow-button');
   allowButton.attribute('disabled', '');
   allowButton.mousePressed(() => onApprovePressed(true));
@@ -418,10 +437,36 @@ function createAllowButton() {
 
 function createSkipButton() {
   skipButton = createButton('Skip');
-  skipButton.position(350, 100);
+  skipButton.position(580, 100);
   skipButton.class('skip-button');
   skipButton.attribute('disabled', '');
   skipButton.mousePressed(() => onApprovePressed(false));
+}
+
+function onTerminatePressed() {
+  if (!workflowInstanceId) {
+    console.error('No workflow instanceId available');
+    return;
+  }
+
+  const url = `http://localhost:5500/terminate/${workflowInstanceId}`;
+  fetch(url, { method: 'POST' })
+    .then(response => {
+      if (response.ok) {
+        console.log('Workflow terminated for instanceId:', workflowInstanceId);
+        startButton.removeAttribute('disabled');
+        if (pauseButton) pauseButton.attribute('disabled', '');
+        if (resumeButton) resumeButton.attribute('disabled', '');
+        if (allowButton) allowButton.attribute('disabled', '');
+        if (skipButton) skipButton.attribute('disabled', '');
+        terminateButton.attribute('disabled', '');
+      } else {
+        console.error('Failed to terminate workflow:', response.status);
+      }
+    })
+    .catch(error => {
+      console.error('Error terminating workflow:', error);
+    });
 }
 
 function onApprovePressed(approve) {
@@ -444,27 +489,43 @@ function onApprovePressed(approve) {
     });
 }
 
-function onPauseResumePressed() {
+function onPausePressed() {
   if (!workflowInstanceId) {
     console.error('No workflow instanceId available');
     return;
   }
 
-  const action = isPaused ? 'resume' : 'pause';
-  const url = `http://localhost:5500/${action}/${workflowInstanceId}`;
-
+  const url = `http://localhost:5500/pause/${workflowInstanceId}`;
   fetch(url, { method: 'POST' })
     .then(response => {
       if (response.ok) {
-        isPaused = !isPaused;
-        pauseResumeButton.html(isPaused ? 'Resume' : 'Pause');
-        console.log(`Workflow ${action}d for instanceId:`, workflowInstanceId);
+        console.log('Workflow paused for instanceId:', workflowInstanceId);
       } else {
-        console.error(`Failed to ${action} workflow:`, response.status);
+        console.error('Failed to pause workflow:', response.status);
       }
     })
     .catch(error => {
-      console.error(`Error ${action}ing workflow:`, error);
+      console.error('Error pausing workflow:', error);
+    });
+}
+
+function onResumePressed() {
+  if (!workflowInstanceId) {
+    console.error('No workflow instanceId available');
+    return;
+  }
+
+  const url = `http://localhost:5500/resume/${workflowInstanceId}`;
+  fetch(url, { method: 'POST' })
+    .then(response => {
+      if (response.ok) {
+        console.log('Workflow resumed for instanceId:', workflowInstanceId);
+      } else {
+        console.error('Failed to resume workflow:', response.status);
+      }
+    })
+    .catch(error => {
+      console.error('Error resuming workflow:', error);
     });
 }
 
@@ -490,15 +551,11 @@ function onStartButtonPressed() {
         workflowInstanceId = data.instanceId;
         console.log('Music workflow started with instanceId:', workflowInstanceId);
         startButton.attribute('disabled', '');
-        if (pauseResumeButton) {
-          pauseResumeButton.removeAttribute('disabled');
-        }
-        if (allowButton) {
-          allowButton.removeAttribute('disabled');
-        }
-        if (skipButton) {
-          skipButton.removeAttribute('disabled');
-        }
+        if (terminateButton) terminateButton.removeAttribute('disabled');
+        if (pauseButton) pauseButton.removeAttribute('disabled');
+        if (resumeButton) resumeButton.removeAttribute('disabled');
+        if (allowButton) allowButton.removeAttribute('disabled');
+        if (skipButton) skipButton.removeAttribute('disabled');
       }
     })
     .catch(error => {
