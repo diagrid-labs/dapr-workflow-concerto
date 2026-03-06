@@ -17,7 +17,7 @@ let resumeButton;
 let allowButton;
 let skipButton;
 let playbackType = 'midi';
-let selectedScore = 'XFiles';
+let selectedScore = 'Who';
 
 // Web Audio
 let audioCtx = null;
@@ -220,6 +220,27 @@ function getStrangerMusicScore() {
   };
 }
 
+function getDrWhoMusicScore() {
+  return {
+    Title: "Who",
+    Repeats: 1,
+    Notes: [
+      { Id: "1", NoteName: "C#4", Type: playbackType, DurationMs: 600, WaitMs: 0 },
+      { Id: "2", NoteName: "C#5", Type: playbackType, DurationMs: 600, WaitMs: 600 },
+      { Id: "3", NoteName: "C5", Type: playbackType, DurationMs: 2400, WaitMs: 600 },
+      { Id: "4", NoteName: "D#5", Type: playbackType, DurationMs: 600, WaitMs: 2400 },
+      { Id: "5", NoteName: "D#4", Type: playbackType, DurationMs: 600, WaitMs: 600 },
+      { Id: "5", NoteName: "C5", Type: playbackType, DurationMs: 2400, WaitMs: 600 },
+      { Id: "5", NoteName: "C5", Type: playbackType, DurationMs: 600, WaitMs: 2400 },
+      { Id: "5", NoteName: "G4", Type: playbackType, DurationMs: 600, WaitMs: 600 },
+      { Id: "5", NoteName: "D#4", Type: playbackType, DurationMs: 1200, WaitMs: 600 },
+      { Id: "5", NoteName: "G4", Type: playbackType, DurationMs: 600, WaitMs: 1200 },
+      { Id: "5", NoteName: "C#4", Type: playbackType, DurationMs: 300, WaitMs: 600 },
+      { Id: "5", NoteName: "C4", Type: playbackType, DurationMs: 2400, WaitMs: 300 },
+    ]
+  };
+}
+
 function getFourSeasonsMusicScore() {
   return {
     Title: "FourSeasons",
@@ -313,7 +334,8 @@ function getMusicScoreByTitle(title) {
     "Stranger": getStrangerMusicScore,
     "FourSeasons": getFourSeasonsMusicScore,
     "XFiles" : getXFilesMusicScore,
-    "BB": getBluesBrotherMusicScore
+    "BB": getBluesBrotherMusicScore,
+    "Who": getDrWhoMusicScore
   };
   return scores[title]();
 }
@@ -892,13 +914,14 @@ function createScoreSelector() {
   let selector = createSelect();
   selector.position(710, 60);
   selector.class('score-selector');
-  selector.option('XFiles');
-  selector.option('Happy');
   selector.option('BB');
+  selector.option('FourSeasons');
+  selector.option('Happy');
   selector.option('Rick');
   selector.option('Stranger');
-  selector.option('FourSeasons');
-  selector.selected('XFiles');
+  selector.option('XFiles');
+  selector.option('Who');
+  selector.selected('Who');
   selector.changed(() => {
     selectedScore = selector.value();
   });
