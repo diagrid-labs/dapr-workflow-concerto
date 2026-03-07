@@ -33,6 +33,48 @@ scenes:
         position: '7'
         highlightWholeLine: true
         highlightBlur: 2
+  - id: scene-mmg8ziyw-7xdz
+    title: Music Scores
+    moves:
+      - action: open
+        path: NoteStreamApp/wwwroot/musicscores.js
+  - id: scene-mmg90m37-sw3n
+    title: P5JS sketch
+    moves:
+      - action: open
+        path: NoteStreamApp/wwwroot/sketch.js
+  - id: demo-mmg96s9x-7yqu
+    title: onStartButtonPressed
+    moves:
+      - action: highlight
+        path: NoteStreamApp/wwwroot/sketch.js
+        position: '378:410'
+        highlightWholeLine: true
+        highlightBlur: 2
+  - id: demo-mmg9anus-8fxo
+    title: handleSSENote
+    moves:
+      - action: highlight
+        path: NoteStreamApp/wwwroot/sketch.js
+        position: '458:487'
+        highlightWholeLine: true
+        highlightBlur: 2
+  - id: demo-mmg937ly-ijwn
+    title: playNoteWebAudio
+    moves:
+      - action: highlight
+        path: NoteStreamApp/wwwroot/sketch.js
+        position: '128:144'
+        highlightWholeLine: true
+        highlightBlur: 2
+  - id: demo-mmg9dogj-hv6i
+    title: sendNoteOn
+    moves:
+      - action: highlight
+        path: NoteStreamApp/wwwroot/sketch.js
+        position: '157:170'
+        highlightWholeLine: true
+        highlightBlur: 2
   - title: Run Dapr Application
     moves:
       - action: executeTerminalCommand

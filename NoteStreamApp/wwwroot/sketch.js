@@ -464,7 +464,7 @@ function handleSSENote(data) {
   const midiNumber = noteNameToMidiNumber(data.NoteName);
   if (midiNumber === null) return;
 
-  console.log(`Playing SSE note: ${data.NoteName} (MIDI ${midiNumber}) for ${data.DurationMs}ms via ${data.Type}`);
+  //console.log(`Playing SSE note: ${data.NoteName} (MIDI ${midiNumber}) for ${data.DurationMs}ms via ${data.Type}`);
 
   if (data.Type === 'audio') {
     playNoteWebAudio(midiNumber);
