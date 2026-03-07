@@ -14,4 +14,4 @@ Use the QR code to:
 6. Connect with me! 🤝
 
 ::right::
-![QR Code](.demo/images/session-m6ec1e-qr.png)
+![QR Code](.demo/images/session-rprtij-qr.png)

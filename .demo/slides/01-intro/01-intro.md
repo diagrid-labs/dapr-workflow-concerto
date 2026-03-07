@@ -2,7 +2,7 @@
 layout: intro
 ---
 
-# Reliable Agentic Systems need Durable Execution
+# Turning microservice chaos into a beautiful concerto
 
 **Marc Duiker**  
 Developer Advocate @ Diagrid

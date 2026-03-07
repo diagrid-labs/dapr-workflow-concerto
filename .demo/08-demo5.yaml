@@ -1,0 +1,23 @@
+title: 08 - V5 - fan-out
+version: 3
+scenes:
+  - title: MusicWorkflowV5.cs
+    moves:
+      - action: rename
+        path: ConcertoWorkflow/MusicWorkflowV5.cs.temp
+        dest: ConcertoWorkflow/MusicWorkflowV5.cs
+      - action: open
+        path: ConcertoWorkflow/MusicWorkflowV5.cs
+  - title: Run Dapr Application
+    moves:
+      - action: executeTerminalCommand
+        command: dapr run -f .
+        terminalId: dapr-run
+        insertTypingMode: character-by-character
+        insertTypingSpeed: 75
+  - title: Stop Dapr Application
+    moves:
+      - action: focusTerminal
+        terminalId: dapr-run
+      - action: sendKeybinding
+        keybinding: ctrl+c

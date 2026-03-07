@@ -1,0 +1,23 @@
+title: 06 - V3 - InstanceId
+version: 3
+scenes:
+  - title: MusicWorkflowV3.cs
+    moves:
+      - action: rename
+        path: ConcertoWorkflow/MusicWorkflowV3.cs.temp
+        dest: ConcertoWorkflow/MusicWorkflowV3.cs
+      - action: open
+        path: ConcertoWorkflow/MusicWorkflowV3.cs
+  - title: Run Dapr Application
+    moves:
+      - action: executeTerminalCommand
+        command: dapr run -f .
+        terminalId: dapr-run
+        insertTypingMode: character-by-character
+        insertTypingSpeed: 75
+  - title: Stop Dapr Application
+    moves:
+      - action: focusTerminal
+        terminalId: dapr-run
+      - action: sendKeybinding
+        keybinding: ctrl+c

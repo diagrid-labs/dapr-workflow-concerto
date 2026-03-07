@@ -1,0 +1,23 @@
+title: 05 - V2 - Repeat
+version: 3
+scenes:
+  - title: MusicWorkflowV2.cs
+    moves:
+      - action: rename
+        path: ConcertoWorkflow/MusicWorkflowV2.cs.temp
+        dest: ConcertoWorkflow/MusicWorkflowV2.cs
+      - action: open
+        path: ConcertoWorkflow/MusicWorkflowV2.cs
+  - title: Run Dapr Application
+    moves:
+      - action: executeTerminalCommand
+        command: dapr run -f .
+        terminalId: dapr-run
+        insertTypingMode: character-by-character
+        insertTypingSpeed: 75
+  - title: Stop Dapr Application
+    moves:
+      - action: focusTerminal
+        terminalId: dapr-run
+      - action: sendKeybinding
+        keybinding: ctrl+c

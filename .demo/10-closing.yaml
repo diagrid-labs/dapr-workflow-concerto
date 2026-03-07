@@ -1,0 +1,24 @@
+title: 10 - Closing
+version: 3
+scenes:
+  - title: Closing Slide
+    moves:
+      - action: openSlide
+        path: .demo/slides/05-closing/01-closing.md
+  - title: Reset Workflow Files
+    moves:
+      - action: rename
+        path: ConcertoWorkflow/MusicWorkflowV2.cs
+        dest: ConcertoWorkflow/MusicWorkflowV2.cs.temp
+      - action: rename
+        path: ConcertoWorkflow/MusicWorkflowV3.cs
+        dest: ConcertoWorkflow/MusicWorkflowV3.cs.temp
+      - action: rename
+        path: ConcertoWorkflow/MusicWorkflowV4.cs
+        dest: ConcertoWorkflow/MusicWorkflowV4.cs.temp
+      - action: rename
+        path: ConcertoWorkflow/MusicWorkflowV5.cs
+        dest: ConcertoWorkflow/MusicWorkflowV5.cs.temp
+      - action: rename
+        path: ConcertoWorkflow/MusicWorkflowV6.cs
+        dest: ConcertoWorkflow/MusicWorkflowV6.cs.temp

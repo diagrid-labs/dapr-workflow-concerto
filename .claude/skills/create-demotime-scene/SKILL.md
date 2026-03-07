@@ -1,6 +1,6 @@
 ---
 name: Create DemoTime scene
-description: Adds a DemoTime scene definition with moves to a DemoTime yaml file that defines moves, actions and related configuration. Use this skill when the user or another skill mentions: create a scene, add a scene, add a move to a scene.
+description: Adds a DemoTime scene definition with moves to a DemoTime yaml file that defines moves, actions and related configuration. Use this skill when the user or another skill mentions: create a act, add a scene, add a move to a scene.
 ---
 
 ## Overview

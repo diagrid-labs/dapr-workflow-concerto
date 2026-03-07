@@ -1,10 +1,16 @@
 title: 01 - Start
 version: 3
+timer: 55
 scenes:
   - title: Intro
     moves:
       - action: openSlide
         path: .demo/slides/01-intro/01-intro.md
+  - id: demo-mmg4gj89-6wc2
+    title: Start Timer
+    moves:
+      - action: executeVSCodeCommand
+        command: demo-time.startCountdown
   - id: demo-mmcgboeq-yvo8
     title: Bio
     moves:
