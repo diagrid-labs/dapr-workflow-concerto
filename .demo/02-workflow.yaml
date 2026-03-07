@@ -1,10 +1,19 @@
 title: 02 - Workflow
 version: 3
+engageTime:
+  sessionId: rprtij
 scenes:
   - title: Dapr Intro
     moves:
       - action: openSlide
         path: .demo/slides/02-dapr-workflow/01-dapr-intro.md
+  - id: scene-mmg6e6xd-2d1v
+    title: Dapr Poll
+    moves:
+      - action: startEngageTimePoll
+        pollId: 5sslmj
+      - action: showEngageTimePoll
+        pollId: 5sslmj
   - title: Dapr Website
     moves:
       - action: openSlide
@@ -13,6 +22,13 @@ scenes:
     moves:
       - action: openSlide
         path: .demo/slides/02-dapr-workflow/03-dapr-diagram.md
+  - id: scene-mmg6fhho-0srx
+    title: Workflow poll
+    moves:
+      - action: startEngageTimePoll
+        pollId: v2henh
+      - action: showEngageTimePoll
+        pollId: v2henh
   - title: Workflow Engines
     moves:
       - action: openSlide
