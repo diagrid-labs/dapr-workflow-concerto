@@ -75,6 +75,14 @@ scenes:
         position: '157:170'
         highlightWholeLine: true
         highlightBlur: 2
+  - id: demo-mmg9qzgm-hm0o
+    title: draw()
+    moves:
+      - action: highlight
+        path: NoteStreamApp/wwwroot/sketch.js
+        position: '66:70'
+        highlightWholeLine: true
+        highlightBlur: 2
   - title: Run Dapr Application
     moves:
       - action: executeTerminalCommand

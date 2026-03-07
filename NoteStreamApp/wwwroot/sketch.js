@@ -60,15 +60,12 @@ function setup() {
   createSkipButton();
   initSSE();
   initAudio();
+  frameRate(30);
 }
 
 function draw() {
   background(0);
-  frameRate(30);
-
-  // Draw waveform overlay
   drawWaveform();
-
   updateNoteAnimations();
 }
 
