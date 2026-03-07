@@ -1,97 +1,103 @@
 title: 04 - Demo 1
 version: 3
-scenes:
-  - title: Program.cs
-    moves:
-      - action: open
-        path: ConcertoWorkflow/Program.cs
-  - title: Workflow Registration
-    moves:
+demos:
+  - id: demo-mmg96s9x-7yqu
+    title: onStartButtonPressed
+    steps:
       - action: highlight
-        path: ConcertoWorkflow/Program.cs
-        position: '8:13'
+        path: NoteStreamApp/wwwroot/sketch.js
+        position: '375:407'
+        highlightWholeLine: true
         highlightBlur: 2
-  - title: Start endpoint
-    moves:
+  - id: scene-mmg8ziyw-7xdz
+    title: Music Scores
+    steps:
+      - action: open
+        path: NoteStreamApp/wwwroot/musicscores.js
+  - title: POST /startmusic
+    steps:
       - action: highlight
         path: ConcertoWorkflow/Program.cs
         position: '28:38'
         highlightBlur: 2
   - title: MusicWorkflow
-    moves:
+    steps:
       - action: open
         path: ConcertoWorkflow/MusicWorkflow.cs
   - title: SendNoteActivity
-    moves:
+    steps:
       - action: open
         path: ConcertoWorkflow/SendNoteActivity.cs
   - id: demo-mmg7akkg-is4u
     title: HttpClient
-    moves:
+    steps:
       - action: highlight
         path: ConcertoWorkflow/Program.cs
         position: '7'
         highlightWholeLine: true
         highlightBlur: 2
-  - id: scene-mmg8ziyw-7xdz
-    title: Music Scores
-    moves:
+  - id: demo-mmgg41jc-z3ij
+    title: NoteStreamApp
+    steps:
       - action: open
-        path: NoteStreamApp/wwwroot/musicscores.js
-  - id: scene-mmg90m37-sw3n
-    title: P5JS sketch
-    moves:
-      - action: open
-        path: NoteStreamApp/wwwroot/sketch.js
-  - id: demo-mmg96s9x-7yqu
-    title: onStartButtonPressed
-    moves:
+        path: NoteStreamApp/Program.cs
+  - id: demo-mmgg5lqw-u1go
+    title: POST /sendnote
+    steps:
       - action: highlight
-        path: NoteStreamApp/wwwroot/sketch.js
-        position: '378:410'
+        path: NoteStreamApp/Program.cs
+        position: '23:30'
         highlightWholeLine: true
         highlightBlur: 2
+  - id: demo-mmgg6xx9-r04k
+    title: GET /sse
+    steps:
+      - action: highlight
+        path: NoteStreamApp/Program.cs
+        highlightWholeLine: true
+        highlightBlur: 2
+        position: '43:58'
   - id: demo-mmg9anus-8fxo
     title: handleSSENote
-    moves:
+    steps:
       - action: highlight
         path: NoteStreamApp/wwwroot/sketch.js
-        position: '458:487'
+        position: '455:484'
         highlightWholeLine: true
         highlightBlur: 2
   - id: demo-mmg937ly-ijwn
     title: playNoteWebAudio
-    moves:
+    steps:
       - action: highlight
         path: NoteStreamApp/wwwroot/sketch.js
-        position: '128:144'
+        position: '125:140'
         highlightWholeLine: true
         highlightBlur: 2
   - id: demo-mmg9dogj-hv6i
     title: sendNoteOn
-    moves:
+    steps:
       - action: highlight
         path: NoteStreamApp/wwwroot/sketch.js
-        position: '157:170'
+        position: '154:180'
         highlightWholeLine: true
         highlightBlur: 2
   - id: demo-mmg9qzgm-hm0o
     title: draw()
-    moves:
+    steps:
       - action: highlight
         path: NoteStreamApp/wwwroot/sketch.js
         position: '66:70'
         highlightWholeLine: true
         highlightBlur: 2
   - title: Run Dapr Application
-    moves:
+    steps:
       - action: executeTerminalCommand
         command: dapr run -f .
         terminalId: dapr-run
         insertTypingMode: character-by-character
         insertTypingSpeed: 75
   - title: Stop Dapr Application
-    moves:
+    steps:
       - action: focusTerminal
         terminalId: dapr-run
       - action: sendKeybinding

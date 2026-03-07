@@ -1,14 +1,16 @@
 using System;
+using Microsoft.Extensions.Logging;
 using Dapr.Workflow;
 
 /// <summary>
 /// Let's try fan-out/fan-in ... 😬
 /// </summary>
-public class MusicWorkflowV5 : Workflow<MusicScore, object>
+public sealed partial class MusicWorkflowV5 : Workflow<MusicScore, object>
 {
     public override async Task<object> RunAsync(WorkflowContext context, MusicScore musicScore)
     {
-        Console.WriteLine($"Starting music workflow for score: {musicScore.Title}, note count: {musicScore.Notes.Length}");
+        var logger = context.CreateReplaySafeLogger<MusicWorkflowV5>();
+        LogStart(logger, musicScore.Title);
 
         await context.CallActivityAsync<bool>(nameof(SendInstanceIdActivity), context.InstanceId);
 
@@ -22,4 +24,7 @@ public class MusicWorkflowV5 : Workflow<MusicScore, object>
 
         return $"{musicScore.Title} Completed!";
     }
+
+    [LoggerMessage(LogLevel.Information, "Starting music workflow for score: {Title}")]
+    partial void LogStart(ILogger logger, string Title);
 }

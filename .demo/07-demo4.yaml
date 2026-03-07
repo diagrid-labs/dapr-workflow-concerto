@@ -1,6 +1,27 @@
 title: 07 - V4 - no foreach
 version: 3
 scenes:
+  - title: Workflow Registration
+    moves:
+      - action: highlight
+        path: ConcertoWorkflow/Program.cs
+        position: '8:12'
+        highlightBlur: 2
+        highlightWholeLine: true
+  - title: Workflow Versioning
+    moves:
+      - action: highlight
+        path: ConcertoWorkflow/Program.cs
+        position: '13'
+        highlightBlur: 2
+        highlightWholeLine: true
+  - title: POST /startmusic
+    moves:
+      - action: highlight
+        path: ConcertoWorkflow/Program.cs
+        position: '28:38'
+        highlightBlur: 2
+        highlightWholeLine: true
   - title: MusicWorkflowV4.cs
     moves:
       - action: rename

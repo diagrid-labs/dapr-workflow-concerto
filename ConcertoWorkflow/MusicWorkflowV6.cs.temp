@@ -1,15 +1,16 @@
 using System;
-using System.Security.Cryptography.X509Certificates;
+using Microsoft.Extensions.Logging;
 using Dapr.Workflow;
 
 /// <summary>
 /// Wait for approval before playing each note 🤦.
 /// </summary>
-public class MusicWorkflowV6 : Workflow<MusicScore, object>
+public sealed partial class MusicWorkflowV6 : Workflow<MusicScore, object>
 {
     public override async Task<object> RunAsync(WorkflowContext context, MusicScore musicScore)
     {
-        Console.WriteLine($"Starting music workflow for score: {musicScore.Title}, note count: {musicScore.Notes.Length}");
+        var logger = context.CreateReplaySafeLogger<MusicWorkflowV6>();
+        LogStart(logger, musicScore.Title);
 
         await context.CallActivityAsync<bool>(nameof(SendInstanceIdActivity), context.InstanceId);
 
@@ -29,4 +30,7 @@ public class MusicWorkflowV6 : Workflow<MusicScore, object>
 
         return $"{musicScore.Title} In progress...";
     }
+
+    [LoggerMessage(LogLevel.Information, "Starting music workflow for score: {Title}")]
+    partial void LogStart(ILogger logger, string Title);
 }

@@ -1,18 +1,15 @@
+using Microsoft.Extensions.Logging;
 using Dapr.Workflow;
 
-public class SendInstanceIdActivity : WorkflowActivity<string, bool>
+public sealed partial class SendInstanceIdActivity(ILogger<SendInstanceIdActivity> logger, HttpClient httpClient) : WorkflowActivity<string, bool>
 {
-    private readonly HttpClient _httpClient;
-
-    public SendInstanceIdActivity(HttpClient httpClient)
-    {
-        _httpClient = httpClient;
-    }
-
     public override async Task<bool> RunAsync(WorkflowActivityContext context, string instanceId)
     {
-        Console.WriteLine($"SendInstanceIdActivity: {instanceId}");
-        var response = await _httpClient.PostAsJsonAsync("/sendinstanceid", instanceId);
+        LogInstanceIdSend(logger, instanceId);
+        var response = await httpClient.PostAsJsonAsync("/sendinstanceid", instanceId);
         return response.IsSuccessStatusCode;
     }
+
+    [LoggerMessage(LogLevel.Information, "SendInstanceIdActivity: {InstanceId}")]
+    partial void LogInstanceIdSend(ILogger logger, string InstanceId);
 }
