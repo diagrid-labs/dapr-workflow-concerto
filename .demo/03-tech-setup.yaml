@@ -13,6 +13,11 @@ scenes:
     moves:
       - action: openSlide
         path: .demo/slides/03-tech-setup/03-flow-diagram.md
+  - id: demo-mmg745d5-kwwb
+    title: MusicWorkflow Diagram
+    moves:
+      - action: openSlide
+        path: .demo/slides/03-tech-setup/04-music-workflow-diagram.md
   - title: Run Diagrid Dev Dashboard
     moves:
       - action: executeTerminalCommand

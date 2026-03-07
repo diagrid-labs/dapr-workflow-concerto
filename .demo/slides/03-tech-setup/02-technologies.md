@@ -2,6 +2,10 @@
 layout: default
 ---
 
+![Hardware setup](.demo/images/hardware-setup.jpg)
+
+---
+
 # Technologies used
 
 - .NET 10 / ASP.NET Core (Minimal API)

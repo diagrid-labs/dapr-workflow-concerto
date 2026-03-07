@@ -8,6 +8,10 @@ scenes:
         dest: ConcertoWorkflow/MusicWorkflowV3.cs
       - action: open
         path: ConcertoWorkflow/MusicWorkflowV3.cs
+  - title: SendInstanceIdActivity
+    moves:
+      - action: open
+        path: ConcertoWorkflow/SendInstanceIdActivity.cs
   - title: Run Dapr Application
     moves:
       - action: executeTerminalCommand

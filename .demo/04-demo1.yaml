@@ -21,14 +21,18 @@ scenes:
     moves:
       - action: open
         path: ConcertoWorkflow/MusicWorkflow.cs
-  - title: SendInstanceIdActivity
-    moves:
-      - action: open
-        path: ConcertoWorkflow/SendInstanceIdActivity.cs
   - title: SendNoteActivity
     moves:
       - action: open
         path: ConcertoWorkflow/SendNoteActivity.cs
+  - id: demo-mmg7akkg-is4u
+    title: HttpClient
+    moves:
+      - action: highlight
+        path: ConcertoWorkflow/Program.cs
+        position: '7'
+        highlightWholeLine: true
+        highlightBlur: 2
   - title: Run Dapr Application
     moves:
       - action: executeTerminalCommand

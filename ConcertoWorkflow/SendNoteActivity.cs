@@ -20,5 +20,3 @@ public class SendNoteActivity : WorkflowActivity<Note, bool>
         return result;
     }
 }
-
-public record SendNoteResult(string Id, string NoteName, bool IsSuccess);
