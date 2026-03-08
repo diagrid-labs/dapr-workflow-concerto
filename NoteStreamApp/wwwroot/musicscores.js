@@ -371,8 +371,8 @@ function getStrangerMusicScore() {
 const MUSIC_SCORES = {
   "Intro": getIntroMusicScore,
   "Happy": getHappyMusicScore,
-  "Strange": getStrangerMusicScore,
   "Rhythm": getRhythmMusicScore,
+  "Strange": getStrangerMusicScore,
   "X": getXFilesMusicScore,
   "BB": getBluesBrotherMusicScore,
   "Never": getRickMusicScore,

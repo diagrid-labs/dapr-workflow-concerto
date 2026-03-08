@@ -40,7 +40,7 @@ scenes:
         slide: 1
   - title: Workflow Sequence Diagram
     moves:
-      - action: openSlide
+      - action: markdownPreview
         path: .demo/slides/02-dapr-workflow/05-workflow-sequence-diagram.md
   - title: Workflow Final
     moves:

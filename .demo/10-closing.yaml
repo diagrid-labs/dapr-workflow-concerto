@@ -13,6 +13,11 @@ scenes:
     moves:
       - action: openSlide
         path: .demo/slides/04-demos/10a-synth-presets.md
+      - action: rename
+        path: ConcertoWorkflow/MusicWorkflowV7.cs.temp
+        dest: ConcertoWorkflow/MusicWorkflowV7.cs
+      - action: waitForTimeout
+        timeout: 500
       - action: executeTerminalCommand
         command: dapr run -f .
         terminalId: dapr-run

@@ -14,17 +14,10 @@ layout: default
 
 ### 1. Workflows are a great tool to build reliable business processes
 
-<dt-show>
-
 ### 2. Dapr workflow supports versioning since v1.17
-
-</dt-show>
-
-<dt-show clicks=2>
 
 ### 3. Book me for your (wedding) party!
 
-</dt-show>
 
 ---
 layout: default

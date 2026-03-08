@@ -6,10 +6,11 @@ layout: default
 
 ```mermaid
 flowchart LR
-    FE[Front-end] --HTTP--> CWA[ConcertoWorkflowApp]
-    CWA --HTTP--> NSA[NoteStreamApp]
-    NSA --SSE--> FE
-    FE --WebMIDI--> HI[Audio/MIDI
-    Interface]
-    HI --MIDI--> HS[Synthesizer]
+    FE[Front-end] --1.HTTP--> CWA[ConcertoWorkflowApp]
+    CWA<--2.gRPC-->DAPR[Dapr
+    Workflow
+    Engine]
+    CWA --3.HTTP--> NSA[NoteStreamApp]
+    NSA --4.SSE--> FE
+    FE --5.WebMIDI--> HS[Synthesizer]
 ```

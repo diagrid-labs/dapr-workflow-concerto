@@ -6,4 +6,4 @@ layout: section
 
 | Score | Synth settings |
 | - | - |
-| Happy | Osc 10, Harm ++ |
+| Happy | Osc 10, Harm + |

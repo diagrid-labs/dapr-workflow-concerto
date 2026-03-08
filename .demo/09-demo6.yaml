@@ -24,21 +24,3 @@ scenes:
         terminalId: dapr-run
       - action: sendKeybinding
         keybinding: ctrl+c
-  - title: Run MusicWorkflowV7
-    moves:
-      - action: rename
-        path: ConcertoWorkflow/MusicWorkflowV7.cs.temp
-        dest: ConcertoWorkflow/MusicWorkflowV7.cs
-      - action: waitForTimeout
-        timeout: 500
-      - action: executeTerminalCommand
-        command: dapr run -f .
-        terminalId: dapr-run
-        insertTypingMode: character-by-character
-        insertTypingSpeed: 75
-  - title: Stop Dapr Application
-    moves:
-      - action: focusTerminal
-        terminalId: dapr-run
-      - action: sendKeybinding
-        keybinding: ctrl+c
