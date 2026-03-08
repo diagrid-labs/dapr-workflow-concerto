@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: section
 ---
 
 # Encore: Let's play!

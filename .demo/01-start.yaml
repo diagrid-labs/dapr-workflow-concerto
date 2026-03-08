@@ -14,11 +14,6 @@ scenes:
     moves:
       - action: executeVSCodeCommand
         command: demo-time.startCountdown
-      - action: rename
-        path: ConcertoWorkflow/MusicWorkflowV2.cs.temp
-        dest: ConcertoWorkflow/MusicWorkflowV2.cs
-      - action: waitForTimeout
-        timeout: 500
       - action: executeTerminalCommand
         command: dapr run -f .
         terminalId: dapr-run
