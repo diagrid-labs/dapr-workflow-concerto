@@ -29,6 +29,7 @@ scenes:
   - id: demo-mmcgboeq-yvo8
     title: Bio
     moves:
+      - action: setPresentationView
       - action: openSlide
         path: .demo/slides/01-intro/02-bio.md
   - id: demo-mmcgdyir-ug1w

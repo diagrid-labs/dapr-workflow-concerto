@@ -2,11 +2,10 @@
     "liveServer.settings.port": 5501,
     "demoTime.defaultFileType": "yaml",
     "demoTime.timer": 50,
-    "workbench.statusBar.visible": false,
+    "workbench.statusBar.visible": true,
     "workbench.editor.showTabs": "none",
     "workbench.activityBar.location": "default",
     "demoTime.presentationViewToggles": [
-        "statusBar",
         "tabs",
         "sideBar",
         "panel"
