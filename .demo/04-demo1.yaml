@@ -106,18 +106,4 @@ scenes:
         position: '66:70'
         highlightWholeLine: true
         highlightBlur: 2
-  - id: scene-mmgo8qjb-9den
-    title: Run Dapr Application
-    moves:
-      - action: executeTerminalCommand
-        command: dapr run -f .
-        terminalId: dapr-run
-        insertTypingMode: character-by-character
-        insertTypingSpeed: 75
-  - id: scene-mmgo8rvf-vbwj
-    title: Stop Dapr Application
-    moves:
-      - action: focusTerminal
-        terminalId: dapr-run
-      - action: sendKeybinding
-        keybinding: ctrl+c
+
