@@ -3,11 +3,37 @@ version: 3
 engageTime:
   sessionId: rprtij
 scenes:
-  - title: Closing Slide
+  - title: Things to remember
     moves:
       - action: setPresentationView
       - action: openSlide
         path: .demo/slides/05-closing/01-closing.md
+  - id: scene-mmhxsrhj-fliy
+    title: Let's Play!
+    moves:
+      - action: openSlide
+        path: .demo/slides/04-demos/10a-synth-presets.md
+      - action: executeTerminalCommand
+        command: dapr run -f .
+        terminalId: dapr-run
+        insertTypingMode: character-by-character
+        insertTypingSpeed: 75
+  - id: scene-mmhxsrhj-gkiy
+    title: Encore!
+    moves:
+      - action: openSlide
+        path: .demo/slides/04-demos/10b-synth-presets.md
+  - id: scene-mmi20x0c-2163
+    title: Links & Feedback
+    moves:
+      - action: openSlide
+        path: .demo/slides/05-closing/02-links.md
+  - title: Stop Dapr Application
+    moves:
+      - action: focusTerminal
+        terminalId: dapr-run
+      - action: sendKeybinding
+        keybinding: ctrl+c
   - title: Reset Workflow Files
     moves:
       - action: rename
@@ -25,3 +51,6 @@ scenes:
       - action: rename
         path: ConcertoWorkflow/MusicWorkflowV6.cs
         dest: ConcertoWorkflow/MusicWorkflowV6.cs.temp
+      - action: rename
+        path: ConcertoWorkflow/MusicWorkflowV7.cs
+        dest: ConcertoWorkflow/MusicWorkflowV7.cs.temp

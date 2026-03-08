@@ -1,3 +1,46 @@
+function getIntroMusicScore() {
+  return {
+    Title: "Intro",
+    Repeats: 8,
+    Notes: [
+      { Id: "1", NoteName: "C2", Type: playbackType, DurationMs: 150, WaitMs: 200 },
+      { Id: "2", NoteName: "C3", Type: playbackType, DurationMs: 150, WaitMs: 200 },
+      { Id: "3", NoteName: "C3", Type: playbackType, DurationMs: 150, WaitMs: 200 },
+      { Id: "4", NoteName: "C#2", Type: playbackType, DurationMs: 150, WaitMs: 200 },
+      { Id: "5", NoteName: "C2", Type: playbackType, DurationMs: 150, WaitMs: 200 },
+      { Id: "6", NoteName: "C3", Type: playbackType, DurationMs: 150, WaitMs: 200 },
+      { Id: "7", NoteName: "C3", Type: playbackType, DurationMs: 150, WaitMs: 200 },
+      { Id: "8", NoteName: "F#2", Type: playbackType, DurationMs: 150, WaitMs: 200 },
+      { Id: "9", NoteName: "C2", Type: playbackType, DurationMs: 150, WaitMs: 200 },
+      { Id: "10", NoteName: "C3", Type: playbackType, DurationMs: 150, WaitMs: 200 },
+      { Id: "11", NoteName: "C3", Type: playbackType, DurationMs: 150, WaitMs: 200 },
+      { Id: "12", NoteName: "C#2", Type: playbackType, DurationMs: 150, WaitMs: 200 },
+      { Id: "13", NoteName: "F2", Type: playbackType, DurationMs: 150, WaitMs: 200 },
+      { Id: "14", NoteName: "F3", Type: playbackType, DurationMs: 150, WaitMs: 200 },
+      { Id: "15", NoteName: "F3", Type: playbackType, DurationMs: 150, WaitMs: 200 },
+      { Id: "16", NoteName: "F#2", Type: playbackType, DurationMs: 150, WaitMs: 200 },
+
+      { Id: "1", NoteName: "C3", Type: playbackType, DurationMs: 150, WaitMs: 200 },
+      { Id: "2", NoteName: "C4", Type: playbackType, DurationMs: 150, WaitMs: 200 },
+      { Id: "3", NoteName: "C4", Type: playbackType, DurationMs: 150, WaitMs: 200 },
+      { Id: "4", NoteName: "C#3", Type: playbackType, DurationMs: 150, WaitMs: 200 },
+      { Id: "5", NoteName: "C3", Type: playbackType, DurationMs: 150, WaitMs: 200 },
+      { Id: "6", NoteName: "C4", Type: playbackType, DurationMs: 150, WaitMs: 200 },
+      { Id: "7", NoteName: "C4", Type: playbackType, DurationMs: 150, WaitMs: 200 },
+      { Id: "8", NoteName: "F#3", Type: playbackType, DurationMs: 150, WaitMs: 200 },
+      { Id: "9", NoteName: "C3", Type: playbackType, DurationMs: 150, WaitMs: 200 },
+      { Id: "10", NoteName: "C4", Type: playbackType, DurationMs: 150, WaitMs: 200 },
+      { Id: "11", NoteName: "C4", Type: playbackType, DurationMs: 150, WaitMs: 200 },
+      { Id: "12", NoteName: "C#3", Type: playbackType, DurationMs: 150, WaitMs: 200 },
+      { Id: "13", NoteName: "F3", Type: playbackType, DurationMs: 150, WaitMs: 200 },
+      { Id: "14", NoteName: "F4", Type: playbackType, DurationMs: 150, WaitMs: 200 },
+      { Id: "15", NoteName: "F4", Type: playbackType, DurationMs: 150, WaitMs: 200 },
+      { Id: "16", NoteName: "F#3", Type: playbackType, DurationMs: 150, WaitMs: 200 }
+    ]
+  };
+}
+
+
 function getHappyMusicScore() {
   return {
     Title: "Happy",
@@ -31,6 +74,8 @@ function getHappyMusicScore() {
     ]
   };
 }
+
+
 
 function getBluesBrotherMusicScore() {
   return {
@@ -111,9 +156,9 @@ function getXFilesMusicScore() {
 function getRickMusicScore() {
   return {
     Title: "Rick",
-    Repeats: 1,
+    Repeats: 2,
     Notes: [
-      { Id: "1",  NoteName: "G3", Type: playbackType, DurationMs: 200, WaitMs: 0 },
+      { Id: "1",  NoteName: "G3", Type: playbackType, DurationMs: 200, WaitMs: 700 },
       { Id: "2",  NoteName: "A3", Type: playbackType, DurationMs: 200, WaitMs: 200 },
       { Id: "3",  NoteName: "C4", Type: playbackType, DurationMs: 200, WaitMs: 200 },
       { Id: "4",  NoteName: "A3", Type: playbackType, DurationMs: 200, WaitMs: 200 },
@@ -181,9 +226,9 @@ function getRickMusicScore() {
 function getFinalScore() {
   return {
     Title: "Final",
-    Repeats: 2,
+    Repeats: 4,
     Notes: [
-      { Id: "1", NoteName: "C#5", Type: playbackType, DurationMs: 100, WaitMs: 1000 },
+      { Id: "1", NoteName: "C#5", Type: playbackType, DurationMs: 100, WaitMs: 800 },
       { Id: "2", NoteName: "B4",  Type: playbackType, DurationMs: 100, WaitMs: 100 },
       { Id: "3", NoteName: "C#5", Type: playbackType, DurationMs: 300, WaitMs: 100 },
       { Id: "4", NoteName: "F#4", Type: playbackType, DurationMs: 800, WaitMs: 400 },
@@ -228,34 +273,13 @@ function getStrangerMusicScore() {
   };
 }
 
-function getDrWhoMusicScore() {
-  return {
-    Title: "Who",
-    Repeats: 1,
-    Notes: [
-      { Id: "1", NoteName: "C#4", Type: playbackType, DurationMs: 600, WaitMs: 0 },
-      { Id: "2", NoteName: "C#5", Type: playbackType, DurationMs: 600, WaitMs: 600 },
-      { Id: "3", NoteName: "C5", Type: playbackType, DurationMs: 2400, WaitMs: 600 },
-      { Id: "4", NoteName: "D#5", Type: playbackType, DurationMs: 600, WaitMs: 2400 },
-      { Id: "5", NoteName: "D#4", Type: playbackType, DurationMs: 600, WaitMs: 600 },
-      { Id: "5", NoteName: "C5", Type: playbackType, DurationMs: 2400, WaitMs: 600 },
-      { Id: "5", NoteName: "C5", Type: playbackType, DurationMs: 600, WaitMs: 2400 },
-      { Id: "5", NoteName: "G4", Type: playbackType, DurationMs: 600, WaitMs: 600 },
-      { Id: "5", NoteName: "D#4", Type: playbackType, DurationMs: 1200, WaitMs: 600 },
-      { Id: "5", NoteName: "G4", Type: playbackType, DurationMs: 600, WaitMs: 1200 },
-      { Id: "5", NoteName: "C#4", Type: playbackType, DurationMs: 300, WaitMs: 600 },
-      { Id: "5", NoteName: "C4", Type: playbackType, DurationMs: 2400, WaitMs: 300 },
-    ]
-  };
-}
-
 const MUSIC_SCORES = {
+  "Intro": getIntroMusicScore,
   "Happy": getHappyMusicScore,
   "Strange": getStrangerMusicScore,
   "Rhythm": getRhythmMusicScore,
   "X": getXFilesMusicScore,
   "BB": getBluesBrotherMusicScore,
-  "Who": getDrWhoMusicScore,
   "Never": getRickMusicScore,
   "Final" : getFinalScore
 };

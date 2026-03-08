@@ -8,8 +8,11 @@ scenes:
         dest: ConcertoWorkflow/MusicWorkflowV2.cs
       - action: open
         path: ConcertoWorkflow/MusicWorkflowV2.cs
-  - title: Run Dapr Application
+  - id: scene-mmhxsrhj-ajiy
+    title: Let's Play!
     moves:
+      - action: openSlide
+        path: .demo/slides/04-demos/05-synth-presets.md
       - action: executeTerminalCommand
         command: dapr run -f .
         terminalId: dapr-run

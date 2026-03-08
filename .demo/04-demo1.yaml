@@ -1,9 +1,16 @@
 title: 04 - Demo 1
 version: 3
 scenes:
-  - id: scene-mmgo8m3q-ja6s
-    title: Run Dapr Application
+  - id: scene-mmhxsrhj-fjiy
+    title: Let's Play!
     moves:
+      - action: openSlide
+        path: .demo/slides/04-demos/04-synth-presets.md
+      - action: rename
+        path: ConcertoWorkflow/MusicWorkflowV2.cs
+        dest: ConcertoWorkflow/MusicWorkflowV2.cs.temp
+      - action: waitForTimeout
+        timeout: 500
       - action: executeTerminalCommand
         command: dapr run -f .
         terminalId: dapr-run

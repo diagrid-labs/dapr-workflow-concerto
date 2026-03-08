@@ -8,8 +8,29 @@ scenes:
         dest: ConcertoWorkflow/MusicWorkflowV6.cs
       - action: open
         path: ConcertoWorkflow/MusicWorkflowV6.cs
-  - title: Run Dapr Application
+  - id: scene-mmhxsrhj-fkiy
+    title: Let's Play!
     moves:
+      - action: openSlide
+        path: .demo/slides/04-demos/09-synth-presets.md
+      - action: executeTerminalCommand
+        command: dapr run -f .
+        terminalId: dapr-run
+        insertTypingMode: character-by-character
+        insertTypingSpeed: 75
+  - title: Stop Dapr Application
+    moves:
+      - action: focusTerminal
+        terminalId: dapr-run
+      - action: sendKeybinding
+        keybinding: ctrl+c
+  - title: Run MusicWorkflowV7
+    moves:
+      - action: rename
+        path: ConcertoWorkflow/MusicWorkflowV7.cs.temp
+        dest: ConcertoWorkflow/MusicWorkflowV7.cs
+      - action: waitForTimeout
+        timeout: 500
       - action: executeTerminalCommand
         command: dapr run -f .
         terminalId: dapr-run

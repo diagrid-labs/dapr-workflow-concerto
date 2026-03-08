@@ -10,13 +10,21 @@ layout: section
 layout: default
 ---
 
-# Key Takeaways
+# Things to remember
 
-### 1. Agentic systems are distributed systems
-### 2. Durable execution solves reliability issues (Dapr Workflow!)
-### 3. Dapr Conversation API simplifies LLM integration
-### 4. Understand the agentic patterns and when to use them (mix & match!)
-### 5. Start simple, add complexity when needed
+### 1. Workflows are a great tool to build reliable business processes
+
+<dt-show>
+
+### 2. Dapr workflow supports versioning since v1.17
+
+</dt-show>
+
+<dt-show clicks=2>
+
+### 3. Book me for your (wedding) party!
+
+</dt-show>
 
 ---
 layout: default
@@ -29,20 +37,3 @@ layout: default
 ---
 
 ![Diagrid Catalyst](.demo/images/diagrid-catalyst.png)
-
----
-layout: two-columns
----
-
-# Thank you!
-
-Use the QR code to:
-
-1. Rate my session ⭐️⭐️⭐️⭐️⭐️ & provide feedback 📝
-2. Access resources 📚
-3. Connect with me! 🤝
-
-![Dapr Community Supporter](.demo/images/dapr-community-supporter-badge-anim.gif)
-
-::right::
-![QR Code](.demo/images/session-rprtij-feedback-qr.png)

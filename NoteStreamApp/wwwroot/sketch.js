@@ -36,7 +36,7 @@ const ANIMATION_CONFIG = {
   maxNoise: 5
 };
 
-const MIDI_NOTE_MIN = 48;  // C3
+const MIDI_NOTE_MIN = 36;  // C2
 const MIDI_NOTE_MAX = 84;  // C6
 const MIDI_CHANNEL = 1;
 const MIDI_VELOCITY = 120;
