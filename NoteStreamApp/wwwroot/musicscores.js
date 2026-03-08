@@ -178,6 +178,39 @@ function getRickMusicScore() {
   };
 }
 
+function getFinalScore() {
+  return {
+    Title: "Final",
+    Repeats: 2,
+    Notes: [
+      { Id: "1", NoteName: "C#5", Type: playbackType, DurationMs: 100, WaitMs: 1000 },
+      { Id: "2", NoteName: "B4",  Type: playbackType, DurationMs: 100, WaitMs: 100 },
+      { Id: "3", NoteName: "C#5", Type: playbackType, DurationMs: 300, WaitMs: 100 },
+      { Id: "4", NoteName: "F#4", Type: playbackType, DurationMs: 800, WaitMs: 400 },
+
+      { Id: "5", NoteName: "D5",  Type: playbackType, DurationMs: 100, WaitMs: 1000 },
+      { Id: "6", NoteName: "C#5", Type: playbackType, DurationMs: 100, WaitMs: 100 },
+      { Id: "7", NoteName: "D5",  Type: playbackType, DurationMs: 100, WaitMs: 100 },
+      { Id: "8", NoteName: "C#5", Type: playbackType, DurationMs: 100, WaitMs: 200 },
+      { Id: "9", NoteName: "B4",  Type: playbackType, DurationMs: 800, WaitMs: 250 },
+      
+      { Id: "10", NoteName: "D5",  Type: playbackType, DurationMs: 100, WaitMs: 1000 },
+      { Id: "11", NoteName: "C#5", Type: playbackType, DurationMs: 100, WaitMs: 100 },
+      { Id: "12", NoteName: "D5",  Type: playbackType, DurationMs: 300, WaitMs: 100 },
+      { Id: "13", NoteName: "F#4", Type: playbackType, DurationMs: 400, WaitMs: 400 },
+      { Id: "14", NoteName: "G#4",  Type: playbackType, DurationMs: 800, WaitMs: 500 },
+
+      { Id: "15", NoteName: "B4", Type: playbackType, DurationMs: 100, WaitMs: 800 },
+      { Id: "16", NoteName: "A4", Type: playbackType, DurationMs: 100, WaitMs: 100 },
+      { Id: "16", NoteName: "B4", Type: playbackType, DurationMs: 100, WaitMs: 100 },
+      { Id: "16", NoteName: "A4", Type: playbackType, DurationMs: 100, WaitMs: 200 },
+      { Id: "16", NoteName: "G#4", Type: playbackType, DurationMs: 100, WaitMs: 200 },
+      { Id: "16", NoteName: "B4", Type: playbackType, DurationMs: 100, WaitMs: 200 },
+      { Id: "16", NoteName: "A4", Type: playbackType, DurationMs: 800, WaitMs: 200 }
+    ]
+  };
+}
+
 function getStrangerMusicScore() {
   return {
     Title: "Stranger",
@@ -218,12 +251,13 @@ function getDrWhoMusicScore() {
 
 const MUSIC_SCORES = {
   "Happy": getHappyMusicScore,
-  "Rhythm": getRhythmMusicScore,
-  "Never": getRickMusicScore,
   "Strange": getStrangerMusicScore,
+  "Rhythm": getRhythmMusicScore,
   "X": getXFilesMusicScore,
   "BB": getBluesBrotherMusicScore,
-  "Who": getDrWhoMusicScore
+  "Who": getDrWhoMusicScore,
+  "Never": getRickMusicScore,
+  "Final" : getFinalScore
 };
 
 function getMusicScoreByTitle(title) {

@@ -1,9 +1,24 @@
 title: 04 - Demo 1
 version: 3
-demos:
+scenes:
+  - id: scene-mmgo8m3q-ja6s
+    title: Run Dapr Application
+    moves:
+      - action: executeTerminalCommand
+        command: dapr run -f .
+        terminalId: dapr-run
+        insertTypingMode: character-by-character
+        insertTypingSpeed: 75
+  - id: scene-mmgo8nlq-s55t
+    title: Stop Dapr Application
+    moves:
+      - action: focusTerminal
+        terminalId: dapr-run
+      - action: sendKeybinding
+        keybinding: ctrl+c
   - id: demo-mmg96s9x-7yqu
     title: onStartButtonPressed
-    steps:
+    moves:
       - action: highlight
         path: NoteStreamApp/wwwroot/sketch.js
         position: '375:407'
@@ -11,26 +26,26 @@ demos:
         highlightBlur: 2
   - id: scene-mmg8ziyw-7xdz
     title: Music Scores
-    steps:
+    moves:
       - action: open
         path: NoteStreamApp/wwwroot/musicscores.js
   - title: POST /startmusic
-    steps:
+    moves:
       - action: highlight
         path: ConcertoWorkflow/Program.cs
         position: '28:38'
         highlightBlur: 2
   - title: MusicWorkflow
-    steps:
+    moves:
       - action: open
         path: ConcertoWorkflow/MusicWorkflow.cs
   - title: SendNoteActivity
-    steps:
+    moves:
       - action: open
         path: ConcertoWorkflow/SendNoteActivity.cs
   - id: demo-mmg7akkg-is4u
     title: HttpClient
-    steps:
+    moves:
       - action: highlight
         path: ConcertoWorkflow/Program.cs
         position: '7'
@@ -38,12 +53,12 @@ demos:
         highlightBlur: 2
   - id: demo-mmgg41jc-z3ij
     title: NoteStreamApp
-    steps:
+    moves:
       - action: open
         path: NoteStreamApp/Program.cs
   - id: demo-mmgg5lqw-u1go
     title: POST /sendnote
-    steps:
+    moves:
       - action: highlight
         path: NoteStreamApp/Program.cs
         position: '23:30'
@@ -51,7 +66,7 @@ demos:
         highlightBlur: 2
   - id: demo-mmgg6xx9-r04k
     title: GET /sse
-    steps:
+    moves:
       - action: highlight
         path: NoteStreamApp/Program.cs
         highlightWholeLine: true
@@ -59,7 +74,7 @@ demos:
         position: '43:58'
   - id: demo-mmg9anus-8fxo
     title: handleSSENote
-    steps:
+    moves:
       - action: highlight
         path: NoteStreamApp/wwwroot/sketch.js
         position: '455:484'
@@ -67,7 +82,7 @@ demos:
         highlightBlur: 2
   - id: demo-mmg937ly-ijwn
     title: playNoteWebAudio
-    steps:
+    moves:
       - action: highlight
         path: NoteStreamApp/wwwroot/sketch.js
         position: '125:140'
@@ -75,7 +90,7 @@ demos:
         highlightBlur: 2
   - id: demo-mmg9dogj-hv6i
     title: sendNoteOn
-    steps:
+    moves:
       - action: highlight
         path: NoteStreamApp/wwwroot/sketch.js
         position: '154:180'
@@ -83,21 +98,23 @@ demos:
         highlightBlur: 2
   - id: demo-mmg9qzgm-hm0o
     title: draw()
-    steps:
+    moves:
       - action: highlight
         path: NoteStreamApp/wwwroot/sketch.js
         position: '66:70'
         highlightWholeLine: true
         highlightBlur: 2
-  - title: Run Dapr Application
-    steps:
+  - id: scene-mmgo8qjb-9den
+    title: Run Dapr Application
+    moves:
       - action: executeTerminalCommand
         command: dapr run -f .
         terminalId: dapr-run
         insertTypingMode: character-by-character
         insertTypingSpeed: 75
-  - title: Stop Dapr Application
-    steps:
+  - id: scene-mmgo8rvf-vbwj
+    title: Stop Dapr Application
+    moves:
       - action: focusTerminal
         terminalId: dapr-run
       - action: sendKeybinding
