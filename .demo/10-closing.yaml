@@ -5,6 +5,7 @@ engageTime:
 scenes:
   - title: Closing Slide
     moves:
+      - action: setPresentationView
       - action: openSlide
         path: .demo/slides/05-closing/01-closing.md
   - title: Reset Workflow Files

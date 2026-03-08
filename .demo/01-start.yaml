@@ -3,15 +3,29 @@ version: 3
 engageTime:
   sessionId: rprtij
 scenes:
-  - title: Intro
+  - id: scene-mmhm7tku-rik0
+    title: Intro
     moves:
       - action: openSlide
         path: .demo/slides/01-intro/01-intro.md
+      - action: setPresentationView
   - id: demo-mmg4gj89-6wc2
     title: Start Timer
     moves:
       - action: executeVSCodeCommand
         command: demo-time.startCountdown
+      - action: executeTerminalCommand
+        command: dapr run -f .
+        terminalId: dapr-run
+        insertTypingMode: character-by-character
+        insertTypingSpeed: 75
+  - id: scene-mmhm0xry-g8ll
+    title: Stop Dapr Application
+    moves:
+      - action: focusTerminal
+        terminalId: dapr-run
+      - action: sendKeybinding
+        keybinding: ctrl+c
   - id: demo-mmcgboeq-yvo8
     title: Bio
     moves:
