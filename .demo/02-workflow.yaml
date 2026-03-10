@@ -22,6 +22,10 @@ scenes:
     moves:
       - action: openSlide
         path: .demo/slides/02-dapr-workflow/03-dapr-diagram.md
+  - title: Workflow Engines
+    moves:
+      - action: openSlide
+        path: .demo/slides/02-dapr-workflow/03-dapr-workflow-intro.md
   - id: scene-mmg6fhho-0srx
     title: Workflow poll
     moves:
@@ -29,10 +33,6 @@ scenes:
         pollId: v2henh
       - action: showEngageTimePoll
         pollId: v2henh
-  - title: Workflow Engines
-    moves:
-      - action: openSlide
-        path: .demo/slides/02-dapr-workflow/03-dapr-workflow-intro.md
   - title: Dapr Workflow Explanation
     moves:
       - action: openSlide

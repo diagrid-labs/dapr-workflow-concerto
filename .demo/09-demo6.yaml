@@ -8,6 +8,14 @@ scenes:
         dest: ConcertoWorkflow/MusicWorkflowV6.cs
       - action: open
         path: ConcertoWorkflow/MusicWorkflowV6.cs
+  - id: scene-mmkfam32-822r
+    title: POST /approve
+    moves:
+      - action: highlight
+        path: ConcertoWorkflow/Program.cs
+        highlightWholeLine: true
+        position: '40:52'
+        highlightBlur: 2
   - id: scene-mmhxsrhj-fkiy
     title: Let's Play!
     moves:

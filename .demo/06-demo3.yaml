@@ -12,6 +12,13 @@ scenes:
     moves:
       - action: open
         path: ConcertoWorkflow/SendInstanceIdActivity.cs
+  - id: scene-mmkf7xft-ftuj
+    title: POST /terminate
+    moves:
+      - action: highlight
+        path: ConcertoWorkflow/Program.cs
+        position: '73:79'
+        highlightWholeLine: true
   - id: scene-mmhxsrhj-fjix
     title: Let's Play!
     moves:

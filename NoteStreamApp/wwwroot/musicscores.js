@@ -170,25 +170,6 @@ function getHappyMusicScore() {
   };
 }
 
-
-
-function getBluesBrotherMusicScore() {
-  return {
-    Title: "BB",
-    Repeats: 16,
-    Notes: [
-      { Id: "1", NoteName: "F3", Type: playbackType, DurationMs: 150, WaitMs: 200 },
-      { Id: "2", NoteName: "F3", Type: playbackType, DurationMs: 150, WaitMs: 200 },
-      { Id: "3", NoteName: "G3", Type: playbackType, DurationMs: 150, WaitMs: 200 },
-      { Id: "4", NoteName: "F3", Type: playbackType, DurationMs: 150, WaitMs: 200 },
-      { Id: "5", NoteName: "G#3", Type: playbackType, DurationMs: 150, WaitMs: 200 },
-      { Id: "6", NoteName: "F3", Type: playbackType, DurationMs: 150, WaitMs: 200 },
-      { Id: "7", NoteName: "A#3", Type: playbackType, DurationMs: 150, WaitMs: 200 },
-      { Id: "8", NoteName: "G#3", Type: playbackType, DurationMs: 150, WaitMs: 200 }
-    ]
-  };
-}
-
 function getRhythmMusicScore() {
   return {
     Title: "Rhythm",
@@ -211,6 +192,23 @@ function getRhythmMusicScore() {
       { Id: "14", NoteName: "D4", Type: playbackType, DurationMs: 200, WaitMs: 220 },
       { Id: "15", NoteName: "F4", Type: playbackType, DurationMs: 200, WaitMs: 220 },
       { Id: "16", NoteName: "D4", Type: playbackType, DurationMs: 200, WaitMs: 220 }
+    ]
+  };
+}
+
+function getBluesBrotherMusicScore() {
+  return {
+    Title: "BB",
+    Repeats: 16,
+    Notes: [
+      { Id: "1", NoteName: "F3", Type: playbackType, DurationMs: 150, WaitMs: 200 },
+      { Id: "2", NoteName: "F3", Type: playbackType, DurationMs: 150, WaitMs: 200 },
+      { Id: "3", NoteName: "G3", Type: playbackType, DurationMs: 150, WaitMs: 200 },
+      { Id: "4", NoteName: "F3", Type: playbackType, DurationMs: 150, WaitMs: 200 },
+      { Id: "5", NoteName: "G#3", Type: playbackType, DurationMs: 150, WaitMs: 200 },
+      { Id: "6", NoteName: "F3", Type: playbackType, DurationMs: 150, WaitMs: 200 },
+      { Id: "7", NoteName: "A#3", Type: playbackType, DurationMs: 150, WaitMs: 200 },
+      { Id: "8", NoteName: "G#3", Type: playbackType, DurationMs: 150, WaitMs: 200 }
     ]
   };
 }

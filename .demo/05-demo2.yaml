@@ -8,6 +8,14 @@ scenes:
         dest: ConcertoWorkflow/MusicWorkflowV2.cs
       - action: open
         path: ConcertoWorkflow/MusicWorkflowV2.cs
+  - id: scene-mmkf4xjz-fnbl
+    title: Rhythm music score
+    moves:
+      - action: highlight
+        path: NoteStreamApp/wwwroot/musicscores.js
+        highlightBlur: 2
+        position: '173:197'
+        highlightWholeLine: true
   - id: scene-mmhxsrhj-ajiy
     title: Let's Play!
     moves:
