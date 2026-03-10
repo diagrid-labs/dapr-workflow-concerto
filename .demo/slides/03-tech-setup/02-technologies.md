@@ -1,9 +1,10 @@
 ---
-layout: default
+layout: image
+image: ".demo/images/hardware-setup.jpg"
 ---
 
-![Hardware setup](.demo/images/hardware-setup.jpg)
-
+---
+layout: default
 ---
 
 # Software technologies used

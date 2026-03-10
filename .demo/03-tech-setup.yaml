@@ -9,7 +9,7 @@ scenes:
     moves:
       - action: openSlide
         path: .demo/slides/03-tech-setup/02-technologies.md
-  - title: Application Flow
+  - title: Data Flow
     moves:
       - action: openSlide
         path: .demo/slides/03-tech-setup/03-flow-diagram.md

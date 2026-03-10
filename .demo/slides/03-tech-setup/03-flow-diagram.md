@@ -12,5 +12,5 @@ flowchart LR
     Engine]
     CWA --3.HTTP--> NSA[NoteStreamApp]
     NSA --4.SSE--> FE
-    FE --5.WebMIDI--> HS[Synthesizer]
+    FE --5.MIDI--> HS[Synthesizer]
 ```

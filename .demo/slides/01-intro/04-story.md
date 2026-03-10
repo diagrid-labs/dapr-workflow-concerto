@@ -22,7 +22,7 @@ layout: default
 
 ### - Hardware & Software
 
-### - 7 demos with different workflows
+### - Play music! 7 demos with different workflows
 
 ### - Resources & Feedback
 

@@ -39,7 +39,7 @@ scenes:
         terminalId: dapr-run
       - action: sendKeybinding
         keybinding: ctrl+c
-  - title: Reset Workflow Files
+  - title: Reset All
     moves:
       - action: rename
         path: ConcertoWorkflow/MusicWorkflowV2.cs
@@ -59,3 +59,7 @@ scenes:
       - action: rename
         path: ConcertoWorkflow/MusicWorkflowV7.cs
         dest: ConcertoWorkflow/MusicWorkflowV7.cs.temp
+      - action: focusTerminal
+        terminalId: dev-dashboard
+      - action: sendKeybinding
+        keybinding: ctrl+c
