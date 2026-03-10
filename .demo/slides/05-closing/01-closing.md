@@ -2,22 +2,27 @@
 layout: section
 ---
 
-# Key takeaways & Next steps
+# Things to remember 🧠
 
 ![Animation](.demo/images/bot-animations-4.gif)
 
 ---
-layout: default
+layout: section
 ---
 
-# Things to remember
+# 1. Workflows are a great tool to build reliable business processes
 
-### 1. Workflows are a great tool to build reliable business processes
+---
+layout: section
+---
 
-### 2. Dapr workflow supports versioning since v1.17
+# 2. Start versioning your Dapr workflows
 
-### 3. Book me for your (wedding) party!
+---
+layout: section
+---
 
+# 3. Book me for your (wedding) party!
 
 ---
 layout: default
