@@ -10,5 +10,19 @@ layout: section
 layout: section
 ---
 
+# Why not sequence music with Dapr Workflow?
 
-# Why synthesizers & Dapr Workflow?
+---
+layout: default
+---
+
+# Topics
+
+### - Dapr & Dapr Workflows
+
+### - Hardware & Software
+
+### - 7 demos with different workflows
+
+### - Resources & Feedback
+
