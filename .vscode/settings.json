@@ -11,5 +11,6 @@
         "panel"
     ],
     "demoTime.highlightBlur": 2,
-    "demoTime.openInConfigEditor": true
+    "demoTime.openInConfigEditor": true,
+    "demoTime.customTheme": ".demo/slides/theme.css"
 }
