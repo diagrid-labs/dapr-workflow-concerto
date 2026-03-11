@@ -13,10 +13,14 @@ layout: default
 graph LR
     subgraph Workflow
     direction LR
-    Start([Input]) --> A1[Activity 1]
-    A1 --> A2[Activity 2]
-    A2 --> A3[Activity 3]
-    A3 --> End([Output])
+    Start([Input])
+    End([Output])
+    Start --> A1[Activity 1]
+    A1 --> IF{Condition}
+    IF--false-->A2[Activity 2]
+    IF--true-->A3[Activity 3]
+    A2 --> End 
+    A3 --> End
     end
     
     style Start fill:#e1f5ff
