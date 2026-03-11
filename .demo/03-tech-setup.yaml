@@ -20,6 +20,8 @@ scenes:
         path: .demo/slides/03-tech-setup/04-music-workflow-diagram.md
   - title: Run Diagrid Dev Dashboard
     moves:
+      - action: openSlide
+        path: .demo/slides/03-tech-setup/05-dev-dashboard.md
       - action: executeTerminalCommand
         command: docker run -p 8080:8080 ghcr.io/diagridio/diagrid-dashboard:latest
         terminalId: dev-dashboard
