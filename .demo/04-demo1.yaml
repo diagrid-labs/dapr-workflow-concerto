@@ -53,11 +53,6 @@ scenes:
         position: '7'
         highlightWholeLine: true
         highlightBlur: 2
-  - id: demo-mmgg41jc-z3ij
-    title: NoteStreamApp
-    moves:
-      - action: open
-        path: NoteStreamApp/Program.cs
   - id: demo-mmgg5lqw-u1go
     title: POST /sendnote
     moves:
@@ -106,4 +101,3 @@ scenes:
         position: '66:70'
         highlightWholeLine: true
         highlightBlur: 2
-

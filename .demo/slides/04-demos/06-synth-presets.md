@@ -6,4 +6,4 @@ layout: section
 
 | Score | Synth settings |
 | - | - |
-| Strange | Osc 1, Timbre ++ |
+| Strange | Osc 1, Timbre + |
