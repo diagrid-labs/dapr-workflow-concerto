@@ -41,9 +41,9 @@ flowchart LR
 
 ## Audio playback: Web MIDI vs Web Audio
 
-The front-end supports two playback modes, selectable via the **Playback Type** dropdown at the top of the page.
+The front-end supports two playback modes, selectable via the **Playback Type** dropdown at the top of the page. If a MIDI device is detected the type is set to **midi** by default. If no MIDI device is detected the type is set to **audio**.
 
-### Web MIDI (default)
+### Web MIDI
 
 Sends MIDI messages to a hardware synthesizer connected through an audio/MIDI interface. Select the target MIDI device in the dropdown. This requires:
 
@@ -52,4 +52,4 @@ Sends MIDI messages to a hardware synthesizer connected through an audio/MIDI in
 
 ### Web Audio
 
-Uses the browser's built-in Web Audio API with oscillator-based synthesis — no external hardware needed. Select **audio** in the Playback Type dropdown to enable this mode.
+Uses the browser's built-in Web Audio API with oscillator-based synthesis — no external hardware needed. 
