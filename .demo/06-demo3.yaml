@@ -12,6 +12,14 @@ scenes:
     moves:
       - action: open
         path: ConcertoWorkflow/SendInstanceIdActivity.cs
+  - id: demo-mnfxoz5d-i928
+    title: onTerminatePressed
+    moves:
+      - action: highlight
+        path: NoteStreamApp/wwwroot/sketch.js
+        position: '289:313'
+        highlightWholeLine: true
+        highlightBlur: 2
   - id: scene-mmkf7xft-ftuj
     title: POST /terminate
     moves:

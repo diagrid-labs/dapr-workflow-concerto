@@ -1,7 +1,7 @@
 title: 01 - Start
 version: 3
 engageTime:
-  sessionId: rprtij
+  sessionId: m3xk32
 scenes:
   - id: scene-mmhm7tku-rik0
     title: Intro
@@ -9,6 +9,10 @@ scenes:
       - action: openSlide
         path: .demo/slides/01-intro/01-intro.md
       - action: setPresentationView
+      - action: closeEngageTimePoll
+        pollId: koaus6
+      - action: closeEngageTimePoll
+        pollId: nx1v74
   - id: demo-mmg4gj89-6wc2
     title: Start Timer
     moves:

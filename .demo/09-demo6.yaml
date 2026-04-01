@@ -8,6 +8,14 @@ scenes:
         dest: ConcertoWorkflow/MusicWorkflowV6.cs
       - action: open
         path: ConcertoWorkflow/MusicWorkflowV6.cs
+  - id: demo-mng06oow-7s72
+    title: onApprovePressed
+    moves:
+      - action: highlight
+        path: NoteStreamApp/wwwroot/sketch.js
+        highlightWholeLine: true
+        position: '315:333'
+        highlightBlur: 2
   - id: scene-mmkfam32-822r
     title: POST /approve
     moves:
