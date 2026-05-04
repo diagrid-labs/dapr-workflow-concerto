@@ -9,6 +9,7 @@ builder.Services.AddDaprWorkflow(options =>
 {
     options.RegisterActivity<SendNoteActivity>();
     options.RegisterActivity<SendInstanceIdActivity>();
+    options.RegisterActivity<MeasureLatencyActivity>();
 });
 builder.Services.AddDaprWorkflowVersioning();
 
@@ -93,5 +94,7 @@ app.MapGet("musicstatus/{instanceId}", async (
 
 app.Run();
 
-public record MusicScore(string Title, int Repeats, Note[] Notes);
-public record Note(string Id, string NoteName, string Type, int DurationMs, int WaitMs);
+public record MusicScore(string Title, int Bpm, int Repeats, ScoreNote[] Notes);
+public record ScoreNote(string Id, string NoteName, string Type, string NoteLength, string Interval);
+public record PlaybackNote(string Id, string NoteName, string Type, int DurationMs, int WaitMs);
+public record SendNoteInput(ScoreNote Note, int Bpm, int OverheadMs);
