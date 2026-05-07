@@ -11,7 +11,7 @@ public sealed partial class MusicWorkflow : Workflow<MusicScore, object>
 
         // Calibrate per-activity overhead by running no-op activities back-to-back and
         // averaging the deltas to smooth out transient spikes during calibration.
-        const int sampleCount = 3;
+        const int sampleCount = 5;
         var timestamps = new DateTimeOffset[sampleCount];
         for (var i = 0; i < sampleCount; i++)
         {
