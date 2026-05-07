@@ -20,7 +20,8 @@ public sealed partial class SendNoteActivity(ILogger<SendNoteActivity> logger, H
 
         var idealDurationMs = (int)(wholeMs * noteLengthValue);
         var idealWaitMs = (int)(wholeMs * intervalValue);
-        var actualWaitMs = Math.Max(0, idealWaitMs - input.OverheadMs);
+        var maxSubtractMs = idealWaitMs / 2;
+        var actualWaitMs = idealWaitMs - Math.Min(input.OverheadMs, maxSubtractMs);
 
         LogNoteSend(logger, note.NoteName, idealDurationMs, actualWaitMs);
 
