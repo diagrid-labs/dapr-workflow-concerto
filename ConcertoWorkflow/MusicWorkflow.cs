@@ -9,17 +9,7 @@ public sealed partial class MusicWorkflow : Workflow<MusicScore, object>
         var logger = context.CreateReplaySafeLogger<MusicWorkflow>();
         LogStart(logger, musicScore.Title, musicScore.Bpm);
 
-        // Calibrate per-activity overhead by running no-op activities back-to-back and
-        // averaging the deltas to smooth out transient spikes during calibration.
-        const int sampleCount = 5;
-        var timestamps = new DateTimeOffset[sampleCount];
-        for (var i = 0; i < sampleCount; i++)
-        {
-            timestamps[i] = await context.CallActivityAsync<DateTimeOffset>(nameof(MeasureLatencyActivity), "");
-        }
-        var avgDeltaMs = (timestamps[^1] - timestamps[0]).TotalMilliseconds / (sampleCount - 1);
-        var overheadMs = Math.Max(0, (int)avgDeltaMs);
-        LogOverhead(logger, overheadMs);
+        int overheadMs = await CalculateOverhead(context);
 
         foreach (var note in musicScore.Notes)
         {
@@ -31,9 +21,22 @@ public sealed partial class MusicWorkflow : Workflow<MusicScore, object>
         return $"{musicScore.Title} Completed!";
     }
 
-    [LoggerMessage(LogLevel.Information, "Starting music workflow: {Title} @ {Bpm} bpm")]
-    partial void LogStart(ILogger logger, string Title, int Bpm);
+    private static async Task<int> CalculateOverhead(WorkflowContext context)
+    {
+        // Calibrate per-activity overhead by running no-op activities back-to-back and
+        // averaging the deltas to smooth out transient spikes during calibration.
+        const int sampleCount = 5;
+        var timestamps = new DateTimeOffset[sampleCount];
+        for (var i = 0; i < sampleCount; i++)
+        {
+            timestamps[i] = await context.CallActivityAsync<DateTimeOffset>(nameof(MeasureLatencyActivity), "");
+        }
+        var avgDeltaMs = (timestamps[^1] - timestamps[0]).TotalMilliseconds / (sampleCount - 1);
+        var overheadMs = Math.Max(0, (int)avgDeltaMs);
+        context.SetCustomStatus(new { activityOverhead = overheadMs });
+        return overheadMs;
+    }
 
-    [LoggerMessage(LogLevel.Information, "Measured per-activity overhead: {OverheadMs} ms")]
-    partial void LogOverhead(ILogger logger, int OverheadMs);
+    [LoggerMessage(LogLevel.Information, "Starting music workflow: {Title} @ {Bpm} bpm")]
+    static partial void LogStart(ILogger logger, string Title, int Bpm);
 }
