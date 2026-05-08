@@ -1,13 +1,13 @@
-title: 08 - V5 - fan-out
+title: 08 - V4 - fan-out
 version: 3
 scenes:
   - title: MusicWorkflowV5.cs
     moves:
       - action: rename
-        path: ConcertoWorkflow/MusicWorkflowV5.cs.temp
-        dest: ConcertoWorkflow/MusicWorkflowV5.cs
+        path: ConcertoWorkflow/MusicWorkflowV4.cs.temp
+        dest: ConcertoWorkflow/MusicWorkflowV4.cs
       - action: open
-        path: ConcertoWorkflow/MusicWorkflowV5.cs
+        path: ConcertoWorkflow/MusicWorkflowV4.cs
   - id: scene-mmhxsrhj-bjiy
     title: Let's Play!
     moves:

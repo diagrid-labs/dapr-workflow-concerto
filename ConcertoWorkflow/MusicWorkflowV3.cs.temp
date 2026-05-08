@@ -3,29 +3,46 @@ using Microsoft.Extensions.Logging;
 using Dapr.Workflow;
 
 /// <summary>
-/// Send Instance ID to front-end. ✅
+/// Don't foreach but ContinueAsNew! 🚀
 /// </summary>
-public sealed partial class MusicWorkflowV3 : Workflow<MusicScore, object>
+public sealed partial class MusicWorkflowV4 : Workflow<MusicScore, object>
 {
     public override async Task<object> RunAsync(WorkflowContext context, MusicScore musicScore)
     {
-        var logger = context.CreateReplaySafeLogger<MusicWorkflowV3>();
+        var logger = context.CreateReplaySafeLogger<MusicWorkflowV4>();
         LogStart(logger, musicScore.Title);
 
-        await context.CallActivityAsync<bool>(nameof(SendInstanceIdActivity), context.InstanceId);
-
-        foreach (var note in musicScore.Notes)
+        if (musicScore.Notes.Length == 0)
         {
-            await context.CallActivityAsync<bool>(nameof(SendNoteActivity), note);
+            return $"{musicScore.Title} Completed!";
         }
 
-        if (musicScore.Repeats > 1)
-        {
-            var remaining = musicScore with { Repeats = musicScore.Repeats - 1 };
-            context.ContinueAsNew(remaining);
-        }
+        int overheadMs = await CalculateOverhead(context);
 
-        return $"{musicScore.Title} Completed!";
+        await context.CallActivityAsync<bool>(
+            nameof(SendNoteActivity),
+            new SendNoteInput(musicScore.Notes[0], musicScore.Bpm, overheadMs));
+
+        var updatedMusicScore = musicScore with { Notes = musicScore.Notes[1..] };
+        context.ContinueAsNew(updatedMusicScore);
+
+        return $"{musicScore.Title} In progress...";
+    }
+
+    private static async Task<int> CalculateOverhead(WorkflowContext context)
+    {
+        // Calibrate per-activity overhead by running no-op activities back-to-back and
+        // averaging the deltas to smooth out transient spikes during calibration.
+        const int sampleCount = 5;
+        var timestamps = new DateTimeOffset[sampleCount];
+        for (var i = 0; i < sampleCount; i++)
+        {
+            timestamps[i] = await context.CallActivityAsync<DateTimeOffset>(nameof(MeasureLatencyActivity), "");
+        }
+        var avgDeltaMs = (timestamps[^1] - timestamps[0]).TotalMilliseconds / (sampleCount - 1);
+        var overheadMs = Math.Max(0, (int)avgDeltaMs);
+        context.SetCustomStatus(new { activityOverhead = overheadMs });
+        return overheadMs;
     }
 
     [LoggerMessage(LogLevel.Information, "Starting music workflow for score: {Title}")]

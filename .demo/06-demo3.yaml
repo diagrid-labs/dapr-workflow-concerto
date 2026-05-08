@@ -1,37 +1,26 @@
-title: 06 - V3 - InstanceId
+title: 06 - V2 - Repeat
 version: 3
 scenes:
-  - title: MusicWorkflowV3.cs
+  - title: MusicWorkflowV2.cs
     moves:
       - action: rename
-        path: ConcertoWorkflow/MusicWorkflowV3.cs.temp
-        dest: ConcertoWorkflow/MusicWorkflowV3.cs
+        path: ConcertoWorkflow/MusicWorkflowV2.cs.temp
+        dest: ConcertoWorkflow/MusicWorkflowV2.cs
       - action: open
-        path: ConcertoWorkflow/MusicWorkflowV3.cs
-  - title: SendInstanceIdActivity
-    moves:
-      - action: open
-        path: ConcertoWorkflow/SendInstanceIdActivity.cs
-  - id: demo-mnfxoz5d-i928
-    title: onTerminatePressed
+        path: ConcertoWorkflow/MusicWorkflowV2.cs
+  - id: scene-mmkf4xjz-fnbl
+    title: Rhythm music score
     moves:
       - action: highlight
-        path: NoteStreamApp/wwwroot/sketch.js
-        position: '289:313'
-        highlightWholeLine: true
+        path: NoteStreamApp/wwwroot/musicscores.js
         highlightBlur: 2
-  - id: scene-mmkf7xft-ftuj
-    title: POST /terminate
-    moves:
-      - action: highlight
-        path: ConcertoWorkflow/Program.cs
-        position: '73:79'
+        position: '167:191'
         highlightWholeLine: true
-  - id: scene-mmhxsrhj-fjix
+  - id: scene-mmhxsrhj-ajiy
     title: Let's Play!
     moves:
       - action: openSlide
-        path: .demo/slides/04-demos/06-synth-presets.md
+        path: .demo/slides/04-demos/05-synth-presets.md
       - action: executeTerminalCommand
         command: dapr run -f .
         terminalId: dapr-run

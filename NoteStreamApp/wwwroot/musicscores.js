@@ -87,6 +87,83 @@ function getHappyMusicScore() {
   };
 }
 
+function getRhythmMusicScoreLong() {
+  return {
+    Title: "Rhythm",
+    Bpm: 126,
+    Repeats: 1,
+    Notes: [
+      { Id: "1",  NoteName: "A4",  Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+      { Id: "2",  NoteName: "F4",  Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+      { Id: "3",  NoteName: "G4",  Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+      { Id: "4",  NoteName: "F4",  Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+      { Id: "5",  NoteName: "A#3", Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+      { Id: "6",  NoteName: "A#3", Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+      { Id: "7",  NoteName: "D4",  Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+      { Id: "8",  NoteName: "A#3", Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+      { Id: "9",  NoteName: "C4",  Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+      { Id: "10", NoteName: "C4",  Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+      { Id: "11", NoteName: "E4",  Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+      { Id: "12", NoteName: "C4",  Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+      { Id: "13", NoteName: "D4",  Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+      { Id: "14", NoteName: "D4",  Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+      { Id: "15", NoteName: "F4",  Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+      { Id: "16", NoteName: "D4",  Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+
+      { Id: "1",  NoteName: "A4",  Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+      { Id: "2",  NoteName: "F4",  Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+      { Id: "3",  NoteName: "G4",  Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+      { Id: "4",  NoteName: "F4",  Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+      { Id: "5",  NoteName: "A#3", Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+      { Id: "6",  NoteName: "A#3", Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+      { Id: "7",  NoteName: "D4",  Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+      { Id: "8",  NoteName: "A#3", Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+      { Id: "9",  NoteName: "C4",  Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+      { Id: "10", NoteName: "C4",  Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+      { Id: "11", NoteName: "E4",  Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+      { Id: "12", NoteName: "C4",  Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+      { Id: "13", NoteName: "D4",  Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+      { Id: "14", NoteName: "D4",  Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+      { Id: "15", NoteName: "F4",  Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+      { Id: "16", NoteName: "D4",  Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+
+      { Id: "1",  NoteName: "A4",  Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+      { Id: "2",  NoteName: "F4",  Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+      { Id: "3",  NoteName: "G4",  Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+      { Id: "4",  NoteName: "F4",  Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+      { Id: "5",  NoteName: "A#3", Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+      { Id: "6",  NoteName: "A#3", Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+      { Id: "7",  NoteName: "D4",  Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+      { Id: "8",  NoteName: "A#3", Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+      { Id: "9",  NoteName: "C4",  Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+      { Id: "10", NoteName: "C4",  Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+      { Id: "11", NoteName: "E4",  Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+      { Id: "12", NoteName: "C4",  Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+      { Id: "13", NoteName: "D4",  Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+      { Id: "14", NoteName: "D4",  Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+      { Id: "15", NoteName: "F4",  Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+      { Id: "16", NoteName: "D4",  Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+
+      { Id: "1",  NoteName: "A4",  Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+      { Id: "2",  NoteName: "F4",  Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+      { Id: "3",  NoteName: "G4",  Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+      { Id: "4",  NoteName: "F4",  Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+      { Id: "5",  NoteName: "A#3", Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+      { Id: "6",  NoteName: "A#3", Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+      { Id: "7",  NoteName: "D4",  Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+      { Id: "8",  NoteName: "A#3", Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+      { Id: "9",  NoteName: "C4",  Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+      { Id: "10", NoteName: "C4",  Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+      { Id: "11", NoteName: "E4",  Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+      { Id: "12", NoteName: "C4",  Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+      { Id: "13", NoteName: "D4",  Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+      { Id: "14", NoteName: "D4",  Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+      { Id: "15", NoteName: "F4",  Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
+      { Id: "16", NoteName: "D4",  Type: playbackType, NoteLength: "1/16", Interval: "1/8" }
+    ]
+  };
+}
+
 function getRhythmMusicScore() {
   return {
     Title: "Rhythm",
@@ -290,6 +367,7 @@ function getStrangerMusicScore() {
 const MUSIC_SCORES = {
   "Intro":  getIntroMusicScore,
   "Happy":  getHappyMusicScore,
+  "RhythmLong": getRhythmMusicScoreLong,
   "Rhythm": getRhythmMusicScore,
   "Strange": getStrangerMusicScore,
   "X":      getXFilesMusicScore,

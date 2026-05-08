@@ -14,8 +14,8 @@ scenes:
       - action: openSlide
         path: .demo/slides/04-demos/10a-synth-presets.md
       - action: rename
-        path: ConcertoWorkflow/MusicWorkflowV7.cs.temp
-        dest: ConcertoWorkflow/MusicWorkflowV7.cs
+        path: ConcertoWorkflow/MusicWorkflowV6.cs.temp
+        dest: ConcertoWorkflow/MusicWorkflowV6.cs
       - action: waitForTimeout
         timeout: 500
       - action: executeTerminalCommand
@@ -56,9 +56,6 @@ scenes:
       - action: rename
         path: ConcertoWorkflow/MusicWorkflowV6.cs
         dest: ConcertoWorkflow/MusicWorkflowV6.cs.temp
-      - action: rename
-        path: ConcertoWorkflow/MusicWorkflowV7.cs
-        dest: ConcertoWorkflow/MusicWorkflowV7.cs.temp
       - action: focusTerminal
         terminalId: dev-dashboard
       - action: sendKeybinding
