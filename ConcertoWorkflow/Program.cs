@@ -8,7 +8,6 @@ builder.Services.AddSingleton<HttpClient>(DaprClient.CreateInvokeHttpClient(appI
 builder.Services.AddDaprWorkflow(options =>
 {
     options.RegisterActivity<SendNoteActivity>();
-    options.RegisterActivity<SendInstanceIdActivity>();
     options.RegisterActivity<MeasureLatencyActivity>();
 });
 builder.Services.AddDaprWorkflowVersioning();

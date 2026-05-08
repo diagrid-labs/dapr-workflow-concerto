@@ -39,5 +39,5 @@ public sealed partial class SendNoteActivity(ILogger<SendNoteActivity> logger, H
     }
 
     [LoggerMessage(LogLevel.Information, "SendNoteActivity: {NoteName} (duration={DurationMs}ms, wait={WaitMs}ms)")]
-    partial void LogNoteSend(ILogger logger, string NoteName, int DurationMs, int WaitMs);
+    static partial void LogNoteSend(ILogger logger, string NoteName, int DurationMs, int WaitMs);
 }
