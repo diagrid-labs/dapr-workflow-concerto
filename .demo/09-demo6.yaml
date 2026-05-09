@@ -1,13 +1,13 @@
-title: 09 - V6 - wait
+title: 09 - V5 - wait
 version: 3
 scenes:
-  - title: MusicWorkflowV6.cs
+  - title: MusicWorkflowV5.cs
     moves:
       - action: rename
-        path: ConcertoWorkflow/MusicWorkflowV6.cs.temp
-        dest: ConcertoWorkflow/MusicWorkflowV6.cs
+        path: ConcertoWorkflow/MusicWorkflowV5.cs.temp
+        dest: ConcertoWorkflow/MusicWorkflowV5.cs
       - action: open
-        path: ConcertoWorkflow/MusicWorkflowV6.cs
+        path: ConcertoWorkflow/MusicWorkflowV5.cs
   - id: demo-mng06oow-7s72
     title: onApprovePressed
     moves:

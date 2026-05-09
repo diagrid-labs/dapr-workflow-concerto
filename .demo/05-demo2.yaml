@@ -1,22 +1,15 @@
-title: 05 - V2 - Repeat
+title: 05 - V1 - Long score
 version: 3
 scenes:
-  - title: MusicWorkflowV2.cs
-    moves:
-      - action: rename
-        path: ConcertoWorkflow/MusicWorkflowV2.cs.temp
-        dest: ConcertoWorkflow/MusicWorkflowV2.cs
-      - action: open
-        path: ConcertoWorkflow/MusicWorkflowV2.cs
-  - id: scene-mmkf4xjz-fnbl
+  - id: scene-mowlsck0-ez21
     title: Rhythm music score
     moves:
       - action: highlight
         path: NoteStreamApp/wwwroot/musicscores.js
         highlightBlur: 2
-        position: '173:197'
+        position: '90:165'
         highlightWholeLine: true
-  - id: scene-mmhxsrhj-ajiy
+  - id: scene-mowlsk58-92g9
     title: Let's Play!
     moves:
       - action: openSlide
@@ -26,7 +19,8 @@ scenes:
         terminalId: dapr-run
         insertTypingMode: character-by-character
         insertTypingSpeed: 75
-  - title: Stop Dapr Application
+  - id: scene-mowlsm0s-ryh7
+    title: Stop Dapr Application
     moves:
       - action: focusTerminal
         terminalId: dapr-run

@@ -1,4 +1,4 @@
-title: 07 - V4 - no foreach
+title: 07 - V3 - no foreach
 version: 3
 scenes:
   - title: Workflow Registration
@@ -25,10 +25,10 @@ scenes:
   - title: MusicWorkflowV4.cs
     moves:
       - action: rename
-        path: ConcertoWorkflow/MusicWorkflowV4.cs.temp
-        dest: ConcertoWorkflow/MusicWorkflowV4.cs
+        path: ConcertoWorkflow/MusicWorkflowV3.cs.temp
+        dest: ConcertoWorkflow/MusicWorkflowV3.cs
       - action: open
-        path: ConcertoWorkflow/MusicWorkflowV4.cs
+        path: ConcertoWorkflow/MusicWorkflowV3.cs
   - id: scene-mmhxsrhj-fjiz
     title: Let's Play!
     moves:

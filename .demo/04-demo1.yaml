@@ -35,8 +35,9 @@ scenes:
     moves:
       - action: highlight
         path: ConcertoWorkflow/Program.cs
-        position: '28:38'
+        position: '29:39'
         highlightBlur: 2
+        highlightWholeLine: true
   - title: MusicWorkflow
     moves:
       - action: open
