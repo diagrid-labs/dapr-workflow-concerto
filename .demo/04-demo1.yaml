@@ -22,7 +22,7 @@ scenes:
     title: onStartButtonPressed
     moves:
       - action: highlight
-        path: NoteStreamApp/wwwroot/sketch.js
+        path: ConcertoWorkflowSolution/NoteStreamApp/wwwroot/sketch.js
         position: '375:407'
         highlightWholeLine: true
         highlightBlur: 2
@@ -30,51 +30,51 @@ scenes:
     title: Music Scores
     moves:
       - action: open
-        path: NoteStreamApp/wwwroot/musicscores.js
+        path: ConcertoWorkflowSolution/NoteStreamApp/wwwroot/musicscores.js
   - title: POST /startmusic
     moves:
       - action: highlight
-        path: ConcertoWorkflow/Program.cs
-        position: '29:39'
+        path: ConcertoWorkflowSolution/ConcertoWorkflowApp/Program.cs
+        position: '31:41'
         highlightBlur: 2
         highlightWholeLine: true
   - title: MusicWorkflow
     moves:
       - action: open
-        path: ConcertoWorkflow/MusicWorkflow.cs
+        path: ConcertoWorkflowSolution/ConcertoWorkflowApp/MusicWorkflow.cs
   - title: SendNoteActivity
     moves:
       - action: open
-        path: ConcertoWorkflow/SendNoteActivity.cs
+        path: ConcertoWorkflowSolution/ConcertoWorkflowApp/SendNoteActivity.cs
   - id: demo-mmg7akkg-is4u
     title: HttpClient
     moves:
       - action: highlight
-        path: ConcertoWorkflow/Program.cs
-        position: '7'
+        path: ConcertoWorkflowSolution/ConcertoWorkflowApp/Program.cs
         highlightWholeLine: true
         highlightBlur: 2
+        position: '10'
   - id: demo-mmgg5lqw-u1go
     title: POST /sendnote
     moves:
       - action: highlight
-        path: NoteStreamApp/Program.cs
-        position: '23:30'
+        path: ConcertoWorkflowSolution/NoteStreamApp/Program.cs
+        position: '26:33'
         highlightWholeLine: true
         highlightBlur: 2
   - id: demo-mmgg6xx9-r04k
     title: GET /sse
     moves:
       - action: highlight
-        path: NoteStreamApp/Program.cs
+        path: ConcertoWorkflowSolution/NoteStreamApp/Program.cs
         highlightWholeLine: true
         highlightBlur: 2
-        position: '43:58'
+        position: '46:61'
   - id: demo-mmg9anus-8fxo
     title: handleSSENote
     moves:
       - action: highlight
-        path: NoteStreamApp/wwwroot/sketch.js
+        path: ConcertoWorkflowSolution/NoteStreamApp/wwwroot/sketch.js
         position: '455:484'
         highlightWholeLine: true
         highlightBlur: 2
@@ -82,15 +82,15 @@ scenes:
     title: playNoteWebAudio
     moves:
       - action: highlight
-        path: NoteStreamApp/wwwroot/sketch.js
-        position: '125:140'
+        path: ConcertoWorkflowSolution/NoteStreamApp/wwwroot/sketch.js
+        position: '125:141'
         highlightWholeLine: true
         highlightBlur: 2
   - id: demo-mmg9dogj-hv6i
     title: sendNoteOn
     moves:
       - action: highlight
-        path: NoteStreamApp/wwwroot/sketch.js
+        path: ConcertoWorkflowSolution/NoteStreamApp/wwwroot/sketch.js
         position: '154:180'
         highlightWholeLine: true
         highlightBlur: 2
@@ -98,7 +98,7 @@ scenes:
     title: draw()
     moves:
       - action: highlight
-        path: NoteStreamApp/wwwroot/sketch.js
+        path: ConcertoWorkflowSolution/NoteStreamApp/wwwroot/sketch.js
         position: '66:70'
         highlightWholeLine: true
         highlightBlur: 2

@@ -4,15 +4,15 @@ scenes:
   - title: MusicWorkflowV2.cs
     moves:
       - action: rename
-        path: ConcertoWorkflow/MusicWorkflowV2.cs.temp
-        dest: ConcertoWorkflow/MusicWorkflowV2.cs
+        path: ConcertoWorkflowSolution/ConcertoWorkflowApp/MusicWorkflowV2.cs.temp
+        dest: ConcertoWorkflowSolution/ConcertoWorkflowApp/MusicWorkflowV2.cs
       - action: open
-        path: ConcertoWorkflow/MusicWorkflowV2.cs
+        path: ConcertoWorkflowSolution/ConcertoWorkflowApp/MusicWorkflowV2.cs
   - id: scene-mmkf4xjz-fnbl
     title: Rhythm music score
     moves:
       - action: highlight
-        path: NoteStreamApp/wwwroot/musicscores.js
+        path: ConcertoWorkflowSolution/NoteStreamApp/wwwroot/musicscores.js
         highlightBlur: 2
         position: '167:191'
         highlightWholeLine: true

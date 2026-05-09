@@ -4,15 +4,15 @@ scenes:
   - title: MusicWorkflowV5.cs
     moves:
       - action: rename
-        path: ConcertoWorkflow/MusicWorkflowV5.cs.temp
-        dest: ConcertoWorkflow/MusicWorkflowV5.cs
+        path: ConcertoWorkflowSolution/ConcertoWorkflowApp/MusicWorkflowV5.cs.temp
+        dest: ConcertoWorkflowSolution/ConcertoWorkflowApp/MusicWorkflowV5.cs
       - action: open
-        path: ConcertoWorkflow/MusicWorkflowV5.cs
+        path: ConcertoWorkflowSolution/ConcertoWorkflowApp/MusicWorkflowV5.cs
   - id: demo-mng06oow-7s72
     title: onApprovePressed
     moves:
       - action: highlight
-        path: NoteStreamApp/wwwroot/sketch.js
+        path: ConcertoWorkflowSolution/NoteStreamApp/wwwroot/sketch.js
         highlightWholeLine: true
         position: '315:333'
         highlightBlur: 2
@@ -20,7 +20,7 @@ scenes:
     title: POST /approve
     moves:
       - action: highlight
-        path: ConcertoWorkflow/Program.cs
+        path: ConcertoWorkflowSolution/ConcertoWorkflowApp/Program.cs
         highlightWholeLine: true
         position: '40:52'
         highlightBlur: 2

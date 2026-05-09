@@ -5,7 +5,7 @@ scenes:
     title: Rhythm music score
     moves:
       - action: highlight
-        path: NoteStreamApp/wwwroot/musicscores.js
+        path: ConcertoWorkflowSolution/NoteStreamApp/wwwroot/musicscores.js
         highlightBlur: 2
         position: '90:165'
         highlightWholeLine: true

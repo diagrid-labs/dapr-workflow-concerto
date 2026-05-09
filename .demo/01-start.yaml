@@ -19,10 +19,16 @@ scenes:
       - action: executeVSCodeCommand
         command: demo-time.startCountdown
       - action: executeTerminalCommand
-        command: dapr run -f .
+        command: cd ConcertoWorkflowSolution
+        terminalId: dapr-run
+        insertTypingMode: instant
+        autoExecute: true
+      - action: executeTerminalCommand
+        command: aspire run
         terminalId: dapr-run
         insertTypingMode: character-by-character
-        insertTypingSpeed: 75
+        autoExecute: true
+        insertTypingSpeed: 100
   - id: demo-mmcgboeq-yvo8
     title: Bio
     moves:
