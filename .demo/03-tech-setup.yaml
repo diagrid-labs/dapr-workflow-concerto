@@ -18,6 +18,11 @@ scenes:
     moves:
       - action: openSlide
         path: .demo/slides/03-tech-setup/04-music-workflow-diagram.md
+  - id: demo-moyj293z-6d0y
+    title: MusicWorkflow MeasureLatency Diagram
+    moves:
+      - action: openSlide
+        path: .demo/slides/03-tech-setup/04-music-workflow-with-overhead-diagram.md
   - title: Run Diagrid Dev Dashboard
     moves:
       - action: openSlide
