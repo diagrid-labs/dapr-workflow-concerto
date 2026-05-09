@@ -1,7 +1,7 @@
 title: 01 - Start
 version: 3
 engageTime:
-  sessionId: m3xk32
+  sessionId: 6r41hf
 scenes:
   - id: scene-mmhm7tku-rik0
     title: Intro
@@ -9,6 +9,7 @@ scenes:
       - action: openSlide
         path: .demo/slides/01-intro/01-intro.md
       - action: setPresentationView
+      - action: startEngageTimeSession
       - action: closeEngageTimePoll
         pollId: koaus6
       - action: closeEngageTimePoll
@@ -44,8 +45,7 @@ scenes:
   - id: demo-mmcgdyir-ug1w
     title: EngageTime
     moves:
-      - action: openSlide
-        path: .demo/slides/01-intro/03-engagetime.md
+      - action: showEngageTimeSession
   - id: demo-mmciuv6y-hhdl
     title: What this session is about
     moves:

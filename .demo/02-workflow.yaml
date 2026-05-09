@@ -1,7 +1,7 @@
 title: 02 - Workflow
 version: 3
 engageTime:
-  sessionId: m3xk32
+  sessionId: 6r41hf
 scenes:
   - title: Dapr Intro
     moves:
@@ -11,9 +11,9 @@ scenes:
     title: Dapr Poll
     moves:
       - action: startEngageTimePoll
-        pollId: koaus6
+        pollId: 5q4zqi
       - action: showEngageTimePoll
-        pollId: koaus6
+        pollId: 5q4zqi
   - title: Dapr Website
     moves:
       - action: openSlide
@@ -30,9 +30,11 @@ scenes:
     title: Workflow poll
     moves:
       - action: startEngageTimePoll
-        pollId: nx1v74
+        pollId: ax6p0y
       - action: showEngageTimePoll
-        pollId: nx1v74
+        pollId: ax6p0y
+        startOnOpen: false
+        closeOnOpen: false
   - title: Dapr Workflow Explanation
     moves:
       - action: openSlide
