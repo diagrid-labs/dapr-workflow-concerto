@@ -23,8 +23,9 @@ graph LR
     A3 --> End
     end
     
-    style Start fill:#e1f5ff
-    style End fill:#d4edda
+    style Start fill:#28a745,color:#ffffff
+    style End fill:#dc3545,color:#ffffff
+    style IF fill:#ffc107,color:#000000
 ```
 
 ---
