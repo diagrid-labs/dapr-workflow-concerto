@@ -1,0 +1,31 @@
+@host=http://localhost:5500
+
+### Start music
+# @name startMusic
+POST {{host}}/startmusic
+Content-Type: application/json
+
+{
+  "title": "Demo",
+  "bpm": 120,
+  "repeats": 1,
+  "notes": [
+    { "id": "n1", "noteName": "C4", "type": "note", "noteLength": "1/4", "interval": "1/4" }
+  ]
+}
+
+### Status
+@instanceId={{startMusic.response.body.$.instanceId}}
+GET {{host}}/musicstatus/{{instanceId}}
+
+### Pause
+POST {{host}}/pause/{{instanceId}}
+
+### Resume
+POST {{host}}/resume/{{instanceId}}
+
+### Terminate
+POST {{host}}/terminate/{{instanceId}}
+
+### Approve
+POST {{host}}/approve/{{instanceId}}/true
