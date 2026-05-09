@@ -1,7 +1,12 @@
 title: 08 - V4 - fan-out
 version: 3
 scenes:
-  - title: MusicWorkflowV5.cs
+  - id: scene-moyjibzs-bvc2
+    title: Diagram V4
+    moves:
+      - action: openSlide
+        path: .demo/slides/03-tech-setup/04c-music-workflow-v4-diagram.md
+  - title: MusicWorkflowV4.cs
     moves:
       - action: rename
         path: ConcertoWorkflowSolution/ConcertoWorkflowApp/MusicWorkflowV4.cs.temp

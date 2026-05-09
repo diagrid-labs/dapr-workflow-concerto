@@ -1,6 +1,11 @@
 title: 06 - V2 - Repeat
 version: 3
 scenes:
+  - id: scene-moyj7vwg-ueym
+    title: Diagram V2
+    moves:
+      - action: openSlide
+        path: .demo/slides/03-tech-setup/04a-music-workflow-v2-diagram.md
   - title: MusicWorkflowV2.cs
     moves:
       - action: rename
