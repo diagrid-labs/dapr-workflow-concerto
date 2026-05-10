@@ -59,10 +59,6 @@ scenes:
       - action: setPresentationView
       - action: openSlide
         path: .demo/slides/01-intro/02-bio.md
-  - id: demo-mmcgdyir-ug1w
-    title: EngageTime
-    moves:
-      - action: showEngageTimeSession
   - id: demo-mmciuv6y-hhdl
     title: What this session is about
     moves:

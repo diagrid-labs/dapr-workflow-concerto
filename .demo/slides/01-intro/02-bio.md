@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: two-columns
 ---
 
 # Hi 👋
@@ -8,7 +8,10 @@ layout: default
 
 - Developer Advocate at [Diagrid](https://diagrid.io)
 - One of the [Dapr](https://dapr.io) Community Managers
-- Microsoft MVP
 - [marcduiker.dev](https://marcduiker.dev)
 
 ![Avatar](.demo/images/marcduiker_dapr_rainbow_eyes.gif)
+
+::right::
+
+![Join EngageTime](.demo/images/session-6r41hf-qr.png)

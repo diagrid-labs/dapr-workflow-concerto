@@ -5,6 +5,7 @@ engageTime:
 scenes:
   - title: Dapr Intro
     moves:
+      - action: setPresentationView
       - action: openSlide
         path: .demo/slides/02-dapr-workflow/01-dapr-intro.md
   - id: scene-mmg6e6xd-2d1v
