@@ -1,5 +1,4 @@
 ---
 layout: default
+image: ".demo/images/techorama-title.png"
 ---
-
-![Techorama Title slide](.demo/images/techorama-title.png)

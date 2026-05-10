@@ -4,6 +4,11 @@ engageTime:
   sessionId: 6r41hf
 scenes:
   - id: demo-moyhvfvs-lw7g
+    title: '-'
+    moves:
+      - action: openSlide
+        path: .demo/slides/01-intro/00-blank.md
+  - id: demo-mozyhtlh-q9al
     title: Intro Techorama
     moves:
       - action: openSlide
