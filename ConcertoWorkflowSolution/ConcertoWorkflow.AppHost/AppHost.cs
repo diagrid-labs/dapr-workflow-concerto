@@ -27,7 +27,7 @@ var noteStream = builder
 noteStream.WaitFor(cache);
 
 var musicApp = builder
-    .AddProject<Projects.ConcertoWorkflowApp>("music-app")
+    .AddProject<Projects.ConcertoWorkflow_App>("music-app")
     .WithHttpEndpoint(port: 5500, name: "http")
     .WithDaprSidecar(new DaprSidecarOptions
     {
@@ -44,7 +44,7 @@ builder
     .WithBindMount(resourcesPath, "/app/components")
     .WithEnvironment("COMPONENT_FILE", "/app/components/statestore-dashboard.yaml")
     .WithEnvironment("APP_ID", "diagrid-dashboard")
-    .WithHttpEndpoint(targetPort: 8080)
+    .WithHttpEndpoint(port: 8888, targetPort: 8080)
     .WithReference(cache);
 
 builder.Build().Run();

@@ -34,23 +34,23 @@ scenes:
   - title: POST /startmusic
     moves:
       - action: highlight
-        path: ConcertoWorkflowSolution/ConcertoWorkflowApp/Program.cs
+        path: ConcertoWorkflowSolution/ConcertoWorkflow.App/Program.cs
         position: '31:41'
         highlightBlur: 2
         highlightWholeLine: true
   - title: MusicWorkflow
     moves:
       - action: open
-        path: ConcertoWorkflowSolution/ConcertoWorkflowApp/MusicWorkflow.cs
+        path: ConcertoWorkflowSolution/ConcertoWorkflow.App/MusicWorkflow.cs
   - title: SendNoteActivity
     moves:
       - action: open
-        path: ConcertoWorkflowSolution/ConcertoWorkflowApp/SendNoteActivity.cs
+        path: ConcertoWorkflowSolution/ConcertoWorkflow.App/SendNoteActivity.cs
   - id: demo-mmg7akkg-is4u
     title: HttpClient
     moves:
       - action: highlight
-        path: ConcertoWorkflowSolution/ConcertoWorkflowApp/Program.cs
+        path: ConcertoWorkflowSolution/ConcertoWorkflow.App/Program.cs
         highlightWholeLine: true
         highlightBlur: 2
         position: '10'

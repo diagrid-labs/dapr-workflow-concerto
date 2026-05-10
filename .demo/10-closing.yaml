@@ -14,8 +14,8 @@ scenes:
       - action: openSlide
         path: .demo/slides/04-demos/10a-synth-presets.md
       - action: rename
-        path: ConcertoWorkflowSolution/ConcertoWorkflowApp/MusicWorkflowV6.cs.temp
-        dest: ConcertoWorkflowSolution/ConcertoWorkflowApp/MusicWorkflowV6.cs
+        path: ConcertoWorkflowSolution/ConcertoWorkflow.App/MusicWorkflowV6.cs.temp
+        dest: ConcertoWorkflowSolution/ConcertoWorkflow.App/MusicWorkflowV6.cs
       - action: waitForTimeout
         timeout: 500
       - action: executeTerminalCommand
@@ -42,20 +42,20 @@ scenes:
   - title: Reset All
     moves:
       - action: rename
-        path: ConcertoWorkflowSolution/ConcertoWorkflowApp/MusicWorkflowV2.cs
-        dest: ConcertoWorkflowSolution/ConcertoWorkflowApp/MusicWorkflowV2.cs.temp
+        path: ConcertoWorkflowSolution/ConcertoWorkflow.App/MusicWorkflowV2.cs
+        dest: ConcertoWorkflowSolution/ConcertoWorkflow.App/MusicWorkflowV2.cs.temp
       - action: rename
-        path: ConcertoWorkflowSolution/ConcertoWorkflowApp/MusicWorkflowV3.cs
-        dest: ConcertoWorkflowSolution/ConcertoWorkflowApp/MusicWorkflowV3.cs.temp
+        path: ConcertoWorkflowSolution/ConcertoWorkflow.App/MusicWorkflowV3.cs
+        dest: ConcertoWorkflowSolution/ConcertoWorkflow.App/MusicWorkflowV3.cs.temp
       - action: rename
-        path: ConcertoWorkflowSolution/ConcertoWorkflowApp/MusicWorkflowV4.cs
-        dest: ConcertoWorkflowSolution/ConcertoWorkflowApp/MusicWorkflowV4.cs.temp
+        path: ConcertoWorkflowSolution/ConcertoWorkflow.App/MusicWorkflowV4.cs
+        dest: ConcertoWorkflowSolution/ConcertoWorkflow.App/MusicWorkflowV4.cs.temp
       - action: rename
-        path: ConcertoWorkflowSolution/ConcertoWorkflowApp/MusicWorkflowV5.cs
-        dest: ConcertoWorkflowSolution/ConcertoWorkflowApp/MusicWorkflowV5.cs.temp
+        path: ConcertoWorkflowSolution/ConcertoWorkflow.App/MusicWorkflowV5.cs
+        dest: ConcertoWorkflowSolution/ConcertoWorkflow.App/MusicWorkflowV5.cs.temp
       - action: rename
-        path: ConcertoWorkflowSolution/ConcertoWorkflowApp/MusicWorkflowV6.cs
-        dest: ConcertoWorkflowSolution/ConcertoWorkflowApp/MusicWorkflowV6.cs.temp
+        path: ConcertoWorkflowSolution/ConcertoWorkflow.App/MusicWorkflowV6.cs
+        dest: ConcertoWorkflowSolution/ConcertoWorkflow.App/MusicWorkflowV6.cs.temp
       - action: focusTerminal
         terminalId: dev-dashboard
       - action: sendKeybinding

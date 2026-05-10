@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConcertoWorkflow.AppHost", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConcertoWorkflow.ServiceDefaults", "ConcertoWorkflow.ServiceDefaults\ConcertoWorkflow.ServiceDefaults.csproj", "{2E8FDE73-9A03-4A73-B50A-9AE60EB01DE5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcertoWorkflowApp", "ConcertoWorkflowApp\ConcertoWorkflowApp.csproj", "{FDE9958C-CD43-4A34-AD31-18A8C2D9D7D1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcertoWorkflow.App", "ConcertoWorkflow.App\ConcertoWorkflow.App.csproj", "{FDE9958C-CD43-4A34-AD31-18A8C2D9D7D1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoteStreamApp", "NoteStreamApp\NoteStreamApp.csproj", "{205E7BB1-C916-4E20-BE31-6EDB3E5F51FF}"
 EndProject

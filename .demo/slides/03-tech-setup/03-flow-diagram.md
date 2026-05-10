@@ -6,7 +6,7 @@ layout: default
 
 ```mermaid
 flowchart LR
-    FE[Front-end] --1.HTTP--> CWA[ConcertoWorkflowApp]
+    FE[Front-end] --1.HTTP--> CWA[ConcertoWorkflow.App]
     CWA<--2.gRPC-->DAPR[Dapr
     Workflow
     Engine]

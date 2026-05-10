@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ConcertoWorkflowApp\ConcertoWorkflowApp.csproj" />
+    <ProjectReference Include="..\ConcertoWorkflow.App\ConcertoWorkflow.App.csproj" />
     <ProjectReference Include="..\NoteStreamApp\NoteStreamApp.csproj" />
   </ItemGroup>
 

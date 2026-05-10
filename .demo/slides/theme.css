@@ -2,10 +2,10 @@
 
 .slide.default {
   --demotime-intro-heading-color: #ffffff;
-  --demotime-intro-heading-background: #3EA9F5;
+  --demotime-intro-heading-background: #41bd9b;
 
   --demotime-section-heading-color: #ffffff;
-  --demotime-section-heading-background: #3EA9F5;
+  --demotime-section-heading-background: #41bd9b;
 
   .intro h1,
   .section h1 {

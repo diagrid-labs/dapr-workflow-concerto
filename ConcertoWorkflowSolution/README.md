@@ -8,7 +8,7 @@ The original projects under `../ConcertoWorkflow/` and `../NoteStreamApp/` are n
 
 - **`ConcertoWorkflow.AppHost`** — Aspire entry point. Defines four resources: a Valkey container (port 16379), the `music-app` workflow service with a Dapr sidecar (port 5500), the `note-stream-app` SSE/frontend service with a Dapr sidecar (port 5051), and the Diagrid Dev Dashboard container (port 8080).
 - **`ConcertoWorkflow.ServiceDefaults`** — Aspire-shared OpenTelemetry, health checks, resilience, and service discovery setup. Referenced by both service projects.
-- **`ConcertoWorkflowApp`** — Workflow service (app ID `music-app`). Uses `Dapr.Workflow` and `Dapr.Workflow.Versioning`. Activities call `note-stream-app` via Dapr service invocation.
+- **`ConcertoWorkflow.App`** — Workflow service (app ID `music-app`). Uses `Dapr.Workflow` and `Dapr.Workflow.Versioning`. Activities call `note-stream-app` via Dapr service invocation.
 - **`NoteStreamApp`** — SSE service (app ID `note-stream-app`) that queues notes and streams them to the browser. Hosts the static P5.js frontend from `wwwroot/`.
 
 ```mermaid
@@ -50,7 +50,7 @@ The Aspire dashboard opens automatically in your browser. From the resource list
 
 ## Endpoints
 
-All workflow endpoints live on `http://localhost:5500`. The full request set with examples is in [`ConcertoWorkflowApp/ConcertoWorkflowApp.http`](ConcertoWorkflowApp/ConcertoWorkflowApp.http) — open it in VS Code (REST Client extension) or JetBrains Rider/IntelliJ to fire requests interactively.
+All workflow endpoints live on `http://localhost:5500`. The full request set with examples is in [`ConcertoWorkflow.App/ConcertoWorkflow.App.http`](ConcertoWorkflow.App/ConcertoWorkflow.App.http) — open it in VS Code (REST Client extension) or JetBrains Rider/IntelliJ to fire requests interactively.
 
 Quick examples with curl:
 

@@ -8,6 +8,17 @@ scenes:
     moves:
       - action: openSlide
         path: .demo/slides/01-intro/00-blank.md
+      - action: executeTerminalCommand
+        command: cd ConcertoWorkflowSolution
+        terminalId: dapr-run
+        insertTypingMode: instant
+        autoExecute: true
+      - action: executeTerminalCommand
+        command: aspire run
+        terminalId: dapr-run
+        insertTypingMode: character-by-character
+        autoExecute: true
+        insertTypingSpeed: 100
   - id: demo-mozyhtlh-q9al
     title: Intro Techorama
     moves:
@@ -36,17 +47,6 @@ scenes:
     moves:
       - action: executeVSCodeCommand
         command: demo-time.startCountdown
-      - action: executeTerminalCommand
-        command: cd ConcertoWorkflowSolution
-        terminalId: dapr-run
-        insertTypingMode: instant
-        autoExecute: true
-      - action: executeTerminalCommand
-        command: aspire run
-        terminalId: dapr-run
-        insertTypingMode: character-by-character
-        autoExecute: true
-        insertTypingSpeed: 100
   - id: demo-mmcgboeq-yvo8
     title: Bio
     moves:

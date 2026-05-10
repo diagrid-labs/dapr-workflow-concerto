@@ -10,10 +10,10 @@ scenes:
   - title: MusicWorkflowV2.cs
     moves:
       - action: rename
-        path: ConcertoWorkflowSolution/ConcertoWorkflowApp/MusicWorkflowV2.cs.temp
-        dest: ConcertoWorkflowSolution/ConcertoWorkflowApp/MusicWorkflowV2.cs
+        path: ConcertoWorkflowSolution/ConcertoWorkflow.App/MusicWorkflowV2.cs.temp
+        dest: ConcertoWorkflowSolution/ConcertoWorkflow.App/MusicWorkflowV2.cs
       - action: open
-        path: ConcertoWorkflowSolution/ConcertoWorkflowApp/MusicWorkflowV2.cs
+        path: ConcertoWorkflowSolution/ConcertoWorkflow.App/MusicWorkflowV2.cs
   - id: scene-mmkf4xjz-fnbl
     title: Rhythm music score
     moves:

@@ -10,10 +10,10 @@ scenes:
   - title: MusicWorkflowV5.cs
     moves:
       - action: rename
-        path: ConcertoWorkflowSolution/ConcertoWorkflowApp/MusicWorkflowV5.cs.temp
-        dest: ConcertoWorkflowSolution/ConcertoWorkflowApp/MusicWorkflowV5.cs
+        path: ConcertoWorkflowSolution/ConcertoWorkflow.App/MusicWorkflowV5.cs.temp
+        dest: ConcertoWorkflowSolution/ConcertoWorkflow.App/MusicWorkflowV5.cs
       - action: open
-        path: ConcertoWorkflowSolution/ConcertoWorkflowApp/MusicWorkflowV5.cs
+        path: ConcertoWorkflowSolution/ConcertoWorkflow.App/MusicWorkflowV5.cs
   - id: demo-mng06oow-7s72
     title: onApprovePressed
     moves:
@@ -26,7 +26,7 @@ scenes:
     title: POST /approve
     moves:
       - action: highlight
-        path: ConcertoWorkflowSolution/ConcertoWorkflowApp/Program.cs
+        path: ConcertoWorkflowSolution/ConcertoWorkflow.App/Program.cs
         highlightWholeLine: true
         position: '43:55'
         highlightBlur: 2

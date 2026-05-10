@@ -10,10 +10,10 @@ scenes:
   - title: MusicWorkflowV3.cs
     moves:
       - action: rename
-        path: ConcertoWorkflowSolution/ConcertoWorkflowApp/MusicWorkflowV3.cs.temp
-        dest: ConcertoWorkflowSolution/ConcertoWorkflowApp/MusicWorkflowV3.cs
+        path: ConcertoWorkflowSolution/ConcertoWorkflow.App/MusicWorkflowV3.cs.temp
+        dest: ConcertoWorkflowSolution/ConcertoWorkflow.App/MusicWorkflowV3.cs
       - action: open
-        path: ConcertoWorkflowSolution/ConcertoWorkflowApp/MusicWorkflowV3.cs
+        path: ConcertoWorkflowSolution/ConcertoWorkflow.App/MusicWorkflowV3.cs
   - id: scene-mmhxsrhj-fjiz
     title: Let's Play!
     moves:
@@ -33,14 +33,14 @@ scenes:
   - title: Workflow Registration
     moves:
       - action: highlight
-        path: ConcertoWorkflowSolution/ConcertoWorkflowApp/Program.cs
+        path: ConcertoWorkflowSolution/ConcertoWorkflow.App/Program.cs
         position: '11:15'
         highlightBlur: 2
         highlightWholeLine: true
   - title: Workflow Versioning
     moves:
       - action: highlight
-        path: ConcertoWorkflowSolution/ConcertoWorkflowApp/Program.cs
+        path: ConcertoWorkflowSolution/ConcertoWorkflow.App/Program.cs
         position: '16'
         highlightBlur: 2
         highlightWholeLine: true
@@ -48,13 +48,13 @@ scenes:
     title: MusicWorkflowV3.cs
     moves:
       - action: highlight
-        path: ConcertoWorkflowSolution/ConcertoWorkflowApp/MusicWorkflowV3.cs
+        path: ConcertoWorkflowSolution/ConcertoWorkflow.App/MusicWorkflowV3.cs
         position: '8'
         highlightWholeLine: true
   - title: POST /startmusic
     moves:
       - action: highlight
-        path: ConcertoWorkflowSolution/ConcertoWorkflowApp/Program.cs
+        path: ConcertoWorkflowSolution/ConcertoWorkflow.App/Program.cs
         position: '31:41'
         highlightBlur: 2
         highlightWholeLine: true

@@ -10,10 +10,10 @@ scenes:
   - title: MusicWorkflowV4.cs
     moves:
       - action: rename
-        path: ConcertoWorkflowSolution/ConcertoWorkflowApp/MusicWorkflowV4.cs.temp
-        dest: ConcertoWorkflowSolution/ConcertoWorkflowApp/MusicWorkflowV4.cs
+        path: ConcertoWorkflowSolution/ConcertoWorkflow.App/MusicWorkflowV4.cs.temp
+        dest: ConcertoWorkflowSolution/ConcertoWorkflow.App/MusicWorkflowV4.cs
       - action: open
-        path: ConcertoWorkflowSolution/ConcertoWorkflowApp/MusicWorkflowV4.cs
+        path: ConcertoWorkflowSolution/ConcertoWorkflow.App/MusicWorkflowV4.cs
   - id: scene-mmhxsrhj-bjiy
     title: Let's Play!
     moves:
