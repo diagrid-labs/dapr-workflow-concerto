@@ -4,6 +4,7 @@ scenes:
   - id: scene-moyj7vwg-ueym
     title: Diagram V2
     moves:
+      - action: setPresentationView
       - action: openSlide
         path: .demo/slides/03-tech-setup/04a-music-workflow-v2-diagram.md
   - title: MusicWorkflowV2.cs
@@ -27,7 +28,7 @@ scenes:
       - action: openSlide
         path: .demo/slides/04-demos/05-synth-presets.md
       - action: executeTerminalCommand
-        command: dapr run -f .
+        command: aspire run
         terminalId: dapr-run
         insertTypingMode: character-by-character
         insertTypingSpeed: 75

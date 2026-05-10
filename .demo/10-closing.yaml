@@ -19,7 +19,7 @@ scenes:
       - action: waitForTimeout
         timeout: 500
       - action: executeTerminalCommand
-        command: dapr run -f .
+        command: aspire run
         terminalId: dapr-run
         insertTypingMode: character-by-character
         insertTypingSpeed: 75

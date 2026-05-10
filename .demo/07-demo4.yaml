@@ -1,13 +1,14 @@
 title: 07 - V3 - no foreach
 version: 3
-demos:
+scenes:
   - id: scene-moyjdmzz-x0r6
     title: Diagram V3
-    steps:
+    moves:
+      - action: setPresentationView
       - action: openSlide
         path: .demo/slides/03-tech-setup/04b-music-workflow-v3-diagram.md
   - title: MusicWorkflowV3.cs
-    steps:
+    moves:
       - action: rename
         path: ConcertoWorkflowSolution/ConcertoWorkflowApp/MusicWorkflowV3.cs.temp
         dest: ConcertoWorkflowSolution/ConcertoWorkflowApp/MusicWorkflowV3.cs
@@ -15,38 +16,45 @@ demos:
         path: ConcertoWorkflowSolution/ConcertoWorkflowApp/MusicWorkflowV3.cs
   - id: scene-mmhxsrhj-fjiz
     title: Let's Play!
-    steps:
+    moves:
       - action: openSlide
         path: .demo/slides/04-demos/07-synth-presets.md
       - action: executeTerminalCommand
-        command: dapr run -f .
+        command: aspire run
         terminalId: dapr-run
         insertTypingMode: character-by-character
         insertTypingSpeed: 75
   - title: Stop Dapr Application
-    steps:
+    moves:
       - action: focusTerminal
         terminalId: dapr-run
       - action: sendKeybinding
         keybinding: ctrl+c
   - title: Workflow Registration
-    steps:
+    moves:
       - action: highlight
         path: ConcertoWorkflowSolution/ConcertoWorkflowApp/Program.cs
         position: '11:15'
         highlightBlur: 2
         highlightWholeLine: true
   - title: Workflow Versioning
-    steps:
+    moves:
       - action: highlight
         path: ConcertoWorkflowSolution/ConcertoWorkflowApp/Program.cs
         position: '16'
         highlightBlur: 2
         highlightWholeLine: true
+  - id: demo-mozxw73m-e8z9
+    title: MusicWorkflowV3.cs
+    moves:
+      - action: highlight
+        path: ConcertoWorkflowSolution/ConcertoWorkflowApp/MusicWorkflowV3.cs
+        position: '8'
+        highlightWholeLine: true
   - title: POST /startmusic
-    steps:
+    moves:
       - action: highlight
         path: ConcertoWorkflowSolution/ConcertoWorkflowApp/Program.cs
-        position: '28:38'
+        position: '31:41'
         highlightBlur: 2
         highlightWholeLine: true

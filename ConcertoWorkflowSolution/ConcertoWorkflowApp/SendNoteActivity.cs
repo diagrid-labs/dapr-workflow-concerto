@@ -7,11 +7,6 @@ public sealed partial class SendNoteActivity(ILogger<SendNoteActivity> logger, H
 {
     public override async Task<bool> RunAsync(WorkflowActivityContext context, SendNoteInput input)
     {
-        if (input.Bpm <= 0)
-        {
-            throw new ArgumentOutOfRangeException(nameof(input.Bpm), "BPM must be positive.");
-        }
-
         var note = input.Note;
         var wholeMs = (60000d / input.Bpm) * 4d;
 
