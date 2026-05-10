@@ -11,21 +11,26 @@ layout: default
 
 ```mermaid
 graph LR
-    subgraph Workflow
+    subgraph Workflow ["<br/>Workflow"]
     direction LR
     Start([Start])
     End([End])
-    Start --> A1[Activity 1]
+    Start --> A1(Activity 1)
     A1 --> IF{Condition}
-    IF--false-->A2[Activity 2]
-    IF--true-->A3[Activity 3]
+    IF--false-->A2(Activity 2)
+    IF--true-->A3(Activity 3)
     A2 --> End 
     A3 --> End
     end
     
-    style Start fill:#28a745,color:#ffffff
+    style Workflow fill:none,stroke:#41bd9b,stroke-width:2px,stroke-dasharray:5 5
+    style Start fill:#41bd9b,color:#000000
     style End fill:#dc3545,color:#ffffff
     style IF fill:#ffc107,color:#000000
+    style A1 stroke:#41bd9b,stroke-width:2px
+    style A2 stroke:#41bd9b,stroke-width:2px
+    style A3 stroke:#41bd9b,stroke-width:2px
+    linkStyle default stroke:#41bd9b,stroke-width:1px
 ```
 
 ---
