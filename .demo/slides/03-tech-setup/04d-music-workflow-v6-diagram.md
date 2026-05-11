@@ -2,7 +2,7 @@
 layout: default
 ---
 
-# MusicWorkflowV5
+# MusicWorkflowV6
 
 ```mermaid
 flowchart LR

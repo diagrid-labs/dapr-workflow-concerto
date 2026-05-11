@@ -1,19 +1,19 @@
-title: 09 - V5 - wait
+title: 09 - V6 - wait
 version: 3
 scenes:
   - id: scene-moyjjnr8-ng0z
-    title: Diagram V5
+    title: Diagram V6
     moves:
       - action: setPresentationView
       - action: openSlide
-        path: .demo/slides/03-tech-setup/04d-music-workflow-v5-diagram.md
-  - title: MusicWorkflowV5.cs
+        path: .demo/slides/03-tech-setup/04d-music-workflow-v6-diagram.md
+  - title: MusicWorkflowV6.cs
     moves:
       - action: rename
-        path: ConcertoWorkflowSolution/ConcertoWorkflow.App/MusicWorkflowV5.cs.temp
-        dest: ConcertoWorkflowSolution/ConcertoWorkflow.App/MusicWorkflowV5.cs
+        path: ConcertoWorkflowSolution/ConcertoWorkflow.App/MusicWorkflowV6.cs.temp
+        dest: ConcertoWorkflowSolution/ConcertoWorkflow.App/MusicWorkflowV6.cs
       - action: open
-        path: ConcertoWorkflowSolution/ConcertoWorkflow.App/MusicWorkflowV5.cs
+        path: ConcertoWorkflowSolution/ConcertoWorkflow.App/MusicWorkflowV6.cs
   - id: demo-mng06oow-7s72
     title: onApprovePressed
     moves:
@@ -31,7 +31,7 @@ scenes:
         position: '43:55'
         highlightBlur: 2
   - id: scene-mmhxsrhj-fkiy
-    title: Let's Play!
+    title: Let's Play! (V6)
     moves:
       - action: openSlide
         path: .demo/slides/04-demos/09-synth-presets.md

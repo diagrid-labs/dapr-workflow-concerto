@@ -3,7 +3,7 @@ using Microsoft.Extensions.Logging;
 using Dapr.Workflow;
 
 /// <summary>
-/// Final version.
+/// Wait for approval before playing each note 🤦.
 /// </summary>
 public sealed partial class MusicWorkflowV6 : Workflow<MusicScore, object>
 {
@@ -12,22 +12,25 @@ public sealed partial class MusicWorkflowV6 : Workflow<MusicScore, object>
         var logger = context.CreateReplaySafeLogger<MusicWorkflowV6>();
         LogStart(logger, musicScore.Title);
 
+        if (musicScore.Notes.Length == 0)
+        {
+            return $"{musicScore.Title} Completed!";
+        }
+
         int overheadMs = await CalculateOverhead(context);
 
-        foreach (var note in musicScore.Notes)
+        var isApproved = await context.WaitForExternalEventAsync<bool>("approve");
+        if (isApproved)
         {
             await context.CallActivityAsync<bool>(
                 nameof(SendNoteActivity),
-                new SendNoteInput(note, musicScore.Bpm, overheadMs));
+                new SendNoteInput(musicScore.Notes[0], musicScore.Bpm, overheadMs));
         }
 
-        if (musicScore.Repeats > 1)
-        {
-            var remaining = musicScore with { Repeats = musicScore.Repeats - 1 };
-            context.ContinueAsNew(remaining);
-        }
+        var updatedMusicScore = musicScore with { Notes = musicScore.Notes[1..] };
+        context.ContinueAsNew(updatedMusicScore);
 
-        return $"{musicScore.Title} Completed!";
+        return $"{musicScore.Title} In progress...";
     }
 
     private static async Task<int> CalculateOverhead(WorkflowContext context)

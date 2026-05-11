@@ -3,13 +3,13 @@ using Microsoft.Extensions.Logging;
 using Dapr.Workflow;
 
 /// <summary>
-/// Repeat the notes! 🎶
+/// Final version.
 /// </summary>
-public sealed partial class MusicWorkflowV5 : Workflow<MusicScore, object>
+public sealed partial class MusicWorkflowV7 : Workflow<MusicScore, object>
 {
     public override async Task<object> RunAsync(WorkflowContext context, MusicScore musicScore)
     {
-        var logger = context.CreateReplaySafeLogger<MusicWorkflowV5>();
+        var logger = context.CreateReplaySafeLogger<MusicWorkflowV7>();
         LogStart(logger, musicScore.Title);
 
         int overheadMs = await CalculateOverhead(context);
