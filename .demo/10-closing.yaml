@@ -31,6 +31,7 @@ scenes:
   - id: scene-mmi20x0c-2163
     title: Links & Feedback
     moves:
+      - action: setPresentationView
       - action: openSlide
         path: .demo/slides/05-closing/02-links.md
   - id: demo-mp05sh67-q2am

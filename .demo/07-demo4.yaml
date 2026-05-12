@@ -47,6 +47,7 @@ scenes:
   - id: scene-mp2ckvly-2k6z
     title: Workflow Versioning Diagram
     moves:
+      - action: setPresentationView
       - action: openSlide
         path: .demo/slides/03-tech-setup/06-versioning-diagram.md
   - id: demo-mozxw73m-e8z9

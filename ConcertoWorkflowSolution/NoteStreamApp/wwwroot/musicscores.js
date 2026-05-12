@@ -315,7 +315,7 @@ function getFinalScore() {
     Bpm: 118,
     Repeats: 4,
     Notes: [
-      { Id: "1",  NoteName: "C#5", Type: playbackType, NoteLength: "1/16", Interval: "1/1"  },
+      { Id: "1",  NoteName: "C#5", Type: playbackType, NoteLength: "1/16", Interval: "1/2"  },
       { Id: "2",  NoteName: "B4",  Type: playbackType, NoteLength: "1/16", Interval: "1/16" },
       { Id: "3",  NoteName: "C#5", Type: playbackType, NoteLength: "1/8.",  Interval: "1/16" },
       { Id: "4",  NoteName: "F#4", Type: playbackType, NoteLength: "1/3",  Interval: "1/4"  },

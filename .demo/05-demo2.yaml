@@ -7,7 +7,7 @@ scenes:
       - action: highlight
         path: ConcertoWorkflowSolution/NoteStreamApp/wwwroot/musicscores.js
         highlightBlur: 2
-        position: '90:165'
+        position: '88:162'
         highlightWholeLine: true
   - id: scene-mowlsk58-92g9
     title: Let's Play!

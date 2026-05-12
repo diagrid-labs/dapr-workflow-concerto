@@ -2,7 +2,7 @@
 layout: default
 ---
 
-# MusicWorkflow with CalculateOverhead
+# MusicWorkflow with MeasureLatency
 
 ```mermaid
 flowchart LR

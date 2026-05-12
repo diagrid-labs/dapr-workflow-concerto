@@ -24,5 +24,4 @@ layout: default
 
 ### - Play music! 7 demos with different workflows
 
-### - Resources & Feedback
-
+### - Workflow Versioning
