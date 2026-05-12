@@ -2,11 +2,12 @@
 layout: default
 ---
 
-# MusicWorkflowV2
+# MusicWorkflowV2 - Repeats
 
 ```mermaid
 flowchart LR
-    Start([Start]) --> Input[/MusicScore/]
+    Start([Start]) --> Input[/MusicScore
+    with Repeats/]
     Input --> Loop{For each note
     in MusicScore}
     Loop -->|Next note| Activity(SendNoteActivity)

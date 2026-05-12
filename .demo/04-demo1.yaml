@@ -26,6 +26,8 @@ scenes:
         position: '375:407'
         highlightWholeLine: true
         highlightBlur: 2
+      - action: executeVSCodeCommand
+        command: workbench.action.terminal.toggleTerminal
   - id: scene-mmg8ziyw-7xdz
     title: Music Scores
     moves:

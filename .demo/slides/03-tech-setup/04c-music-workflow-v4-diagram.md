@@ -2,7 +2,7 @@
 layout: default
 ---
 
-# MusicWorkflowV4
+# MusicWorkflowV4 - Fan-out/fan-in
 
 ```mermaid
 flowchart LR

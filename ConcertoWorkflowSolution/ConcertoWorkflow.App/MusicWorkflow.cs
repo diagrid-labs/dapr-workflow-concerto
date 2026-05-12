@@ -11,6 +11,17 @@ public sealed partial class MusicWorkflow : Workflow<MusicScore, object>
 
         int overheadMs = await CalculateOverhead(context);
 
+        // Dapr Workflow replays the workflow code from the start after every activity completion.
+        // With 3 notes, there are 9 foreach iteration steps in total:
+        // 1: Execute SendNote 1, replay
+        // 2: Restart foreach - Get SendNote 1 result
+        // 3: Next - Execute SendNote 2, replay
+        // 4: Restart foreach - Get SendNote 1 result
+        // 5: Next - Get SendNote 2 result
+        // 6: Next - Execute SendNote 3, replay
+        // 7: Restart foreach - Get SendNote 1
+        // 8: Next - Get SendNote 2
+        // 9: Next - Get SendNote 3
         foreach (var note in musicScore.Notes)
         {
             await context.CallActivityAsync<bool>(

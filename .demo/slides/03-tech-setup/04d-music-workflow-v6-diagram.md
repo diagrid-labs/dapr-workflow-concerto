@@ -2,7 +2,7 @@
 layout: default
 ---
 
-# MusicWorkflowV6
+# MusicWorkflowV6 - Human in the loop
 
 ```mermaid
 flowchart LR

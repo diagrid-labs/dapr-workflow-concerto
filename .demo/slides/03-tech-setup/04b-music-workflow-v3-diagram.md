@@ -2,7 +2,7 @@
 layout: default
 ---
 
-# MusicWorkflowV3
+# MusicWorkflowV3 - No more `for each`
 
 ```mermaid
 flowchart LR

@@ -2,7 +2,6 @@ function getIntroMusicScore() {
   return {
     Title: "Intro",
     Bpm: 75,
-    Repeats: 1,
     Notes: [
       { Id: "1", NoteName: "F#2", Type: playbackType, NoteLength: "1/2",  Interval: "0"     },
       { Id: "2", NoteName: "B2",  Type: playbackType, NoteLength: "1/2",  Interval: "1/2"   },
@@ -56,7 +55,6 @@ function getHappyMusicScore() {
   return {
     Title: "Happy",
     Bpm: 120,
-    Repeats: 1,
     Notes: [
       { Id: "1",  NoteName: "G3", Type: playbackType, NoteLength: "1/16", Interval: "0"    },
       { Id: "2",  NoteName: "G3", Type: playbackType, NoteLength: "1/8",  Interval: "3/16"  },
@@ -91,7 +89,6 @@ function getRhythmMusicScoreLong() {
   return {
     Title: "Rhythm",
     Bpm: 126,
-    Repeats: 1,
     Notes: [
       { Id: "1",  NoteName: "A4",  Type: playbackType, NoteLength: "1/16", Interval: "1/8" },
       { Id: "2",  NoteName: "F4",  Type: playbackType, NoteLength: "1/16", Interval: "1/8" },

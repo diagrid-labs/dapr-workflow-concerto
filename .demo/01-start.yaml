@@ -47,6 +47,8 @@ scenes:
     moves:
       - action: executeVSCodeCommand
         command: demo-time.startCountdown
+      - action: showInfoMessage
+        message: Let's play!
   - id: demo-mmcgboeq-yvo8
     title: Bio
     moves:
