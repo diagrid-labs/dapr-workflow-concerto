@@ -20,7 +20,7 @@ scenes:
       - action: highlight
         path: ConcertoWorkflowSolution/NoteStreamApp/wwwroot/musicscores.js
         highlightBlur: 2
-        position: '167:191'
+        position: '164:188'
         highlightWholeLine: true
   - id: scene-mmhxsrhj-ajiy
     title: Let's Play!
@@ -32,6 +32,8 @@ scenes:
         terminalId: dapr-run
         insertTypingMode: character-by-character
         insertTypingSpeed: 75
+      - action: showInfoMessage
+        message: Check Repeats in Diagrid Dev Dashboard
   - title: Stop Dapr Application
     moves:
       - action: focusTerminal

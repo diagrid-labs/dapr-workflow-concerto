@@ -18,7 +18,7 @@ scenes:
     title: Let's Play! (V4)
     moves:
       - action: openSlide
-        path: .demo/slides/04-demos/08-synth-presets.md
+        path: .demo/slides/04-demos/06-synth-presets.md
       - action: executeTerminalCommand
         command: aspire run
         terminalId: dapr-run
@@ -44,11 +44,6 @@ scenes:
         terminalId: dapr-run
         insertTypingMode: character-by-character
         insertTypingSpeed: 75
-  - id: scene-mp1pdzew-mob5
-    title: Let's Play Again! (V5)
-    moves:
-      - action: openSlide
-        path: .demo/slides/04-demos/06-synth-presets.md
   - id: scene-mp1peaa7-fi37
     title: Stop Dapr Application
     moves:

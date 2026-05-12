@@ -29,6 +29,7 @@ public sealed partial class SendNoteActivity(ILogger<SendNoteActivity> logger, H
             idealDurationMs,
             actualWaitMs);
 
+        // POST to NoteStreamApp
         var response = await httpClient.PostAsJsonAsync("/sendnote", playback);
         return response.IsSuccessStatusCode;
     }

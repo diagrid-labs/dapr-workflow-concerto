@@ -366,9 +366,8 @@ const MUSIC_SCORES = {
   "Happy":  getHappyMusicScore,
   "RhythmLong": getRhythmMusicScoreLong,
   "Rhythm": getRhythmMusicScore,
-  "Strange": getStrangerMusicScore,
   "X":      getXFilesMusicScore,
-  "BB":     getBluesBrotherMusicScore,
+  "Strange": getStrangerMusicScore,
   "Never":  getRickMusicScore,
   "Final":  getFinalScore
 };

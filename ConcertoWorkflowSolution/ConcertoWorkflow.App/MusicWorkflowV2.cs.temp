@@ -24,6 +24,7 @@ public sealed partial class MusicWorkflowV2 : Workflow<MusicScore, object>
         if (musicScore.Repeats > 1)
         {
             var remaining = musicScore with { Repeats = musicScore.Repeats - 1 };
+            // Replay-safe way to do loops in workflows
             context.ContinueAsNew(remaining);
         }
 
