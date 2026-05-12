@@ -45,7 +45,3 @@ scenes:
     moves:
       - action: markdownPreview
         path: .demo/slides/02-dapr-workflow/05-workflow-sequence-diagram.md
-  - title: Workflows GOAT
-    moves:
-      - action: openSlide
-        path: .demo/slides/02-dapr-workflow/06-workflows-final.md

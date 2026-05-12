@@ -177,6 +177,7 @@ canvas {
 
 /* Pause button */
 .pause-button {
+    display: none;
     position: absolute;
     padding: 10px 24px;
     background-color: rgba(200, 150, 0, 0.8);
@@ -203,6 +204,7 @@ canvas {
 
 /* Resume button */
 .resume-button {
+    display: none;
     position: absolute;
     padding: 10px 24px;
     background-color: rgba(0, 150, 200, 0.8);

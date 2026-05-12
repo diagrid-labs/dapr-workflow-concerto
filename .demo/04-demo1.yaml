@@ -80,27 +80,27 @@ scenes:
         position: '455:484'
         highlightWholeLine: true
         highlightBlur: 2
-  - id: demo-mmg937ly-ijwn
-    title: playNoteWebAudio
-    moves:
-      - action: highlight
-        path: ConcertoWorkflowSolution/NoteStreamApp/wwwroot/sketch.js
-        position: '125:141'
-        highlightWholeLine: true
-        highlightBlur: 2
-  - id: demo-mmg9dogj-hv6i
-    title: sendNoteOn
-    moves:
-      - action: highlight
-        path: ConcertoWorkflowSolution/NoteStreamApp/wwwroot/sketch.js
-        position: '154:180'
-        highlightWholeLine: true
-        highlightBlur: 2
   - id: demo-mmg9qzgm-hm0o
     title: draw()
     moves:
       - action: highlight
         path: ConcertoWorkflowSolution/NoteStreamApp/wwwroot/sketch.js
         position: '66:70'
+        highlightWholeLine: true
+        highlightBlur: 2
+  - id: demo-mp37g0mk-0ocx
+    title: drawWaveform
+    moves:
+      - action: highlight
+        path: ConcertoWorkflowSolution/NoteStreamApp/wwwroot/sketch.js
+        position: '496:515'
+        highlightWholeLine: true
+        highlightBlur: 2
+  - id: demo-mp37k0sw-7ask
+    title: NoteAnimation
+    moves:
+      - action: highlight
+        path: ConcertoWorkflowSolution/NoteStreamApp/wwwroot/sketch.js
+        position: '592:668'
         highlightWholeLine: true
         highlightBlur: 2
