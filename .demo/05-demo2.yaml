@@ -19,6 +19,8 @@ scenes:
         terminalId: dapr-run
         insertTypingMode: character-by-character
         insertTypingSpeed: 75
+      - action: showInfoMessage
+        message: Check the Diagrid Dev Dashboard
   - id: scene-mowlsm0s-ryh7
     title: Stop Dapr Application
     moves:
