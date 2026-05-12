@@ -42,8 +42,6 @@ flowchart LR
 - A modern browser (Chrome or Edge recommended for Web MIDI support)
 - Optional: a hardware MIDI synthesizer connected via an audio/MIDI interface
 
-You do **not** need to start Redis/Valkey separately or run `dapr init` — Aspire manages the Valkey container and the Dapr sidecars.
-
 ## Running the project
 
 From the repository root:
