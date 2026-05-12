@@ -44,6 +44,11 @@ scenes:
         position: '16'
         highlightBlur: 2
         highlightWholeLine: true
+  - id: scene-mp2ckvly-2k6z
+    title: Workflow Versioning Diagram
+    moves:
+      - action: openSlide
+        path: .demo/slides/03-tech-setup/06-versioning-diagram.md
   - id: demo-mozxw73m-e8z9
     title: MusicWorkflowV3.cs
     moves:
