@@ -22,8 +22,10 @@ sequenceDiagram
     Engine->>State: Persist workflow input
     Engine-->>Client: Return Instance ID
     Engine->>Workflow: Execute orchestration
+    rect rgba(255, 193, 7, 0.2)
     loop For each Activity
         Workflow->>Engine: Schedule activity
+        rect rgba(65, 189, 155, 0.2)
         alt Activity not executed
         Engine->>State: Persist activity input
         Engine->>Activity: Execute activity
@@ -32,7 +34,9 @@ sequenceDiagram
         else Activity already  executed
             State->>Engine: Retrieve activity result
         end
+        end
         Engine-->>Workflow: Activity result / Replay
+    end
     end
     Workflow-->>Engine: Workflow complete
     Engine->>State: Persist workflow result

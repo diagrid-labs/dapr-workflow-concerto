@@ -1,28 +1,54 @@
 title: 01 - Start
 version: 3
 engageTime:
-  sessionId: m3xk32
+  sessionId: 6r41hf
 scenes:
+  - id: demo-moyhvfvs-lw7g
+    title: '-'
+    moves:
+      - action: openSlide
+        path: .demo/slides/01-intro/00-blank.md
+      - action: executeTerminalCommand
+        command: cd ConcertoWorkflowSolution
+        terminalId: dapr-run
+        insertTypingMode: instant
+        autoExecute: true
+      - action: executeTerminalCommand
+        command: aspire run
+        terminalId: dapr-run
+        insertTypingMode: character-by-character
+        autoExecute: true
+        insertTypingSpeed: 100
+  - id: demo-mozyhtlh-q9al
+    title: Intro Techorama
+    moves:
+      - action: openSlide
+        path: .demo/slides/01-intro/00-intro.md
+      - action: setPresentationView
+      - action: startEngageTimeSession
+      - action: closeEngageTimePoll
+        pollId: koaus6
+      - action: closeEngageTimePoll
+        pollId: nx1v74
   - id: scene-mmhm7tku-rik0
     title: Intro
     moves:
       - action: openSlide
         path: .demo/slides/01-intro/01-intro.md
       - action: setPresentationView
+      - action: startEngageTimeSession
       - action: closeEngageTimePoll
         pollId: koaus6
       - action: closeEngageTimePoll
         pollId: nx1v74
+    disabled: true
   - id: demo-mmg4gj89-6wc2
     title: Start Timer
     moves:
       - action: executeVSCodeCommand
         command: demo-time.startCountdown
-      - action: executeTerminalCommand
-        command: dapr run -f .
-        terminalId: dapr-run
-        insertTypingMode: character-by-character
-        insertTypingSpeed: 75
+      - action: showInfoMessage
+        message: Let's play!
   - id: demo-mmcgboeq-yvo8
     title: Bio
     moves:
@@ -35,11 +61,6 @@ scenes:
       - action: setPresentationView
       - action: openSlide
         path: .demo/slides/01-intro/02-bio.md
-  - id: demo-mmcgdyir-ug1w
-    title: EngageTime
-    moves:
-      - action: openSlide
-        path: .demo/slides/01-intro/03-engagetime.md
   - id: demo-mmciuv6y-hhdl
     title: What this session is about
     moves:

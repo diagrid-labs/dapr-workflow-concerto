@@ -5,7 +5,7 @@ scenes:
     title: Rhythm music score
     moves:
       - action: highlight
-        path: NoteStreamApp/wwwroot/musicscores.js
+        path: ConcertoWorkflowSolution/NoteStreamApp/wwwroot/musicscores.js
         highlightBlur: 2
         position: '90:165'
         highlightWholeLine: true
@@ -15,7 +15,7 @@ scenes:
       - action: openSlide
         path: .demo/slides/04-demos/05-synth-presets.md
       - action: executeTerminalCommand
-        command: dapr run -f .
+        command: aspire run
         terminalId: dapr-run
         insertTypingMode: character-by-character
         insertTypingSpeed: 75

@@ -62,7 +62,7 @@ insertTypingSpeed: <speed in milliseconds (optional)>
 Example to run a Dapr application with multi-app run:
 ```yaml
 action: executeTerminalCommand
-command: dapr run -f .
+command: aspire run
 terminalId: dapr-run
 insertTypingMode: character-by-character
 insertTypingSpeed: 75

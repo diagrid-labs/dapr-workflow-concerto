@@ -6,7 +6,7 @@ A Dapr Workflow demo that orchestrates music playback across two .NET microservi
 
 ```mermaid
 flowchart LR
-    FE[Front-end] --HTTP--> CWA[ConcertoWorkflowApp]
+    FE[Front-end] --HTTP--> CWA[ConcertoWorkflow.App]
     CWA --HTTP--> NSA[NoteStreamApp]
     NSA --SSE--> FE
     FE --WebMIDI--> HI[Audio/MIDI Interface]
@@ -16,7 +16,7 @@ flowchart LR
 | Component | Description |
 |---|---|
 | **Front-end** | P5.js canvas served from NoteStreamApp. Connects to SSE for real-time note events and sends HTTP requests to start/control the workflow. |
-| **ConcertoWorkflowApp** (`music-app`, port 5500) | Dapr Workflow orchestration service. Runs `MusicWorkflow` which loops through music scores and invokes activities to send notes. |
+| **ConcertoWorkflow.App** (`music-app`, port 5500) | Dapr Workflow orchestration service. Runs `MusicWorkflow` which loops through music scores and invokes activities to send notes. |
 | **NoteStreamApp** (`note-stream-app`, port 5051) | Receives notes via Dapr service invocation, queues them as SSE events, and serves the front-end static files. |
 | **Audio/MIDI Interface** | Optional hardware interface that routes MIDI messages from the browser to an external synthesizer. |
 | **Synthesizer** | External hardware synth that produces the actual sound when using Web MIDI playback. |

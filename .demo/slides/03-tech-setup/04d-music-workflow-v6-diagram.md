@@ -1,0 +1,29 @@
+---
+layout: default
+---
+
+# MusicWorkflowV6 - Human in the loop
+
+```mermaid
+flowchart LR
+    Start([Start]) --> Input[/MusicScore/]
+    Input --> Empty{Notes empty?}
+    Empty -->|Yes| Complete([End])
+    Empty -->|No| Wait[/WaitForExternalEvent
+    'approve'/]
+    Wait --> Approved{Approved?}
+    Approved -->|Yes| Activity(SendNoteActivity
+    first note)
+    Approved -->|No| Skip[Skip note]
+    Activity --> ContinueAsNew[/ContinueAsNew
+    remaining notes/]
+    Skip --> ContinueAsNew
+    ContinueAsNew --> Input
+
+    style Start fill:#41bd9b,color:#000000,stroke-width:2px
+    style Complete fill:#dc3545,color:#ffffff,stroke-width:2px
+    style Empty fill:#ffc107,color:#000000,stroke-width:2px
+    style Approved fill:#ffc107,color:#000000,stroke-width:2px
+    style Activity stroke:#41bd9b,stroke-width:2px
+    linkStyle default stroke:#41bd9b,stroke-width:1px
+```

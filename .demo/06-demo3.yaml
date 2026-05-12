@@ -1,20 +1,26 @@
 title: 06 - V2 - Repeat
 version: 3
 scenes:
+  - id: scene-moyj7vwg-ueym
+    title: Diagram V2
+    moves:
+      - action: setPresentationView
+      - action: openSlide
+        path: .demo/slides/03-tech-setup/04a-music-workflow-v2-diagram.md
   - title: MusicWorkflowV2.cs
     moves:
       - action: rename
-        path: ConcertoWorkflow/MusicWorkflowV2.cs.temp
-        dest: ConcertoWorkflow/MusicWorkflowV2.cs
+        path: ConcertoWorkflowSolution/ConcertoWorkflow.App/MusicWorkflowV2.cs.temp
+        dest: ConcertoWorkflowSolution/ConcertoWorkflow.App/MusicWorkflowV2.cs
       - action: open
-        path: ConcertoWorkflow/MusicWorkflowV2.cs
+        path: ConcertoWorkflowSolution/ConcertoWorkflow.App/MusicWorkflowV2.cs
   - id: scene-mmkf4xjz-fnbl
     title: Rhythm music score
     moves:
       - action: highlight
-        path: NoteStreamApp/wwwroot/musicscores.js
+        path: ConcertoWorkflowSolution/NoteStreamApp/wwwroot/musicscores.js
         highlightBlur: 2
-        position: '167:191'
+        position: '164:188'
         highlightWholeLine: true
   - id: scene-mmhxsrhj-ajiy
     title: Let's Play!
@@ -22,10 +28,12 @@ scenes:
       - action: openSlide
         path: .demo/slides/04-demos/05-synth-presets.md
       - action: executeTerminalCommand
-        command: dapr run -f .
+        command: aspire run
         terminalId: dapr-run
         insertTypingMode: character-by-character
         insertTypingSpeed: 75
+      - action: showInfoMessage
+        message: Check Repeats in Diagrid Dev Dashboard
   - title: Stop Dapr Application
     moves:
       - action: focusTerminal

@@ -1,0 +1,5 @@
+{
+  "appHost": {
+    "path": "ConcertoWorkflow.AppHost/ConcertoWorkflow.AppHost.csproj"
+  }
+}

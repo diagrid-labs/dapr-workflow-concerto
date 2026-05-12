@@ -1,24 +1,51 @@
 title: 08 - V4 - fan-out
 version: 3
 scenes:
-  - title: MusicWorkflowV5.cs
+  - id: scene-moyjibzs-bvc2
+    title: Diagram V4
+    moves:
+      - action: setPresentationView
+      - action: openSlide
+        path: .demo/slides/03-tech-setup/04c-music-workflow-v4-diagram.md
+  - title: MusicWorkflowV4.cs
     moves:
       - action: rename
-        path: ConcertoWorkflow/MusicWorkflowV4.cs.temp
-        dest: ConcertoWorkflow/MusicWorkflowV4.cs
+        path: ConcertoWorkflowSolution/ConcertoWorkflow.App/MusicWorkflowV4.cs.temp
+        dest: ConcertoWorkflowSolution/ConcertoWorkflow.App/MusicWorkflowV4.cs
       - action: open
-        path: ConcertoWorkflow/MusicWorkflowV4.cs
+        path: ConcertoWorkflowSolution/ConcertoWorkflow.App/MusicWorkflowV4.cs
   - id: scene-mmhxsrhj-bjiy
-    title: Let's Play!
+    title: Let's Play! (V4)
     moves:
       - action: openSlide
-        path: .demo/slides/04-demos/08-synth-presets.md
+        path: .demo/slides/04-demos/06-synth-presets.md
       - action: executeTerminalCommand
-        command: dapr run -f .
+        command: aspire run
         terminalId: dapr-run
         insertTypingMode: character-by-character
         insertTypingSpeed: 75
-  - title: Stop Dapr Application
+  - id: scene-mp1pe4lj-97tc
+    title: Stop Dapr Application
+    moves:
+      - action: focusTerminal
+        terminalId: dapr-run
+      - action: sendKeybinding
+        keybinding: ctrl+c
+  - id: scene-mp1pdwko-eveu
+    title: Let's Play! (V5)
+    moves:
+      - action: rename
+        path: ConcertoWorkflowSolution/ConcertoWorkflow.App/MusicWorkflowV5.cs.temp
+        dest: ConcertoWorkflowSolution/ConcertoWorkflow.App/MusicWorkflowV5.cs
+      - action: waitForTimeout
+        timeout: 500
+      - action: executeTerminalCommand
+        command: aspire run
+        terminalId: dapr-run
+        insertTypingMode: character-by-character
+        insertTypingSpeed: 75
+  - id: scene-mp1peaa7-fi37
+    title: Stop Dapr Application
     moves:
       - action: focusTerminal
         terminalId: dapr-run

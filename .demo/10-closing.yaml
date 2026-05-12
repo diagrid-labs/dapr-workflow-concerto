@@ -1,7 +1,7 @@
 title: 10 - Closing
 version: 3
 engageTime:
-  sessionId: m3xk32
+  sessionId: ' 6r41hf'
 scenes:
   - title: Things to remember
     moves:
@@ -9,22 +9,22 @@ scenes:
       - action: openSlide
         path: .demo/slides/05-closing/01-closing.md
   - id: scene-mmhxsrhj-fliy
-    title: Let's Play!
+    title: Let's Play! (V7)
     moves:
       - action: openSlide
         path: .demo/slides/04-demos/10a-synth-presets.md
       - action: rename
-        path: ConcertoWorkflow/MusicWorkflowV6.cs.temp
-        dest: ConcertoWorkflow/MusicWorkflowV6.cs
+        path: ConcertoWorkflowSolution/ConcertoWorkflow.App/MusicWorkflowV7.cs.temp
+        dest: ConcertoWorkflowSolution/ConcertoWorkflow.App/MusicWorkflowV7.cs
       - action: waitForTimeout
         timeout: 500
       - action: executeTerminalCommand
-        command: dapr run -f .
+        command: aspire run
         terminalId: dapr-run
         insertTypingMode: character-by-character
         insertTypingSpeed: 75
   - id: scene-mmhxsrhj-gkiy
-    title: Encore!
+    title: Encore! (V7)
     moves:
       - action: openSlide
         path: .demo/slides/04-demos/10b-synth-presets.md
@@ -33,6 +33,11 @@ scenes:
     moves:
       - action: openSlide
         path: .demo/slides/05-closing/02-links.md
+  - id: demo-mp05sh67-q2am
+    title: Techorama Spreaview
+    moves:
+      - action: openSlide
+        path: .demo/slides/05-closing/03-techorama.md
   - title: Stop Dapr Application
     moves:
       - action: focusTerminal
@@ -42,20 +47,23 @@ scenes:
   - title: Reset All
     moves:
       - action: rename
-        path: ConcertoWorkflow/MusicWorkflowV2.cs
-        dest: ConcertoWorkflow/MusicWorkflowV2.cs.temp
+        path: ConcertoWorkflowSolution/ConcertoWorkflow.App/MusicWorkflowV2.cs
+        dest: ConcertoWorkflowSolution/ConcertoWorkflow.App/MusicWorkflowV2.cs.temp
       - action: rename
-        path: ConcertoWorkflow/MusicWorkflowV3.cs
-        dest: ConcertoWorkflow/MusicWorkflowV3.cs.temp
+        path: ConcertoWorkflowSolution/ConcertoWorkflow.App/MusicWorkflowV3.cs
+        dest: ConcertoWorkflowSolution/ConcertoWorkflow.App/MusicWorkflowV3.cs.temp
       - action: rename
-        path: ConcertoWorkflow/MusicWorkflowV4.cs
-        dest: ConcertoWorkflow/MusicWorkflowV4.cs.temp
+        path: ConcertoWorkflowSolution/ConcertoWorkflow.App/MusicWorkflowV4.cs
+        dest: ConcertoWorkflowSolution/ConcertoWorkflow.App/MusicWorkflowV4.cs.temp
       - action: rename
-        path: ConcertoWorkflow/MusicWorkflowV5.cs
-        dest: ConcertoWorkflow/MusicWorkflowV5.cs.temp
+        path: ConcertoWorkflowSolution/ConcertoWorkflow.App/MusicWorkflowV5.cs
+        dest: ConcertoWorkflowSolution/ConcertoWorkflow.App/MusicWorkflowV5.cs.temp
       - action: rename
-        path: ConcertoWorkflow/MusicWorkflowV6.cs
-        dest: ConcertoWorkflow/MusicWorkflowV6.cs.temp
+        path: ConcertoWorkflowSolution/ConcertoWorkflow.App/MusicWorkflowV6.cs
+        dest: ConcertoWorkflowSolution/ConcertoWorkflow.App/MusicWorkflowV6.cs.temp
+      - action: rename
+        path: ConcertoWorkflowSolution/ConcertoWorkflow.App/MusicWorkflowV7.cs
+        dest: ConcertoWorkflowSolution/ConcertoWorkflow.App/MusicWorkflowV7.cs.temp
       - action: focusTerminal
         terminalId: dev-dashboard
       - action: sendKeybinding
