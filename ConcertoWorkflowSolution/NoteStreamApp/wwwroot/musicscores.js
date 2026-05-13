@@ -207,9 +207,9 @@ function getBluesBrotherMusicScore() {
 
 function getXFilesMusicScore() {
   return {
-    Title: "XFiles",
+    Title: "X",
     Bpm: 88,
-    Repeats: 4,
+    Repeats: 1,
     Notes: [
       { Id: "1",  NoteName: "F4",  Type: playbackType, NoteLength: "1/4",  Interval: "1/2" },
       { Id: "2",  NoteName: "C5",  Type: playbackType, NoteLength: "1/4",  Interval: "1/4"  },
@@ -240,7 +240,7 @@ function getXFilesMusicScore() {
 
 function getRickMusicScore() {
   return {
-    Title: "Rick",
+    Title: "Never",
     Bpm: 113,
     Repeats: 2,
     Notes: [
@@ -345,7 +345,7 @@ function getFinalScore() {
 
 function getStrangerMusicScore() {
   return {
-    Title: "Stranger",
+    Title: "Strange",
     Bpm: 150,
     Repeats: 16,
     Notes: [
@@ -365,7 +365,7 @@ const MUSIC_SCORES = {
   "Intro":  getIntroMusicScore,
   "Happy":  getHappyMusicScore,
   "RhythmLong": getRhythmMusicScoreLong,
-  "Rhythm": getRhythmMusicScore,
+  "RhythmShort": getRhythmMusicScore,
   "X":      getXFilesMusicScore,
   "Strange": getStrangerMusicScore,
   "Never":  getRickMusicScore,

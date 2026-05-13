@@ -19,7 +19,7 @@ public sealed partial class MusicWorkflowV6 : Workflow<MusicScore, object>
 
         int overheadMs = await CalculateOverhead(context);
 
-        var isApproved = await context.WaitForExternalEventAsync<bool>("approve");
+        var isApproved = await context.WaitForExternalEventAsync<bool>("approve", TimeSpan.FromSeconds(30));
         if (isApproved)
         {
             await context.CallActivityAsync<bool>(

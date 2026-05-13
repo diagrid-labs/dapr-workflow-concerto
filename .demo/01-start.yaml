@@ -37,10 +37,7 @@ scenes:
         path: .demo/slides/01-intro/01-intro.md
       - action: setPresentationView
       - action: startEngageTimeSession
-      - action: closeEngageTimePoll
-        pollId: koaus6
-      - action: closeEngageTimePoll
-        pollId: nx1v74
+
     disabled: true
   - id: demo-mmg4gj89-6wc2
     title: Start Timer

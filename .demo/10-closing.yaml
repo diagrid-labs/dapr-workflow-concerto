@@ -69,3 +69,10 @@ scenes:
         terminalId: dev-dashboard
       - action: sendKeybinding
         keybinding: ctrl+c
+      - action: executeTerminalCommand
+        command: cd ..
+        terminalId: dapr-run
+      - action: closeEngageTimePoll
+        pollId: koaus6
+      - action: closeEngageTimePoll
+        pollId: nx1v74
