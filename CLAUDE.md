@@ -14,7 +14,7 @@ Prerequisites: Dapr CLI, Docker, .NET 10 SDK. Start with `dapr run -f dapr.yaml`
 
 ## Back-end rules
 
-- C# .NET 10, ASP.NET Core Minimal API style. Dapr.Workflow SDK v1.17.0.
+- C# .NET 10, ASP.NET Core Minimal API style. Dapr.Workflow SDK v1.18.4.
 - Keep code small and modular. Do not introduce unnecessary new classes or files.
 - Workflow pattern: `MusicWorkflow` calls `SendInstanceIdActivity` then loops through notes via `SendNoteActivity`, with `ContinueAsNew` for repeats.
 - For each HTTP endpoint in Program.cs, add a corresponding entry in `local.http` for the VS Code REST Client.
