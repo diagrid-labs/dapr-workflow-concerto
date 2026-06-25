@@ -9,10 +9,11 @@ layout: two-columns
    - GitHub repo
    - AI Skill to author workflows
    - Diagrid Dev Dashboard
-   - Dapr University 
+   - Dapr University
+   - State of Dapr Report 2026
 3. Connect with me! 🤝
 
 ![Dapr Community Supporter](.demo/images/dapr-community-supporter-badge-anim.gif)
 
 ::right::
-![QR Code](.demo/images/session-6r41hf-feedback-qr.png)
+![QR Code](.demo/images/session-unsra3-feedback-qr.png)

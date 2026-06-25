@@ -1,10 +1,10 @@
 title: 01 - Start
 version: 3
 engageTime:
-  sessionId: 6r41hf
+  sessionId: unsra3
 scenes:
   - id: demo-moyhvfvs-lw7g
-    title: '-'
+    title: Start workfow app to play intro
     moves:
       - action: openSlide
         path: .demo/slides/01-intro/00-blank.md
@@ -19,17 +19,6 @@ scenes:
         insertTypingMode: character-by-character
         autoExecute: true
         insertTypingSpeed: 100
-  - id: demo-mozyhtlh-q9al
-    title: Intro Techorama
-    moves:
-      - action: openSlide
-        path: .demo/slides/01-intro/00-intro.md
-      - action: setPresentationView
-      - action: startEngageTimeSession
-      - action: closeEngageTimePoll
-        pollId: koaus6
-      - action: closeEngageTimePoll
-        pollId: nx1v74
   - id: scene-mmhm7tku-rik0
     title: Intro
     moves:
@@ -37,8 +26,7 @@ scenes:
         path: .demo/slides/01-intro/01-intro.md
       - action: setPresentationView
       - action: startEngageTimeSession
-
-    disabled: true
+    disabled: false
   - id: demo-mmg4gj89-6wc2
     title: Start Timer
     moves:

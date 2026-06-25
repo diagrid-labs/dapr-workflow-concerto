@@ -14,4 +14,4 @@ layout: two-columns
 
 ::right::
 
-![Join EngageTime](.demo/images/session-6r41hf-qr.png)
+![Join EngageTime](.demo/images/session-unsra3-qr.png)

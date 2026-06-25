@@ -30,18 +30,11 @@ scenes:
         terminalId: dapr-run
       - action: sendKeybinding
         keybinding: ctrl+c
-  - title: Workflow Registration
+  - title: Workflow Registration & Versioning
     moves:
       - action: highlight
         path: ConcertoWorkflowSolution/ConcertoWorkflow.App/Program.cs
-        position: '11:15'
-        highlightBlur: 2
-        highlightWholeLine: true
-  - title: Workflow Versioning
-    moves:
-      - action: highlight
-        path: ConcertoWorkflowSolution/ConcertoWorkflow.App/Program.cs
-        position: '16'
+        position: '11:12'
         highlightBlur: 2
         highlightWholeLine: true
   - id: scene-mp2ckvly-2k6z
@@ -61,6 +54,6 @@ scenes:
     moves:
       - action: highlight
         path: ConcertoWorkflowSolution/ConcertoWorkflow.App/Program.cs
-        position: '31:41'
+        position: '27:37'
         highlightBlur: 2
         highlightWholeLine: true

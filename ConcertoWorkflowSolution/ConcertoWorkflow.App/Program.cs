@@ -8,11 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.AddServiceDefaults();
 
 builder.Services.AddSingleton<HttpClient>(DaprClient.CreateInvokeHttpClient(appId: "note-stream-app"));
-builder.Services.AddDaprWorkflow(options =>
-{
-    options.RegisterActivity<SendNoteActivity>();
-    options.RegisterActivity<MeasureLatencyActivity>();
-});
+builder.Services.AddDaprWorkflow();
 builder.Services.AddDaprWorkflowVersioning();
 
 builder.Services.AddCors(options =>

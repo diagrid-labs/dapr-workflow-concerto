@@ -1,7 +1,7 @@
 title: 10 - Closing
 version: 3
 engageTime:
-  sessionId: ' 6r41hf'
+  sessionId: ' unsra3'
 scenes:
   - title: Things to remember
     moves:
@@ -34,11 +34,6 @@ scenes:
       - action: setPresentationView
       - action: openSlide
         path: .demo/slides/05-closing/02-links.md
-  - id: demo-mp05sh67-q2am
-    title: Techorama Spreaview
-    moves:
-      - action: openSlide
-        path: .demo/slides/05-closing/03-techorama.md
   - title: Stop Dapr Application
     moves:
       - action: focusTerminal

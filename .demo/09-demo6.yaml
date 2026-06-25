@@ -28,7 +28,7 @@ scenes:
       - action: highlight
         path: ConcertoWorkflowSolution/ConcertoWorkflow.App/Program.cs
         highlightWholeLine: true
-        position: '43:55'
+        position: '39:51'
         highlightBlur: 2
   - id: scene-mmhxsrhj-fkiy
     title: Let's Play! (V6)
