@@ -9,9 +9,9 @@ string executingPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Loc
     ?? throw new("Where am I?");
 var resourcesPath = Path.Join(executingPath, "Resources");
 
-var cachePassword = builder.AddParameter("cache-password", "state-store-123", secret: true);
-var cache = builder
-    .AddValkey("cache", 16379, cachePassword)
+var statestorePassword = builder.AddParameter("cache-password", "state-store-123", secret: true);
+var statestore = builder
+    .AddValkey("statestore", 16379, statestorePassword)
     .WithContainerName("workflow-state")
     .WithDataVolume("workflow-state-data");
 
@@ -24,7 +24,7 @@ var noteStream = builder
         LogLevel = "info",
         ResourcesPaths = [resourcesPath],
     });
-noteStream.WaitFor(cache);
+noteStream.WaitFor(statestore);
 
 var musicApp = builder
     .AddProject<Projects.ConcertoWorkflow_App>("music-app")
@@ -35,7 +35,7 @@ var musicApp = builder
         LogLevel = "info",
         ResourcesPaths = [resourcesPath],
     });
-musicApp.WaitFor(cache);
+musicApp.WaitFor(statestore);
 musicApp.WaitFor(noteStream);
 
 builder.Build().Run();

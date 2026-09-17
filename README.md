@@ -1,6 +1,6 @@
 # Dapr Workflow Concerto
 
-A Dapr Workflow demo that orchestrates music playback across two .NET services with real-time P5.js visualization. The whole stack — both services, their Dapr sidecars, a Valkey state store, and the Diagrid Dev Dashboard — runs together under .NET Aspire. The `ConcertoWorkflow.App` service drives the orchestration, while `NoteStreamApp` streams notes to the browser via Server-Sent Events (SSE), where a P5.js canvas visualizes the music and Web MIDI or Web Audio handles playback.
+A Dapr Workflow demo that orchestrates music playback across two .NET services with real-time P5.js visualization. The stack — both services, their Dapr sidecars, and a Valkey state store — runs together under .NET Aspire. The `ConcertoWorkflow.App` service drives the orchestration, while `NoteStreamApp` streams notes to the browser via Server-Sent Events (SSE), where a P5.js canvas visualizes the music and Web MIDI or Web Audio handles playback.
 
 ## Architecture
 
@@ -15,7 +15,7 @@ flowchart LR
     NSA --SSE--> FE
     CWA <--workflow state--> DAPR_CWA
     DAPR_CWA <--workflow state--> VK[(Valkey)]
-    DD[Diagrid Dev Dashboard] -.reads.-> VK
+    DD[Dapr Dev Dashboard] -.reads.-> VK
     FE --WebMIDI--> HI[Audio/MIDI Interface]
     HI --MIDI--> HS[Synthesizer]
 ```
@@ -23,13 +23,13 @@ flowchart LR
 | Component | Description |
 |---|---|
 | **Front-end** | P5.js canvas served from NoteStreamApp. Connects to SSE for real-time note events and sends HTTP requests to start/control the workflow. |
-| **ConcertoWorkflow.AppHost** | .NET Aspire entry point. Wires up Valkey, both service projects with their Dapr sidecars, and the Diagrid Dev Dashboard container. |
+| **ConcertoWorkflow.AppHost** | .NET Aspire entry point. Wires up Valkey and both service projects with their Dapr sidecars, and supplies the Dapr components from its `Resources/` folder. |
 | **ConcertoWorkflow.ServiceDefaults** | Aspire-shared OpenTelemetry, health checks, resilience, and service discovery. Referenced by both service projects. |
 | **ConcertoWorkflow.App** (`music-app`, port 5500) | Dapr Workflow orchestration service. `MusicWorkflow` loops through music scores and invokes activities to send notes. |
 | **NoteStreamApp** (`note-stream-app`, port 5051) | Receives notes via Dapr service invocation, queues them as SSE events, and serves the front-end static files. |
 | **Dapr sidecars** | One sidecar per service (managed by Aspire). Handle service-to-service invocation between `music-app` and `note-stream-app`, and back the Dapr Workflow runtime in `music-app` with Valkey as the state store. |
-| **Valkey** (port 16379) | Workflow state store, used by the `music-app` Dapr sidecar to persist workflow execution history. |
-| **Diagrid Dev Dashboard** (port 8888) | Container that reads from the same Valkey instance to inspect running and completed workflow instances. |
+| **Valkey** (port 16379) | Workflow state store, used by the `music-app` Dapr sidecar to persist workflow execution history. Configured by the `workflow-store` component in `ConcertoWorkflow.AppHost/Resources/statestore.yaml`. |
+| **Dapr Dev Dashboard** (port 9090) | Diagrid's local dev dashboard binary. Reads from the same state store to inspect running and completed workflow instances. Started separately, not by `aspire run`. |
 | **Audio/MIDI Interface** | Optional hardware interface that routes MIDI messages from the browser to an external synthesizer. |
 | **Synthesizer** | External hardware synth that produces sound when using Web MIDI playback. |
 
@@ -39,6 +39,7 @@ flowchart LR
 - [Aspire CLI](https://aspire.dev/get-started/install-cli/)
 - [Docker](https://www.docker.com/) or [Podman](https://podman.io/docs/installation)
 - [Dapr CLI](https://docs.dapr.io/getting-started/install-dapr-cli/)
+- [Diagrid Dapr Dev Dashboard](https://docs.diagrid.io/develop/local-development/dev-dashboard/) (optional, to inspect workflow instances)
 - A modern browser (Chrome or Edge recommended for Web MIDI support)
 - Optional: a hardware MIDI synthesizer connected via an audio/MIDI interface
 
@@ -54,7 +55,6 @@ aspire run
 The Aspire dashboard opens automatically in your browser. From the resource list:
 
 - Open the `note-stream-app` HTTP endpoint (or [http://localhost:5051](http://localhost:5051)) to load the P5.js frontend.
-- Open the `diagrid-dashboard` HTTP endpoint (or [http://localhost:8888](http://localhost:8888)) to inspect workflow instances.
 - Use the `music-app` HTTP endpoint ([http://localhost:5500](http://localhost:5500)) to call workflow APIs directly.
 
 ## Endpoints
@@ -88,7 +88,25 @@ curl -X POST http://localhost:5500/approve/<id>/true
 
 ## Inspect workflows
 
-Open the **Diagrid Dev Dashboard** from the Aspire dashboard's resource list. It connects to the same Valkey state store as the `music-app` Dapr sidecar and shows running and completed workflow instances with their full execution history.
+Use the [Diagrid **Dapr Dev Dashboard**](https://docs.diagrid.io/develop/local-development/dev-dashboard/), a local binary that runs alongside `aspire run` (it is not started by Aspire).
+
+Install it once:
+
+```bash
+# macOS / Linux
+curl -sSL https://raw.githubusercontent.com/diagridio/dev-dashboard/main/scripts/install.sh | sh
+
+# Windows (PowerShell)
+iwr -useb https://raw.githubusercontent.com/diagridio/dev-dashboard/main/scripts/install.ps1 | iex
+```
+
+Then start it in a separate terminal while the app is running:
+
+```bash
+diagrid-dev-dashboard
+```
+
+Open [http://localhost:9090](http://localhost:9090). The dashboard discovers the state store of the running Dapr apps automatically and shows running and completed workflow instances with their full execution history.
 
 ## Audio playback: Web MIDI vs Web Audio
 
