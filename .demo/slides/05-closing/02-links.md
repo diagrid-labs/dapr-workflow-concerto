@@ -16,4 +16,4 @@ layout: two-columns
 ![Dapr Community Supporter](.demo/images/dapr-community-supporter-badge-anim.gif)
 
 ::right::
-![QR Code](.demo/images/session-unsra3-feedback-qr.png)
+![QR Code](.demo/images/session-aua5l8-feedback-qr.png)

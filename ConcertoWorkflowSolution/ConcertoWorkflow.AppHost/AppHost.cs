@@ -38,13 +38,4 @@ var musicApp = builder
 musicApp.WaitFor(cache);
 musicApp.WaitFor(noteStream);
 
-builder
-    .AddContainer("diagrid-dashboard", "ghcr.io/diagridio/diagrid-dashboard:latest")
-    .WithContainerName("diagrid-dashboard")
-    .WithBindMount(resourcesPath, "/app/components")
-    .WithEnvironment("COMPONENT_FILE", "/app/components/statestore-dashboard.yaml")
-    .WithEnvironment("APP_ID", "diagrid-dashboard")
-    .WithHttpEndpoint(port: 8888, targetPort: 8080)
-    .WithReference(cache);
-
 builder.Build().Run();
