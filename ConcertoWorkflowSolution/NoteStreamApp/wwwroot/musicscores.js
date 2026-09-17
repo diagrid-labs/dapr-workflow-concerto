@@ -51,6 +51,59 @@ function buildAlternatingPattern(startId, [low, high], count, firstInterval = "1
   return out;
 }
 
+function getIntroArp() {
+  return {
+    Title: "Intro Arp",
+    Bpm: 100,
+    Notes: [
+      ...buildArpPattern(1,  ["C3", "F3", "A3"], 15),
+      ...buildArpPattern(16, ["C3", "F3", "G3"], 15),
+      ...buildArpPattern(31, ["C3", "F3", "B3"], 15),
+      ...buildArpPattern(46, ["C3", "F3", "C4"], 15),
+      ...buildArpPattern(61, ["C4", "F4", "A4"], 15),
+      ...buildArpPattern(76, ["C4", "F4", "G4"], 15),
+      ...buildArpPattern(91, ["C4", "F4", "B4"], 15),
+      ...buildArpPattern(106, ["C4", "F4", "C5"], 15),
+      ...buildArpPattern(1,  ["C3", "F3", "A3"], 6),
+      ...buildArpPattern(61, ["C4", "F4", "A4"], 6),
+      ...buildArpPattern(16, ["C3", "F3", "G3"], 6),
+      ...buildArpPattern(76, ["C4", "F4", "G4"], 6),
+      ...buildArpPattern(31, ["C3", "F3", "B3"], 6),
+      ...buildArpPattern(91, ["C4", "F4", "B4"], 6),
+      ...buildArpPattern(46, ["C3", "F3", "C4"], 6),
+      ...buildArpPattern(106, ["C4", "F4", "C5"], 6),
+      ...buildArpPattern(1,  ["A3", "F3", "C3"], 6),
+      ...buildArpPattern(61, ["A4", "F4", "C4"], 6),
+      ...buildArpPattern(16, ["G3", "F3", "C3"], 6),
+      ...buildArpPattern(76, ["G4", "F4", "C4"], 6),
+      ...buildArpPattern(31, ["B3", "F3", "C3"], 6),
+      ...buildArpPattern(91, ["B4", "F4", "C4"], 6),
+      ...buildArpPattern(46, ["C4", "F3", "C3"], 6),
+      ...buildArpPattern(106, ["C5", "F4", "C4"], 6),
+      ...buildArpPattern(1,  ["A3", "F3", "C3"], 15),
+      ...buildArpPattern(16, ["G3", "F3", "C3"], 15),
+      ...buildArpPattern(31, ["B3", "F3", "C3"], 15),
+      ...buildArpPattern(46, ["C4", "F3", "C3"], 15),
+    ]
+  };
+}
+
+// Helper: builds a 1/16 pattern of `count` notes cycling through `notes`,
+// starting at id `startId`.
+function buildArpPattern(startId, notes, count) {
+  const out = [];
+  for (let i = 0; i < count; i++) {
+    out.push({
+      Id: String(startId + i),
+      NoteName: notes[i % notes.length],
+      Type: playbackType,
+      NoteLength: "1/16",
+      Interval: "1/16",
+    });
+  }
+  return out;
+}
+
 function getHappyMusicScore() {
   return {
     Title: "Happy",
@@ -363,6 +416,7 @@ function getStrangerMusicScore() {
 
 const MUSIC_SCORES = {
   "Intro":  getIntroMusicScore,
+  "Intro Arp": getIntroArp,
   "Happy":  getHappyMusicScore,
   "RhythmLong": getRhythmMusicScoreLong,
   "RhythmShort": getRhythmMusicScore,
