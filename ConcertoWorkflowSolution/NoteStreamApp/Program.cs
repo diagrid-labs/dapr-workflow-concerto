@@ -1,3 +1,4 @@
+using System.Collections.Concurrent;
 using System.Text.Json;
 using System.Threading.Channels;
 using Microsoft.AspNetCore.Mvc;
@@ -23,22 +24,22 @@ app.UseDefaultFiles();
 app.UseStaticFiles();
 
 // POST endpoint to enqueue notes
-app.MapPost("/sendnote", async (
+app.MapPost("/sendnote", (
     [FromBody] Note note,
     [FromServices] NoteQueueService queue) =>
 {
     Console.WriteLine(note);
-    await queue.EnqueueAsync(new SseEvent("note", note));
+    queue.Publish(new SseEvent("note", note));
     return Results.Accepted();
 });
 
 // POST endpoint to enqueue instanceId
-app.MapPost("/sendinstanceid", async (
+app.MapPost("/sendinstanceid", (
     [FromBody] string instanceId,
     [FromServices] NoteQueueService queue) =>
 {
     Console.WriteLine($"Received instanceId: {instanceId}");
-    await queue.EnqueueAsync(new SseEvent("instanceId", instanceId));
+    queue.Publish(new SseEvent("instanceId", instanceId));
     return Results.Accepted();
 });
 
@@ -52,11 +53,23 @@ app.MapGet("/sse", async (
     context.Response.Headers.Append("Connection", "keep-alive");
     await context.Response.Body.FlushAsync(context.RequestAborted);
 
-    await foreach (var sseEvent in queue.DequeueAllAsync(context.RequestAborted))
+    var (subscriberId, reader) = queue.Subscribe();
+    try
     {
-        var json = JsonSerializer.Serialize(sseEvent.Data);
-        await context.Response.WriteAsync($"event: {sseEvent.EventType}\ndata: {json}\n\n");
-        await context.Response.Body.FlushAsync(context.RequestAborted);
+        await foreach (var sseEvent in reader.ReadAllAsync(context.RequestAborted))
+        {
+            var json = JsonSerializer.Serialize(sseEvent.Data);
+            await context.Response.WriteAsync($"event: {sseEvent.EventType}\ndata: {json}\n\n");
+            await context.Response.Body.FlushAsync(context.RequestAborted);
+        }
+    }
+    catch (OperationCanceledException)
+    {
+        // Client disconnected — expected, not an error.
+    }
+    finally
+    {
+        queue.Unsubscribe(subscriberId);
     }
 });
 
@@ -68,23 +81,40 @@ app.Run();
 public record Note(string Id, string NoteName, string Type, int DurationMs, int WaitMs);
 public record SseEvent(string EventType, object Data);
 
-// Queue service
+// Broadcasts each event to every connected SSE client
 public class NoteQueueService
 {
-    private readonly Channel<SseEvent> _channel;
+    private readonly ConcurrentDictionary<Guid, Channel<SseEvent>> _subscribers = new();
 
-    public NoteQueueService()
+    public (Guid Id, ChannelReader<SseEvent> Reader) Subscribe()
     {
-        _channel = Channel.CreateUnbounded<SseEvent>();
+        // Bounded + DropOldest: a stalled client can never block a publisher,
+        // and notes do not pile up for a client that is not there.
+        var channel = Channel.CreateBounded<SseEvent>(new BoundedChannelOptions(256)
+        {
+            FullMode = BoundedChannelFullMode.DropOldest,
+            SingleReader = true,
+            SingleWriter = false
+        });
+
+        var id = Guid.NewGuid();
+        _subscribers[id] = channel;
+        return (id, channel.Reader);
     }
 
-    public async Task EnqueueAsync(SseEvent sseEvent)
+    public void Unsubscribe(Guid id)
     {
-        await _channel.Writer.WriteAsync(sseEvent);
+        if (_subscribers.TryRemove(id, out var channel))
+        {
+            channel.Writer.TryComplete();
+        }
     }
 
-    public IAsyncEnumerable<SseEvent> DequeueAllAsync(CancellationToken cancellationToken)
+    public void Publish(SseEvent sseEvent)
     {
-        return _channel.Reader.ReadAllAsync(cancellationToken);
+        foreach (var channel in _subscribers.Values)
+        {
+            channel.Writer.TryWrite(sseEvent);
+        }
     }
 }

@@ -31,9 +31,20 @@ public sealed partial class SendNoteActivity(ILogger<SendNoteActivity> logger, H
 
         // POST to NoteStreamApp
         var response = await httpClient.PostAsJsonAsync("/sendnote", playback);
-        return response.IsSuccessStatusCode;
+        if (!response.IsSuccessStatusCode)
+        {
+            var body = await response.Content.ReadAsStringAsync();
+            LogNoteSendFailed(logger, note.NoteName, (int)response.StatusCode, body);
+            throw new HttpRequestException(
+                $"Failed to send note {note.NoteName} to note-stream-app: {(int)response.StatusCode} {body}");
+        }
+
+        return true;
     }
 
     [LoggerMessage(LogLevel.Information, "SendNoteActivity: {NoteName} (duration={DurationMs}ms, wait={WaitMs}ms)")]
     static partial void LogNoteSend(ILogger logger, string NoteName, int DurationMs, int WaitMs);
+
+    [LoggerMessage(LogLevel.Error, "SendNoteActivity failed: {NoteName} -> HTTP {StatusCode}: {Body}")]
+    static partial void LogNoteSendFailed(ILogger logger, string NoteName, int StatusCode, string Body);
 }
