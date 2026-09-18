@@ -7,8 +7,8 @@ layout: two-columns
 1. Rate my session & provide feedback 📝
 2. Access resources 📚
    - GitHub repo
+   - Dapr Dev Dashboard
    - AI Skill to author workflows
-   - Diagrid Dev Dashboard
    - Dapr University
    - State of Dapr Report 2026
 3. Connect with me! 🤝

@@ -400,7 +400,7 @@ function getStrangerMusicScore() {
   return {
     Title: "Strange",
     Bpm: 150,
-    Repeats: 16,
+    Repeats: 8,
     Notes: [
       { Id: "1", NoteName: "C3", Type: playbackType, NoteLength: "1/8", Interval: "1/8" },
       { Id: "2", NoteName: "E3", Type: playbackType, NoteLength: "1/8", Interval: "1/8" },

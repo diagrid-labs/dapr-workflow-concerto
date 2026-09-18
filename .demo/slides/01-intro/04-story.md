@@ -2,7 +2,7 @@
 layout: section
 ---
 
-# This session is about building **reliable** applications with Dapr Workflow
+# This session is about building **durable** and **reliable** applications with Dapr Workflow
 
 ## *These workflows happen to be very performant as well!*
 

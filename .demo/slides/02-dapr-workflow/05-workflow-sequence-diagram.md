@@ -1,7 +1,3 @@
----
-layout: default
----
-
 # Workflow Sequence Diagram
 
 ```mermaid

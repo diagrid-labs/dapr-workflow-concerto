@@ -28,7 +28,7 @@ layout: section
 layout: default
 ---
 
-![Diagrid Dev Dashboard](.demo/images/diagrid-dev-dashboard.png)
+![Dapr Dev Dashboard](.demo/images/dapr-dev-dashboard.png)
 
 ---
 layout: default
