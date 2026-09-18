@@ -10,7 +10,7 @@ layout: section
 layout: section
 ---
 
-# 1. Workflows are a great tool to build reliable business processes
+# 1. Workflows are a great tool to build durable and reliable business processes
 
 ---
 layout: section

@@ -60,10 +60,10 @@ public class MyWorkflow : Workflow<Input, Output>
         var activity1Result = await context.CallActivityAsync<string>(
             nameof(MyActivity1), input);
         
-        var result = await context.CallActivityAsync<string>(
+        var activity2Result = await context.CallActivityAsync<string>(
             nameof(MyActivity2), activity1Result);
 
-        return new Output(result);
+        return new Output(activity2Result);
     }
 }
 ```
@@ -78,15 +78,9 @@ public class MyActivity1 : Activity<Input, string>
     public override async Task<string> RunAsync(
         ActivityContext context, Input input)
     {
-        var response = await CallLLMAsync(input);
-        return response;
-    }
-
-    private Task<string> CallLLMAsync(Input input)
-    {
-        // Call to external LLM service
-        ...
+        // Run any non-deterministic code:
+        // Calls to internal/external services
+        // databases etc...
     }
 }
 ```
-
