@@ -33,7 +33,7 @@ scenes:
         insertTypingMode: character-by-character
         insertTypingSpeed: 75
       - action: showInfoMessage
-        message: Check Repeats in Diagrid Dev Dashboard
+        message: Check Repeats in Dapr dev dashboard
   - title: Stop Dapr Application
     moves:
       - action: focusTerminal

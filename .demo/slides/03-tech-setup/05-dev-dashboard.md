@@ -2,4 +2,4 @@
 layout: default
 ---
 
-![Diagrid Dev Dashboard](.demo/images/diagrid-dev-dashboard.png)
+![Dapr dev dashboard](.demo/images/diagrid-dev-dashboard.png)

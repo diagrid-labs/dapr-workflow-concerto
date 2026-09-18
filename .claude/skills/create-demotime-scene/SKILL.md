@@ -23,7 +23,7 @@ Example:
 title: 03 - Tech Setup
 version: 3
 scenes:
-  - title: Run Diagrid Dev Dashboard
+  - title: Run Dapr dev dashboard
     moves:
       - action: executeTerminalCommand
         command: docker run -p 8080:8080 ghcr.io/diagridio/diagrid-dashboard:latest
@@ -77,7 +77,7 @@ insertTypingMode: character-by-character
 insertTypingSpeed: 50
 ```
 
-Example to run the Diagrid Dev Dashboard container with docker:
+Example to run the Dapr dev dashboard container with docker:
 ```yaml
 action: executeTerminalCommand
 command: docker run -p 8080:8080 ghcr.io/diagridio/diagrid-dashboard:latest
