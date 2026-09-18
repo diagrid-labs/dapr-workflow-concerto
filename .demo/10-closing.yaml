@@ -1,7 +1,7 @@
 title: 10 - Closing
 version: 3
 engageTime:
-  sessionId: ' aua5l8'
+  sessionId: aua5l8
 scenes:
   - title: Things to remember
     moves:
@@ -68,6 +68,6 @@ scenes:
         command: cd ..
         terminalId: dapr-run
       - action: closeEngageTimePoll
-        pollId: koaus6
+        pollId: hk903d
       - action: closeEngageTimePoll
-        pollId: nx1v74
+        pollId: ltox9j
