@@ -18,10 +18,10 @@ layout: default
 
 # Topics
 
-### - Dapr & Dapr Workflows
+### - Dapr & Dapr Workflow
 
 ### - Hardware & Software
 
-### - Play music! 7 demos with different workflows
+### - Play music! 7 demos with different workflow patterns
 
 ### - Workflow Versioning
