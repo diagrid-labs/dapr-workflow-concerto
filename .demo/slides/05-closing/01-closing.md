@@ -34,4 +34,4 @@ layout: default
 layout: default
 ---
 
-![Diagrid Catalyst](.demo/images/diagrid-catalyst.png)
+![Diagrid](.demo/images/diagrid-catalyst.png)

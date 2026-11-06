@@ -127,4 +127,4 @@ Uses the browser's built-in Web Audio API with oscillator-based synthesis — no
 
 - Learn Dapr with [Dapr University](https://www.diagrid.io/dapr-university).
 - Join the [Dapr Discord](http://diagrid.ws/dapr-discord)!
-- [Try Catalyst](https://www.diagrid.io/catalyst) to run & operate your workflows.
+- [Try Diagrid](https://www.diagrid.io/catalyst) to run & operate your workflows.
